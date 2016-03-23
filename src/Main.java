@@ -1,13 +1,10 @@
-import display.clock.TimeKeeper;
+import display.Dashboard;
 
 public class Main
 {
 	public static void main(String[] args) throws Exception
 	{
-		TimeKeeper keep = new TimeKeeper();
-		for(;;){
-			System.out.println(keep);
-			Thread.sleep((long)1000);
-		}
+		Dashboard dash = new Dashboard();
+		dash.setVisible(true);
 	}
 }
