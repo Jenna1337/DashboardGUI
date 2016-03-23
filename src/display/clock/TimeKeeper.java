@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
+import display.clock.TimeConstant;
 
 public final class TimeKeeper
 {
@@ -12,26 +13,29 @@ public final class TimeKeeper
 	private long lastsync=0;
 	private long offset=0;
 	private boolean syncsucceeded=false;
-	/*3600000ms = 1h; 900000ms = 15min*/
-	long timesyncfailed  = 900000,
-		timesyncsucceeded=3600000;
+	long timesyncfailed  = TimeConstant.MINUTE*15,
+		timesyncsucceeded=TimeConstant.HOUR;
 	/**Formats
-	 * <br/>G  Era designator  Text  AD  
-	 * <br/>y  Year  Year  1996; 96  
-	 * <br/>Y  Week year  Year  2009; 09  
-	 * <br/>M  Month in year (context sensitive)  Month  July; Jul; 07  
-	 * <br/>L  Month in year (standalone form)  Month  July; Jul; 07  
-	 * <br/>D  Day in year  Number  189  
-	 * <br/>d  Day in month  Number  10  
-	 * <br/>E  Day name in week  Text  Tuesday; Tue  
-	 * <br/>a  Am/pm marker  Text  PM  
-	 * <br/>H  Hour in day (0-23)  Number  0  
-	 * <br/>k  Hour in day (1-24)  Number  24  
-	 * <br/>K  Hour in am/pm (0-11)  Number  0  
-	 * <br/>h  Hour in am/pm (1-12)  Number  12  
-	 * <br/>m  Minute in hour  Number  30  
-	 * <br/>s  Second in minute  Number  55  
-	 * <br/>z  Time zone  General time zone  Pacific Standard Time; PST; GMT-08:00  
+	 * <pre>
+	 * | Letter | Description                       | Type              | Example                               |
+	 * +--------+-----------------------------------+-------------------+---------------------------------------+
+	 * |   G    | Era designator                    | Text              | AD                                    |
+	 * |   y    | Year                              | Year              | 1996; 96                              |
+	 * |   Y    | Week year                         | Year              | 2009; 09                              |
+	 * |   M    | Month in year (context sensitive) | Month             | July; Jul; 07                         |
+	 * |   L    | Month in year (standalone form)   | Month             | July; Jul; 07                         |
+	 * |   D    | Day in year                       | Number            | 189                                   |
+	 * |   d    | Day in month                      | Number            | 10                                    |
+	 * |   E    | Day name in week                  | Text              | Tuesday; Tue                          |
+	 * |   a    | Am/pm marker                      | Text              | PM                                    |
+	 * |   H    | Hour in day (0-23)                | Number            | 0                                     |
+	 * |   k    | Hour in day (1-24)                | Number            | 24                                    |
+	 * |   K    | Hour in am/pm (0-11)              | Number            | 0                                     |
+	 * |   h    | Hour in am/pm (1-12)              | Number            | 12                                    |
+	 * |   m    | Minute in hour                    | Number            | 30                                    |
+	 * |   s    | Second in minute                  | Number            | 55                                    |
+	 * |   z    | Time zone                         | General time zone | Pacific Standard Time; PST; GMT-08:00 |
+	 * </pre>
 	 */
 	String dateshort= "d/m/y",
 		   datelong = "EEEE, MMMMM d, yyyy",
@@ -45,9 +49,9 @@ public final class TimeKeeper
 			new TimerTask(){
 				public void run(){
 					synctime();
-					t=new Date(t.getTime()+1000);
+					t=new Date(t.getTime()+TimeConstant.SECOND);
 				}
-			}, (long)0, (long)1000);
+			}, TimeConstant.ZERO, TimeConstant.SECOND);
 	}
 	public String toString()
 	{
@@ -74,7 +78,7 @@ public final class TimeKeeper
 	private void synctime()
 	{
 		//hard coded minimum times 1h, 15m
-		if(lastsync+(syncsucceeded?Math.max(timesyncsucceeded,3600000):Math.max(timesyncfailed,900000)) < System.currentTimeMillis()+offset)
+		if(lastsync+(syncsucceeded?Math.max(timesyncsucceeded,TimeConstant.HOUR):Math.max(timesyncfailed,TimeConstant.MINUTE*15)) < System.currentTimeMillis()+offset)
 		{
 			try
 			{

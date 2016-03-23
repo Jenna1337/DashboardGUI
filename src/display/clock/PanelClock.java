@@ -42,12 +42,10 @@ public class PanelClock extends JPanel
 				public void run(){
 					text.setText(datetime.getTimeShort());
 				}
-			}, (long)0, (long)1000);
+			}, TimeConstant.ZERO, TimeConstant.SECOND);
 		this.setBackground(java.awt.Color.MAGENTA);
 		this.setLayout(new BorderLayout());
 		this.add(text, BorderLayout.CENTER);
-		// TODO Auto-generated method stub
-		
 	}
 	@Override
 	public void paint(java.awt.Graphics g)

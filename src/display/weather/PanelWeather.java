@@ -28,7 +28,7 @@ public class PanelWeather extends JPanel
 	}
 	private void initialize()
 	{
-		// TODO Auto-generated method stub
+		// TODO Implement WeatherData
 		
 	}
 }
