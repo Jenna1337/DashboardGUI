@@ -4,8 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.Toolkit;
 import javax.swing.JFrame;
-import display.clock.PanelClock;
-import display.weather.PanelWeather;
 
 @SuppressWarnings("serial")
 public class Dashboard extends JFrame

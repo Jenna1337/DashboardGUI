@@ -3,7 +3,7 @@ package display.weather;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
-import display.clock.TimeConstant;
+import display.CommonConsts;
 
 public class WeatherData
 {
@@ -13,6 +13,7 @@ public class WeatherData
 	public WeatherData(String station)
 	{
 		ws=station;
+		
 		Thread wupdater = new Thread(
 			new Runnable(){
 				public void run(){
@@ -21,16 +22,19 @@ public class WeatherData
 						if(check!=null)
 						{
 							data=check;
-							Thread.sleep(TimeConstant.HOUR);
+							Thread.sleep(CommonConsts.wsyncsucceeded);
 						}
 						else
-							Thread.sleep(TimeConstant.MINUTE*5);
+							Thread.sleep(CommonConsts.wsyncfailed);
 					}
 					catch(InterruptedException ie){}
 					this.run();
 				}
 			});
 		wupdater.setDaemon(true);
+		String check = getWeatherData(ws);
+		if(check!=null)
+			data=check;
 		wupdater.start();
 	}
 	protected static String getWeatherData(final String station)
@@ -57,11 +61,5 @@ public class WeatherData
 	public String toString()
 	{
 		return data;
-	}
-	public static void main(String[] args) throws Exception
-	{
-		WeatherData kfar = new WeatherData("KFAR");
-		Thread.sleep(1000);
-		System.out.println(kfar);
 	}
 }

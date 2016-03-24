@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
-import display.clock.TimeConstant;
+import display.CommonConsts;
 
 public final class TimeKeeper
 {
@@ -13,8 +13,6 @@ public final class TimeKeeper
 	private long lastsync=0;
 	private long offset=0;
 	private boolean syncsucceeded=false;
-	long timesyncfailed  = TimeConstant.MINUTE*15,
-		timesyncsucceeded=TimeConstant.HOUR;
 	/**Formats
 	 * <pre>
 	 * | Letter | Description                       | Type              | Example                               |
@@ -49,9 +47,9 @@ public final class TimeKeeper
 			new TimerTask(){
 				public void run(){
 					synctime();
-					t=new Date(t.getTime()+TimeConstant.SECOND);
+					t=new Date(t.getTime()+CommonConsts.SECOND);
 				}
-			}, TimeConstant.ZERO, TimeConstant.SECOND);
+			}, CommonConsts.ZERO, CommonConsts.SECOND);
 	}
 	public String toString()
 	{
@@ -78,7 +76,8 @@ public final class TimeKeeper
 	private void synctime()
 	{
 		//hard coded minimum times 1h, 15m
-		if(lastsync+(syncsucceeded?Math.max(timesyncsucceeded,TimeConstant.HOUR):Math.max(timesyncfailed,TimeConstant.MINUTE*15)) < System.currentTimeMillis()+offset)
+		if(lastsync+(syncsucceeded?Math.max(CommonConsts.tsyncsucceeded,CommonConsts.HOUR):
+			Math.max(CommonConsts.tsyncfailed,CommonConsts.MINUTE*15)) < System.currentTimeMillis()+offset)
 		{
 			try
 			{

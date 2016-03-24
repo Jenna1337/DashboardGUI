@@ -1,4 +1,4 @@
-package display.clock;
+package display;
 
 import java.awt.BorderLayout;
 import java.awt.LayoutManager;
@@ -6,7 +6,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
-import display.Dashboard;
+import display.clock.TimeKeeper;
 
 @SuppressWarnings("serial")
 public class PanelClock extends JPanel
@@ -42,7 +42,7 @@ public class PanelClock extends JPanel
 				public void run(){
 					text.setText(datetime.getTimeShort());
 				}
-			}, TimeConstant.ZERO, TimeConstant.SECOND);
+			}, CommonConsts.ZERO, CommonConsts.SECOND);
 		this.setBackground(java.awt.Color.MAGENTA);
 		this.setLayout(new BorderLayout());
 		this.add(text, BorderLayout.CENTER);
