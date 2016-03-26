@@ -31,7 +31,7 @@ public class Dashboard extends JFrame
 		this.setSize(Toolkit.getDefaultToolkit().getScreenSize());
 		this.setLocation(0, 0);
 	}
-	public static Font biggestFont(javax.swing.text.JTextComponent c)
+	public static Font biggestFont(final javax.swing.text.JTextComponent c)
 	{
 		Font labelFont = c.getFont();
 		String labelText = c.getText();
@@ -49,6 +49,6 @@ public class Dashboard extends JFrame
 		int fontSizeToUse = Math.min(newFontSize, componentHeight);
 		
 		// Set the label's font size to the newly determined size.
-		return new Font(labelFont.getName(), Font.PLAIN, fontSizeToUse);
+		return new Font(labelFont.getName(), labelFont.getStyle(), fontSizeToUse);
 	}
 }

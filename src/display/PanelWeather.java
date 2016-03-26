@@ -37,6 +37,7 @@ public class PanelWeather extends JPanel
 		wkeep = new WeatherKeeper("KFAR");
 		text = new JTextPane();
 		text.setBorder(null);
+		text.setFont(CommonConsts.FontWeather);
 		new Timer(true).scheduleAtFixedRate(
 			new TimerTask(){
 				public void run(){

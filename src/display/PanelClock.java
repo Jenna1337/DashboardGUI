@@ -34,13 +34,14 @@ public class PanelClock extends JPanel
 	}
 	private void initialize()
 	{
-		datetime = new TimeKeeper();
+		datetime = new TimeKeeper("h:mm a");
 		text = new JTextPane();
 		text.setBorder(null);
+		text.setFont(CommonConsts.FontClock);
 		new Timer(true).scheduleAtFixedRate(
 			new TimerTask(){
 				public void run(){
-					text.setText(datetime.getTimeShort());
+					text.setText(datetime.toString());
 				}
 			}, CommonConsts.ZERO, CommonConsts.SECOND);
 		this.setBackground(java.awt.Color.MAGENTA);

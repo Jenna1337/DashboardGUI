@@ -1,5 +1,7 @@
 package display;
 
+import java.awt.Font;
+
 public final class CommonConsts
 {
 	public static final long
@@ -13,6 +15,23 @@ public final class CommonConsts
 	wsyncfailed = CommonConsts.MINUTE*5,
 	wsyncsucceeded=CommonConsts.HOUR/2,
 	tsyncfailed  = CommonConsts.MINUTE*15,
-	tsyncsucceeded=CommonConsts.HOUR;
-	;
+	tsyncsucceeded=CommonConsts.HOUR,
+	tsynccheck=gcf(tsyncfailed, tsyncsucceeded);
+	
+	public static final Font
+	FontClock = Font.decode("Courier New"),
+	FontWeather = Font.decode("Times New Roman");
+	
+	
+	
+	private static long gcf(long a, long b)
+	{
+		while (b > 0)
+		{
+			long temp = b;
+			b = a % b;
+			a = temp;
+		}
+		return a;
+	}
 }

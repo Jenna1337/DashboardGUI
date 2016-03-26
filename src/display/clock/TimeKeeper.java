@@ -6,14 +6,49 @@ import java.util.Timer;
 import java.util.TimerTask;
 import display.CommonConsts;
 
+/**
+ * All instances of this class will contain the same time.
+ * @author jonah.sloan
+ *
+ */
 public final class TimeKeeper
 {
-	/**auto increments by 1 second per second**/
-	volatile Date t;
+	/**
+	 * This is consistant across all 
+	 * auto increments by 1 second per second
+	 */
+	protected static volatile Date t=null;
 	private long lastsync=0;
 	private long offset=0;
-	private boolean syncsucceeded=false;
-	/**Formats
+	private static boolean syncsucceeded=false;
+	private final static Timer timer=new Timer(true);
+	private static boolean timerset=false;
+	public String strformat;
+	private TimeKeeper()
+	{
+		t=new Date();
+		synctime();
+		if(!timerset)
+		{
+			timer.scheduleAtFixedRate(
+				new TimerTask(){
+					public void run(){
+						synctime();
+					}
+				}, CommonConsts.ZERO, CommonConsts.tsynccheck);
+			while(t==null)
+				/*wait for t*/;
+			timer.scheduleAtFixedRate(
+				new TimerTask(){
+					public void run(){
+						t=new Date(t.getTime()+CommonConsts.SECOND);
+					}
+				}, CommonConsts.ZERO, CommonConsts.SECOND);
+			timerset=true;
+		}
+	}
+	/**Constructs a new TimeKeeper object with the specified format
+	 * Formats
 	 * <pre>
 	 * | Letter | Description                       | Type              | Example                               |
 	 * +--------+-----------------------------------+-------------------+---------------------------------------+
@@ -34,42 +69,24 @@ public final class TimeKeeper
 	 * |   s    | Second in minute                  | Number            | 55                                    |
 	 * |   z    | Time zone                         | General time zone | Pacific Standard Time; PST; GMT-08:00 |
 	 * </pre>
+	 *
+	 * Examples:<br><pre>
+	 * Format String         | Output
+	 * ----------------------+-
+	 * "d/m/y"               | 25/3/16
+	 * "EEEE, MMMMM d, yyyy" | Friday, March 25, 2016
+	 * "h:mm a"              | 3:57 PM
+	 * "h:mm:ss a"           | 3:57:26 PM
+	 * </pre>
 	 */
-	String dateshort= "d/m/y",
-		   datelong = "EEEE, MMMMM d, yyyy",
-		   timeshort= "h:mm a",
-		   timelong = "h:mm:ss a";
-	public TimeKeeper()
+	public TimeKeeper(String format)
 	{
-		t=new Date();
-		synctime();
-		new Timer(true).scheduleAtFixedRate(
-			new TimerTask(){
-				public void run(){
-					synctime();
-					t=new Date(t.getTime()+CommonConsts.SECOND);
-				}
-			}, CommonConsts.ZERO, CommonConsts.SECOND);
+		this();
+		this.strformat=format;
 	}
 	public String toString()
 	{
-		return this.getDateLong()+" at "+this.getTimeLong();
-	}
-	public String getDateShort()
-	{
-		return new SimpleDateFormat(dateshort).format(t);
-	}
-	public String getDateLong()
-	{
-		return new SimpleDateFormat(datelong).format(t);
-	}
-	public String getTimeShort()
-	{
-		return new SimpleDateFormat(timeshort).format(t);
-	}
-	public String getTimeLong()
-	{
-		return new SimpleDateFormat(timelong).format(t);
+		return new SimpleDateFormat(strformat).format(t);
 	}
 	/**<b>Don't ask the server too often</b>
 	 **/
@@ -82,7 +99,7 @@ public final class TimeKeeper
 			try
 			{
 				long locoffset = System.currentTimeMillis()+(offset = SntpClient.getSystemTimeOffset());
-				this.t.setTime(locoffset);
+				t.setTime(locoffset);
 				lastsync=locoffset;
 				syncsucceeded=true;
 			}
