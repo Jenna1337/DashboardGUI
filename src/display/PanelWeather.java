@@ -38,6 +38,9 @@ public class PanelWeather extends JPanel
 		text = new JTextPane();
 		text.setBorder(null);
 		text.setFont(CommonConsts.FontWeather);
+		text.setEditable(false);
+		text.setForeground(CommonConsts.COLORfgW);
+		text.setBackground(CommonConsts.COLORbgW);
 		new Timer(true).scheduleAtFixedRate(
 			new TimerTask(){
 				public void run(){

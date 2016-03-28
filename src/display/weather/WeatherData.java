@@ -10,25 +10,33 @@ public class WeatherData
 	private final static String server = "ftp://tgftp.nws.noaa.gov/data/observations/metar/decoded/";
 	volatile String data="";
 	private final String ws;
+	private long lastsync=0;
+	private Thread wupdater;
 	public WeatherData(String station)
 	{
 		ws=station;
 		
-		Thread wupdater = new Thread(
+		wupdater = new Thread(
 			new Runnable(){
 				public void run(){
-					try{
-						String check = getWeatherData(ws);
-						if(check!=null)
+					while(true)
+					{
+						try
 						{
-							data=check;
-							Thread.sleep(CommonConsts.wsyncsucceeded);
+							String check = getWeatherData(ws);
+							if(check!=null)
+							{
+								data=check;
+								Thread.sleep(CommonConsts.wsyncsucceeded);
+							}
+							else
+								Thread.sleep(CommonConsts.wsyncfailed);
 						}
-						else
-							Thread.sleep(CommonConsts.wsyncfailed);
+						catch(InterruptedException ie)
+						{
+							return;
+						}
 					}
-					catch(InterruptedException ie){}
-					this.run();
 				}
 			});
 		wupdater.setDaemon(true);
@@ -37,14 +45,18 @@ public class WeatherData
 			data=check;
 		wupdater.start();
 	}
-	protected static String getWeatherData(final String station)
+	private String getWeatherData(final String station)
 	{
-		String locdata="";
+		String locdata=null;
+		//hard coded minimum 5 minutes
+		if(lastsync+CommonConsts.MINUTE*5>System.currentTimeMillis())
+			return data;
 		try {
 			BufferedReader in = new BufferedReader(
 				new InputStreamReader(
 					new java.net.URL(server + station + ".TXT").openConnection().getInputStream()));
-			
+			lastsync=System.currentTimeMillis();
+			locdata="";
 			String inputLine;
 			while ((inputLine = in.readLine()) != null)
 				locdata+=inputLine+System.lineSeparator();
@@ -52,7 +64,9 @@ public class WeatherData
 		}
 		catch (FileNotFoundException e) {
 			System.err.println("Invalid weather station \""+station+"\"");
-			System.exit(0);
+			wupdater.interrupt();
+			data="No station "+station;
+			return null;
 		}catch (Exception e) {
 			return null;
 		}

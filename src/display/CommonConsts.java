@@ -1,5 +1,6 @@
 package display;
 
+import java.awt.Color;
 import java.awt.Font;
 
 public final class CommonConsts
@@ -16,13 +17,20 @@ public final class CommonConsts
 	wsyncsucceeded=CommonConsts.HOUR/2,
 	tsyncfailed  = CommonConsts.MINUTE*15,
 	tsyncsucceeded=CommonConsts.HOUR,
-	tsynccheck=gcf(tsyncfailed, tsyncsucceeded);
+	tsynccheck=gcf(tsyncfailed, tsyncsucceeded),
+	tupdateint=SECOND,
+	wupdateint=MINUTE*5;
 	
 	public static final Font
 	FontClock = Font.decode("Courier New"),
 	FontWeather = Font.decode("Times New Roman");
 	
-	
+	public static final Color
+	COLORbg  = Color.DARK_GRAY,
+	COLORfgC = Color.LIGHT_GRAY,
+	COLORbgC = Color.BLACK,
+	COLORfgW = Color.LIGHT_GRAY,
+	COLORbgW = Color.BLACK;
 	
 	private static long gcf(long a, long b)
 	{

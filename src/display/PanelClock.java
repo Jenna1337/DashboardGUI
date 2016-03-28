@@ -38,6 +38,9 @@ public class PanelClock extends JPanel
 		text = new JTextPane();
 		text.setBorder(null);
 		text.setFont(CommonConsts.FontClock);
+		text.setEditable(false);
+		text.setForeground(CommonConsts.COLORfgC);
+		text.setBackground(CommonConsts.COLORbgC);
 		new Timer(true).scheduleAtFixedRate(
 			new TimerTask(){
 				public void run(){

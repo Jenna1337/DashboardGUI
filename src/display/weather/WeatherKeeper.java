@@ -24,7 +24,7 @@ public class WeatherKeeper
 				public void run(){
 					info = new WeatherInfo(weather);
 				}
-			}, CommonConsts.MINUTE*5, CommonConsts.MINUTE*5);
+			}, CommonConsts.wupdateint, CommonConsts.wupdateint);
 	}
 	
 	public String getStation_Name(){

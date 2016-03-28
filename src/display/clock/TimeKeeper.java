@@ -41,9 +41,9 @@ public final class TimeKeeper
 			timer.scheduleAtFixedRate(
 				new TimerTask(){
 					public void run(){
-						t=new Date(t.getTime()+CommonConsts.SECOND);
+						t=new Date(t.getTime()+CommonConsts.tupdateint);
 					}
-				}, CommonConsts.ZERO, CommonConsts.SECOND);
+				}, CommonConsts.ZERO, CommonConsts.tupdateint);
 			timerset=true;
 		}
 	}

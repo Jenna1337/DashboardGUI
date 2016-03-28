@@ -1,13 +1,22 @@
 package display;
 
 import java.awt.BorderLayout;
+import java.awt.Cursor;
 import java.awt.Font;
+import java.awt.Point;
 import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
 
 @SuppressWarnings("serial")
 public class Dashboard extends JFrame
 {
+	private KeepAwake ka;
+	// Transparent 16 x 16 pixel cursor image.
+	private static final BufferedImage cursorImg = new java.awt.image.BufferedImage(16, 16, java.awt.image.BufferedImage.TYPE_INT_ARGB);
+	// Create a new blank cursor.
+	protected static final Cursor blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(cursorImg, new Point(0, 0), "blank cursor");
+	
 	public Dashboard()
 	{
 		super();
@@ -23,6 +32,9 @@ public class Dashboard extends JFrame
 		this.setUndecorated(true);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
+		this.setCursor(blankCursor);
+		this.getContentPane().setBackground(CommonConsts.COLORbg);
+		
 		this.setLayout(new BorderLayout());
 		this.add(new PanelClock(), BorderLayout.NORTH);
 		this.add(new PanelWeather(), BorderLayout.SOUTH);
@@ -30,6 +42,15 @@ public class Dashboard extends JFrame
 		this.pack();
 		this.setSize(Toolkit.getDefaultToolkit().getScreenSize());
 		this.setLocation(0, 0);
+		
+		try
+		{
+			ka=new KeepAwake();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 	public static Font biggestFont(final javax.swing.text.JTextComponent c)
 	{
@@ -50,5 +71,19 @@ public class Dashboard extends JFrame
 		
 		// Set the label's font size to the newly determined size.
 		return new Font(labelFont.getName(), labelFont.getStyle(), fontSizeToUse);
+	}
+	@Override
+	public void setVisible(boolean visible)
+	{
+		if(visible)
+		{
+			super.setVisible(visible);
+			ka.setActive(visible);
+		}
+		else
+		{
+			ka.setActive(visible);
+			super.setVisible(visible);
+		}
 	}
 }
