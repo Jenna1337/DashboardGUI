@@ -1,10 +1,8 @@
 package display;
 
-import java.awt.Dimension;
 import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.Robot;
-import java.awt.Toolkit;
 
 public class KeepAwake implements Runnable
 {
@@ -29,8 +27,6 @@ public class KeepAwake implements Runnable
 		running=active;
 		if(running)
 		{
-			Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
-			rob.mouseMove(d.width, d.height);
 			run();
 		}
 	}

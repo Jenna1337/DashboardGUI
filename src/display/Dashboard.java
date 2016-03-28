@@ -86,4 +86,10 @@ public class Dashboard extends JFrame
 			super.setVisible(visible);
 		}
 	}
+	@Override
+	public void paint(java.awt.Graphics g)
+	{
+		super.paint(g);
+		System.gc();
+	}
 }

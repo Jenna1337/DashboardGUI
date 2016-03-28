@@ -5,10 +5,10 @@ import java.util.TimerTask;
 import display.CommonConsts;
 import display.weather.WeatherInfo.WeatherProperty;
 
-public class WeatherKeeper
+public final class WeatherKeeper
 {
-	WeatherData weather;
-	WeatherInfo info;
+	private WeatherData weather;
+	private WeatherInfo info;
 	/**
 	 * 
 	 * @param station > For a list of stations go to 
