@@ -1,4 +1,4 @@
-package display.weather;
+package dashboard.display.weather;
 
 import java.io.IOException;
 

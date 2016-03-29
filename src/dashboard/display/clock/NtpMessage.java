@@ -1,4 +1,4 @@
-package display.clock;
+package dashboard.display.clock;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;

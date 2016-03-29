@@ -1,18 +1,19 @@
-package display;
+package dashboard.display;
 
 import java.awt.BorderLayout;
 import java.awt.LayoutManager;
 import java.util.Timer;
-import java.util.TimerTask;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
-import display.clock.TimeKeeper;
+import dashboard.CommonConsts;
+import dashboard.display.clock.TimeKeeper;
 
 @SuppressWarnings("serial")
-public class PanelClock extends JPanel
+public class PanelClock extends JPanel implements Destroyable
 {
 	private TimeKeeper datetime;
 	private JTextPane text;
+	private Timer textupdater;
 	public PanelClock()
 	{
 		this.initialize();
@@ -41,12 +42,13 @@ public class PanelClock extends JPanel
 		text.setEditable(false);
 		text.setForeground(CommonConsts.COLORfgC);
 		text.setBackground(CommonConsts.COLORbgC);
-		new Timer(true).scheduleAtFixedRate(
-			new TimerTask(){
+		textupdater=new Timer(true);
+		textupdater.scheduleAtFixedRate(
+			new TimerTaskThread(new Runnable(){
 				public void run(){
 					text.setText(datetime.toString());
 				}
-			}, CommonConsts.ZERO, CommonConsts.SECOND);
+			}), CommonConsts.ZERO, CommonConsts.SECOND);
 		this.setBackground(java.awt.Color.MAGENTA);
 		this.setLayout(new BorderLayout());
 		this.add(text, BorderLayout.CENTER);
@@ -54,7 +56,14 @@ public class PanelClock extends JPanel
 	@Override
 	public void paint(java.awt.Graphics g)
 	{
-		text.setFont(Dashboard.biggestFont(text));
+		text.setFont(CommonConsts.biggestFont(text));
 		super.paint(g);
 	}
+	@Override
+	public void destroy()
+	{
+		textupdater.cancel();
+		datetime.destroy();
+	}
+	
 }

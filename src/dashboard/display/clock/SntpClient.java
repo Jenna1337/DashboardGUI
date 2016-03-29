@@ -1,4 +1,4 @@
-package display.clock;
+package dashboard.display.clock;
 
 import java.io.IOException;
 import java.net.DatagramPacket;

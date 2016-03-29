@@ -1,4 +1,4 @@
-package display;
+package dashboard;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -32,6 +32,26 @@ public final class CommonConsts
 	COLORfgW = Color.LIGHT_GRAY,
 	COLORbgW = Color.BLACK;
 	
+	public static Font biggestFont(final javax.swing.text.JTextComponent c)
+	{
+		Font labelFont = c.getFont();
+		String labelText = c.getText();
+		
+		int stringWidth = c.getFontMetrics(labelFont).stringWidth(labelText);
+		int componentWidth = c.getWidth();
+		
+		// Find out how much the font can grow in width.
+		double widthRatio = (double)componentWidth / (double)stringWidth;
+		
+		int newFontSize = (int)Math.floor(labelFont.getSize() * widthRatio);
+		int componentHeight = c.getHeight();
+		
+		// Pick a new font size so it will not be larger than the height of label.
+		int fontSizeToUse = Math.min(newFontSize, componentHeight);
+		
+		// Set the label's font size to the newly determined size.
+		return new Font(labelFont.getName(), labelFont.getStyle(), fontSizeToUse);
+	}
 	private static long gcf(long a, long b)
 	{
 		while (b > 0)

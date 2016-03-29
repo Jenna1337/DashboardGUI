@@ -1,11 +1,12 @@
-package display.weather;
+package dashboard.display.weather;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
-import display.CommonConsts;
+import dashboard.CommonConsts;
+import dashboard.display.Destroyable;
 
-public class WeatherData
+public class WeatherData implements Destroyable
 {
 	private final static String server = "ftp://tgftp.nws.noaa.gov/data/observations/metar/decoded/";
 	volatile String data="";
@@ -34,6 +35,7 @@ public class WeatherData
 						}
 						catch(InterruptedException ie)
 						{
+							Thread.currentThread().interrupt();
 							return;
 						}
 					}
@@ -75,5 +77,10 @@ public class WeatherData
 	public String toString()
 	{
 		return data;
+	}
+	@Override
+	public void destroy()
+	{
+		wupdater.interrupt();
 	}
 }

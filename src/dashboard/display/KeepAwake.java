@@ -1,4 +1,4 @@
-package display;
+package dashboard.display;
 
 import java.awt.MouseInfo;
 import java.awt.Point;
@@ -8,6 +8,7 @@ public class KeepAwake implements Runnable
 {
 	private final Robot rob;
 	private volatile boolean running = false;
+	private Thread t=new Thread(this);
 	public KeepAwake() throws Exception
 	{
 		rob = new Robot();
@@ -24,10 +25,11 @@ public class KeepAwake implements Runnable
 	}
 	public void setActive(boolean active)
 	{
-		running=active;
-		if(running)
+		if(active && !running)
 		{
-			run();
+			running=active;
+			t.start();
 		}
+		running=active;
 	}
 }

@@ -1,21 +1,28 @@
-package display;
+package dashboard;
 
 import java.awt.BorderLayout;
 import java.awt.Cursor;
-import java.awt.Font;
 import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
+import dashboard.display.Destroyable;
+import dashboard.display.KeepAwake;
+import dashboard.display.PanelClock;
+import dashboard.display.PanelWeather;
 
 @SuppressWarnings("serial")
-public class Dashboard extends JFrame
+public class Dashboard extends JFrame implements Destroyable
 {
 	private KeepAwake ka;
 	// Transparent 16 x 16 pixel cursor image.
 	private static final BufferedImage cursorImg = new java.awt.image.BufferedImage(16, 16, java.awt.image.BufferedImage.TYPE_INT_ARGB);
 	// Create a new blank cursor.
 	protected static final Cursor blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(cursorImg, new Point(0, 0), "blank cursor");
+	
+	private PanelWeather panw;
+	private PanelClock panc;
+	
 	
 	public Dashboard()
 	{
@@ -30,14 +37,14 @@ public class Dashboard extends JFrame
 	private void initialize()
 	{
 		this.setUndecorated(true);
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		
 		this.setCursor(blankCursor);
 		this.getContentPane().setBackground(CommonConsts.COLORbg);
 		
 		this.setLayout(new BorderLayout());
-		this.add(new PanelClock(), BorderLayout.NORTH);
-		this.add(new PanelWeather(), BorderLayout.SOUTH);
+		this.add(panc=new PanelClock(), BorderLayout.NORTH);
+		this.add(panw=new PanelWeather(), BorderLayout.SOUTH);
 		
 		this.pack();
 		this.setSize(Toolkit.getDefaultToolkit().getScreenSize());
@@ -51,26 +58,6 @@ public class Dashboard extends JFrame
 		{
 			e.printStackTrace();
 		}
-	}
-	public static Font biggestFont(final javax.swing.text.JTextComponent c)
-	{
-		Font labelFont = c.getFont();
-		String labelText = c.getText();
-		
-		int stringWidth = c.getFontMetrics(labelFont).stringWidth(labelText);
-		int componentWidth = c.getWidth();
-		
-		// Find out how much the font can grow in width.
-		double widthRatio = (double)componentWidth / (double)stringWidth;
-		
-		int newFontSize = (int)Math.floor(labelFont.getSize() * widthRatio);
-		int componentHeight = c.getHeight();
-		
-		// Pick a new font size so it will not be larger than the height of label.
-		int fontSizeToUse = Math.min(newFontSize, componentHeight);
-		
-		// Set the label's font size to the newly determined size.
-		return new Font(labelFont.getName(), labelFont.getStyle(), fontSizeToUse);
 	}
 	@Override
 	public void setVisible(boolean visible)
@@ -91,5 +78,24 @@ public class Dashboard extends JFrame
 	{
 		super.paint(g);
 		System.gc();
+	}
+	@Override
+	/**
+	 * Destroys the Dashboard object
+	 */
+	public void destroy()
+	{
+		this.setVisible(false);
+		panc.destroy();
+		panw.destroy();
+		Thread[] threads=new Thread[Thread.activeCount()];
+		while(threads.length>1)
+		{
+			Thread.enumerate(threads);
+			for(Thread thr : threads)
+				if(thr.getName().contains("AWT-EventQueue"))
+					thr.interrupt();
+			threads=new Thread[Thread.activeCount()];
+		}
 	}
 }

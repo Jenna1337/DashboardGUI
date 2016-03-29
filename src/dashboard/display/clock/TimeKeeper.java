@@ -1,23 +1,24 @@
-package display.clock;
+package dashboard.display.clock;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Timer;
-import java.util.TimerTask;
-import display.CommonConsts;
+import dashboard.CommonConsts;
+import dashboard.display.Destroyable;
+import dashboard.display.TimerTaskThread;
 
 /**
  * All instances of this class will contain the same time.
  * @author jonah.sloan
  *
  */
-public final class TimeKeeper
+public final class TimeKeeper implements Destroyable
 {
 	/**
 	 * This is consistant across all 
 	 * auto increments by 1 second per second
 	 */
-	protected static volatile Date t=null;
+	protected static volatile Date t=new Date(System.currentTimeMillis());
 	private long lastsync=0;
 	private long offset=0;
 	private static boolean syncsucceeded=false;
@@ -27,23 +28,28 @@ public final class TimeKeeper
 	private TimeKeeper()
 	{
 		t=new Date();
-		synctime();
 		if(!timerset)
 		{
 			timer.scheduleAtFixedRate(
-				new TimerTask(){
+				new TimerTaskThread(new Runnable(){
 					public void run(){
 						synctime();
 					}
-				}, CommonConsts.ZERO, CommonConsts.tsynccheck);
-			while(t==null)
-				/*wait for t*/;
-			timer.scheduleAtFixedRate(
-				new TimerTask(){
+				}), CommonConsts.ZERO, CommonConsts.tsynccheck);
+			new Thread(
+				new Runnable(){
 					public void run(){
-						t=new Date(t.getTime()+CommonConsts.tupdateint);
+						/*wait for t*/
+						while(t==null);
+						timer.scheduleAtFixedRate(
+							new TimerTaskThread(new Runnable(){
+								public void run(){
+									t=new Date(t.getTime()+CommonConsts.tupdateint);
+								}
+							}), CommonConsts.ZERO, CommonConsts.tupdateint);
+						
 					}
-				}, CommonConsts.ZERO, CommonConsts.tupdateint);
+				}).run();
 			timerset=true;
 		}
 	}
@@ -108,5 +114,10 @@ public final class TimeKeeper
 				syncsucceeded=false;
 			}
 		}
+	}
+	@Override
+	public void destroy()
+	{
+		timer.cancel();
 	}
 }//TimeKeeper

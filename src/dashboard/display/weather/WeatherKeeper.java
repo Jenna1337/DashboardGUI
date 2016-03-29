@@ -1,14 +1,16 @@
-package display.weather;
+package dashboard.display.weather;
 
 import java.util.Timer;
-import java.util.TimerTask;
-import display.CommonConsts;
-import display.weather.WeatherInfo.WeatherProperty;
+import dashboard.CommonConsts;
+import dashboard.display.Destroyable;
+import dashboard.display.TimerTaskThread;
+import dashboard.display.weather.WeatherInfo.WeatherProperty;
 
-public final class WeatherKeeper
+public final class WeatherKeeper implements Destroyable
 {
 	private WeatherData weather;
 	private WeatherInfo info;
+	private Timer timer;
 	/**
 	 * 
 	 * @param station > For a list of stations go to 
@@ -19,12 +21,13 @@ public final class WeatherKeeper
 	{
 		weather = new WeatherData(station);
 		info = new WeatherInfo(weather);
-		new Timer(true).scheduleAtFixedRate(
-			new TimerTask(){
+		timer=new Timer(true);
+		timer.scheduleAtFixedRate(
+			new TimerTaskThread(new Runnable(){
 				public void run(){
 					info = new WeatherInfo(weather);
 				}
-			}, CommonConsts.wupdateint, CommonConsts.wupdateint);
+			}), CommonConsts.wupdateint, CommonConsts.wupdateint);
 	}
 	
 	public String getStation_Name(){
@@ -47,4 +50,11 @@ public final class WeatherKeeper
 		return info.getProperty(WeatherProperty.Humidity);}
 	public String getAir_pressure(){
 		return info.getProperty(WeatherProperty.Air_pressure);}
+
+	@Override
+	public void destroy()
+	{
+		timer.cancel();
+		weather.destroy();
+	}
 }
