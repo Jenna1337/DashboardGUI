@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Cursor;
 import java.awt.Point;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
 import dashboard.display.Destroyable;
@@ -12,7 +14,7 @@ import dashboard.display.PanelClock;
 import dashboard.display.PanelWeather;
 
 @SuppressWarnings("serial")
-public class Dashboard extends JFrame implements Destroyable
+public class Dashboard extends JFrame implements Destroyable, KeyListener
 {
 	private KeepAwake ka;
 	// Transparent 16 x 16 pixel cursor image.
@@ -80,6 +82,13 @@ public class Dashboard extends JFrame implements Destroyable
 		System.gc();
 	}
 	@Override
+	public void dispose()
+	{
+		//Destroys window to stop JVM
+		this.destroy();
+		super.dispose();
+	}
+	@Override
 	/**
 	 * Destroys the Dashboard object
 	 */
@@ -89,13 +98,44 @@ public class Dashboard extends JFrame implements Destroyable
 		panc.destroy();
 		panw.destroy();
 		Thread[] threads=new Thread[Thread.activeCount()];
-		while(threads.length>1)
+		while(java.util.Arrays.deepToString(threads).contains("AWT-EventQueue"))
 		{
 			Thread.enumerate(threads);
 			for(Thread thr : threads)
 				if(thr.getName().contains("AWT-EventQueue"))
 					thr.interrupt();
 			threads=new Thread[Thread.activeCount()];
+		}
+		super.dispose();
+	}
+	@Override
+	public void keyPressed(KeyEvent e)
+	{
+		switch(e.getKeyLocation())
+		{
+			case KeyEvent.ALT_DOWN_MASK & KeyEvent.VK_F4:
+			case KeyEvent.VK_ESCAPE:
+				this.destroy();
+				break;
+			default:
+				break;
+		}
+	}
+	@Override
+	public void keyReleased(KeyEvent e)
+	{
+	}
+	@Override
+	public void keyTyped(KeyEvent e)
+	{
+		switch(e.getKeyLocation())
+		{
+			case KeyEvent.ALT_DOWN_MASK & KeyEvent.VK_F4:
+			case KeyEvent.VK_ESCAPE:
+				this.destroy();
+				break;
+			default:
+				break;
 		}
 	}
 }

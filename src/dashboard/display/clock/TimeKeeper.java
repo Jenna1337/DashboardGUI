@@ -23,6 +23,7 @@ public final class TimeKeeper implements Destroyable
 	private long offset=0;
 	private static boolean syncsucceeded=false;
 	private final static Timer timer=new Timer(true);
+	private final static Timer timer2=new Timer(true);
 	private static boolean timerset=false;
 	public String strformat;
 	private TimeKeeper()
@@ -36,12 +37,12 @@ public final class TimeKeeper implements Destroyable
 						synctime();
 					}
 				}), CommonConsts.ZERO, CommonConsts.tsynccheck);
+			while(t==null);
 			new Thread(
 				new Runnable(){
 					public void run(){
 						/*wait for t*/
-						while(t==null);
-						timer.scheduleAtFixedRate(
+						timer2.scheduleAtFixedRate(
 							new TimerTaskThread(new Runnable(){
 								public void run(){
 									t=new Date(t.getTime()+CommonConsts.tupdateint);
@@ -119,5 +120,6 @@ public final class TimeKeeper implements Destroyable
 	public void destroy()
 	{
 		timer.cancel();
+		timer2.cancel();
 	}
 }//TimeKeeper

@@ -32,6 +32,9 @@ public final class CommonConsts
 	COLORfgW = Color.LIGHT_GRAY,
 	COLORbgW = Color.BLACK;
 	
+	public static final String
+	masterurl = "https://github.com/JonahSloan/DashboardGUI/raw/master/";
+	
 	public static Font biggestFont(final javax.swing.text.JTextComponent c)
 	{
 		Font labelFont = c.getFont();

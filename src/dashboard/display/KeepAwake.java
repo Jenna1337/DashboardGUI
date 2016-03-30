@@ -12,6 +12,7 @@ public class KeepAwake implements Runnable
 	public KeepAwake() throws Exception
 	{
 		rob = new Robot();
+		t.setDaemon(true);
 	}
 	public void run()
 	{
@@ -21,6 +22,14 @@ public class KeepAwake implements Runnable
 			rob.mouseMove(p1.x-1, p1.y-1);
 			Point p2 = MouseInfo.getPointerInfo().getLocation();
 			rob.mouseMove(p2.x+1, p2.y+1);
+			try
+			{
+				Thread.sleep(1000);
+			}
+			catch(InterruptedException e)
+			{
+				return;
+			}
 		}
 	}
 	public void setActive(boolean active)
