@@ -33,9 +33,8 @@ import java.net.InetAddress;
  */
 public class SntpClient
 {
-	public static long getSystemTimeOffset() throws IOException
+	public static long getSystemTimeOffset(String serverName) throws IOException
 	{
-		String serverName="time.nist.gov";
 		
 		// Send request
 		DatagramSocket socket = new DatagramSocket();

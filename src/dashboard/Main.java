@@ -15,33 +15,11 @@ public class Main
 		dash.destroy();
 		System.gc();
 		/*//*/
-		updateversion();
 		Thread.sleep(1);
 		benchmark();/**/
 		/*TODO
 		AutoUpdater autoupdate = new AutoUpdater();
 		System.out.println(AutoUpdater.updateAvailable());/**/
-	}
-	@SuppressWarnings("unused")
-	private static long updateversion() throws Exception
-	{
-		File f=new File("src/version.txt");
-		long ver=0;
-		if(f.canRead())
-		{
-			java.io.BufferedReader reader=new java.io.BufferedReader(new java.io.InputStreamReader(new java.io.FileInputStream(f)));
-			ver=Long.parseLong(reader.readLine());
-			reader.close();
-		}
-		if(f.canWrite())
-		{
-			java.io.BufferedWriter writer=new java.io.BufferedWriter(new java.io.OutputStreamWriter(new java.io.FileOutputStream(f)));
-			writer.write((ver+1)+"");
-			writer.close();
-		}
-		if(!f.exists())
-			System.err.println("Can't find version file");
-		return ver;
 	}
 	@SuppressWarnings("unused")
 	private static void benchmark() throws Exception

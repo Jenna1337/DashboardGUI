@@ -33,6 +33,8 @@ public final class CommonConsts
 	COLORbgW = Color.BLACK;
 	
 	public static final String
+	timeserver = "time.nist.gov",
+	weatherdir = "ftp://tgftp.nws.noaa.gov/data/observations/metar/decoded/",
 	masterurl = "https://github.com/JonahSloan/DashboardGUI/raw/master/";
 	
 	public static Font biggestFont(final javax.swing.text.JTextComponent c)

@@ -2,7 +2,14 @@ package dashboard.updater;
 
 import java.io.IOException;
 
-/**text**/
+/**This class represents a {@link java.io.BufferedReader BufferedReader}
+ * capable of reading data directly from a URL. 
+ * 
+ * @see java.net.URL#URL(String)#
+ * @see java.net.URL#openConnection()
+ * @see java.net.URLConnection#getInputStream()
+ * @see java.io.InputStreamReader#InputStreamReader(java.io.InputStream)
+ */
 public class BufferedFileReader extends java.io.BufferedReader
 {
 	public BufferedFileReader(String urlstring) throws IOException

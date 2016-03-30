@@ -37,7 +37,7 @@ public class AutoUpdater
 			BufferedFileReader versionreader = new BufferedFileReader(versionURLString);
 			long remoteversion = Long.parseLong(versionreader.readLine());
 			versionreader.close();
-			return remoteversion>getversion();
+			return remoteversion!=getversion();
 		}
 		catch(Exception e)
 		{

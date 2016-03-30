@@ -1,14 +1,12 @@
 package dashboard.display.weather;
 
-import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.InputStreamReader;
 import dashboard.CommonConsts;
 import dashboard.display.Destroyable;
+import dashboard.updater.BufferedFileReader;
 
 public class WeatherData implements Destroyable
 {
-	private final static String server = "ftp://tgftp.nws.noaa.gov/data/observations/metar/decoded/";
 	volatile String data="";
 	private final String ws;
 	private long lastsync=0;
@@ -54,9 +52,7 @@ public class WeatherData implements Destroyable
 		if(lastsync+CommonConsts.MINUTE*5>System.currentTimeMillis())
 			return data;
 		try {
-			BufferedReader in = new BufferedReader(
-				new InputStreamReader(
-					new java.net.URL(server + station + ".TXT").openConnection().getInputStream()));
+			BufferedFileReader in = new BufferedFileReader(CommonConsts.weatherdir + station + ".TXT");
 			lastsync=System.currentTimeMillis();
 			locdata="";
 			String inputLine;

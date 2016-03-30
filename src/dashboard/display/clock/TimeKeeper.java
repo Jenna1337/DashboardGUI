@@ -105,7 +105,7 @@ public final class TimeKeeper implements Destroyable
 		{
 			try
 			{
-				long locoffset = System.currentTimeMillis()+(offset = SntpClient.getSystemTimeOffset());
+				long locoffset = System.currentTimeMillis()+(offset = SntpClient.getSystemTimeOffset(CommonConsts.timeserver));
 				t.setTime(locoffset);
 				lastsync=locoffset;
 				syncsucceeded=true;
