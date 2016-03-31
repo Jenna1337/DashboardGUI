@@ -21,6 +21,8 @@ public class AutoUpdater implements Destroyable
 				{
 					if(updateAvailable())
 						update();
+					else
+						System.out.println("No new updates available");
 				}
 				catch (Exception e)
 				{
@@ -33,23 +35,32 @@ public class AutoUpdater implements Destroyable
 	{
 		String path = AutoUpdater.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
 		if(!path.endsWith(".jar"))
+		{
+			System.out.println("Failed to locate local jar file.");
 			return;
+		}
 		java.nio.channels.ReadableByteChannel ch = java.nio.channels.Channels.newChannel(new java.net.URL(jarURLString).openStream());
+		System.out.println("Downloading update...");
 		FileOutputStream fos = new FileOutputStream(path);
 		fos.getChannel().transferFrom(ch, 0, Long.MAX_VALUE);
 		fos.close();
+		System.out.println("Successfully updated");
+		//TODO restart the program
 	}
 	public static boolean updateAvailable() throws IOException
 	{
+		System.out.println("Searching for updates...");
 		try
 		{
 			BufferedFileReader versionreader = new BufferedFileReader(versionURLString);
 			long remoteversion = Long.parseLong(versionreader.readLine());
 			versionreader.close();
+			System.out.println("Update found...");
 			return remoteversion!=getversion();
 		}
 		catch(Exception e)
 		{
+			System.out.println("Failed to find update");
 			return false;
 		}
 	}
