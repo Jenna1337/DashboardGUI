@@ -19,14 +19,15 @@ public final class CommonConsts
 	tsyncsucceeded=CommonConsts.HOUR,
 	tsynccheck=gcf(tsyncfailed, tsyncsucceeded),
 	tupdateint=SECOND,
-	wupdateint=MINUTE*5;
+	wupdateint=MINUTE*5,
+	aupdateint=WEEK;
 	
 	public static final Font
 	FontClock = Font.decode("Courier New"),
 	FontWeather = Font.decode("Times New Roman");
 	
 	public static final Color
-	COLORbg  = Color.DARK_GRAY,
+	COLORbg  = Color.BLACK,
 	COLORfgC = Color.LIGHT_GRAY,
 	COLORbgC = Color.BLACK,
 	COLORfgW = Color.LIGHT_GRAY,

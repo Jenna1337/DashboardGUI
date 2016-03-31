@@ -2,10 +2,9 @@ package dashboard.display.clock;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Timer;
 import dashboard.CommonConsts;
 import dashboard.display.Destroyable;
-import dashboard.display.TimerTaskThread;
+import dashboard.display.ScheduledTask;
 
 /**
  * All instances of this class will contain the same time.
@@ -22,8 +21,8 @@ public final class TimeKeeper implements Destroyable
 	private long lastsync=0;
 	private long offset=0;
 	private static boolean syncsucceeded=false;
-	private final static Timer timer=new Timer(true);
-	private final static Timer timer2=new Timer(true);
+	private static ScheduledTask timer;
+	private static ScheduledTask timer2;
 	private static boolean timerset=false;
 	public String strformat;
 	private TimeKeeper()
@@ -31,24 +30,21 @@ public final class TimeKeeper implements Destroyable
 		t=new Date();
 		if(!timerset)
 		{
-			timer.scheduleAtFixedRate(
-				new TimerTaskThread(new Runnable(){
-					public void run(){
-						synctime();
-					}
-				}), CommonConsts.ZERO, CommonConsts.tsynccheck);
+			timer=new ScheduledTask(CommonConsts.ZERO, CommonConsts.tsynccheck){
+				public void run(){
+					synctime();
+				}
+			};
+			/*wait for t*/
 			while(t==null);
 			new Thread(
 				new Runnable(){
 					public void run(){
-						/*wait for t*/
-						timer2.scheduleAtFixedRate(
-							new TimerTaskThread(new Runnable(){
-								public void run(){
-									t=new Date(t.getTime()+CommonConsts.tupdateint);
-								}
-							}), CommonConsts.ZERO, CommonConsts.tupdateint);
-						
+						timer2=new ScheduledTask(CommonConsts.ZERO, CommonConsts.tupdateint){
+							public void run(){
+								t=new Date(t.getTime()+CommonConsts.tupdateint);
+							}
+						};
 					}
 				}).run();
 			timerset=true;

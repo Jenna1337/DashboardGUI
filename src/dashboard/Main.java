@@ -1,8 +1,6 @@
 package dashboard;
 
 import java.io.File;
-import dashboard.Dashboard;
-import dashboard.updater.AutoUpdater;
 
 public class Main
 {
@@ -17,9 +15,6 @@ public class Main
 		/*//*/
 		Thread.sleep(1);
 		benchmark();/**/
-		/*TODO
-		AutoUpdater autoupdate = new AutoUpdater();
-		System.out.println(AutoUpdater.updateAvailable());/**/
 	}
 	@SuppressWarnings("unused")
 	private static void benchmark() throws Exception
@@ -42,8 +37,8 @@ public class Main
 				//System.out.println("Total:"+Runtime.getRuntime().totalMemory());
 				try
 				{
-				writer.write(""+(Runtime.getRuntime().maxMemory()-Runtime.getRuntime().freeMemory())+"\n");
-				writer.flush();
+					writer.write(""+(Runtime.getRuntime().maxMemory()-Runtime.getRuntime().freeMemory())+"\n");
+					writer.flush();
 				}
 				catch(java.io.IOException ioe)
 				{

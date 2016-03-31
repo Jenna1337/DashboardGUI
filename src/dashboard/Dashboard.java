@@ -12,6 +12,7 @@ import dashboard.display.Destroyable;
 import dashboard.display.KeepAwake;
 import dashboard.display.PanelClock;
 import dashboard.display.PanelWeather;
+import dashboard.updater.AutoUpdater;
 
 @SuppressWarnings("serial")
 public class Dashboard extends JFrame implements Destroyable, KeyListener
@@ -21,6 +22,7 @@ public class Dashboard extends JFrame implements Destroyable, KeyListener
 	private static final BufferedImage cursorImg = new java.awt.image.BufferedImage(16, 16, java.awt.image.BufferedImage.TYPE_INT_ARGB);
 	// Create a new blank cursor.
 	protected static final Cursor blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(cursorImg, new Point(0, 0), "blank cursor");
+	private static final AutoUpdater autoupdate = new AutoUpdater();
 	
 	private PanelWeather panw;
 	private PanelClock panc;
@@ -97,6 +99,7 @@ public class Dashboard extends JFrame implements Destroyable, KeyListener
 		this.setVisible(false);
 		panc.destroy();
 		panw.destroy();
+		autoupdate.destroy();
 		Thread[] threads=new Thread[Thread.activeCount()];
 		while(java.util.Arrays.deepToString(threads).contains("AWT-EventQueue"))
 		{

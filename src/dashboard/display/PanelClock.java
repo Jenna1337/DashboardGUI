@@ -2,7 +2,6 @@ package dashboard.display;
 
 import java.awt.BorderLayout;
 import java.awt.LayoutManager;
-import java.util.Timer;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import dashboard.CommonConsts;
@@ -13,7 +12,7 @@ public class PanelClock extends JPanel implements Destroyable
 {
 	private TimeKeeper datetime;
 	private JTextPane text;
-	private Timer textupdater;
+	private ScheduledTask textupdater;
 	public PanelClock()
 	{
 		this.initialize();
@@ -42,13 +41,11 @@ public class PanelClock extends JPanel implements Destroyable
 		text.setEditable(false);
 		text.setForeground(CommonConsts.COLORfgC);
 		text.setBackground(CommonConsts.COLORbgC);
-		textupdater=new Timer(true);
-		textupdater.scheduleAtFixedRate(
-			new TimerTaskThread(new Runnable(){
-				public void run(){
-					text.setText(datetime.toString());
-				}
-			}), CommonConsts.ZERO, CommonConsts.SECOND);
+		textupdater=new ScheduledTask(CommonConsts.ZERO, CommonConsts.SECOND){
+			public void run(){
+				text.setText(datetime.toString());
+			}
+		};
 		this.setBackground(java.awt.Color.MAGENTA);
 		this.setLayout(new BorderLayout());
 		this.add(text, BorderLayout.CENTER);
