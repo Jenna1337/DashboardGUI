@@ -1,8 +1,10 @@
 package dashboard.updater;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import dashboard.CommonConsts;
+import dashboard.Main;
 
 public class AutoUpdater
 {
@@ -12,13 +14,7 @@ public class AutoUpdater
 	{
 		try
 		{
-			String fpath = AutoUpdater.class.getProtectionDomain().getCodeSource().getLocation().toURI().toASCIIString();
-			String fname = "DashboardGui.jar";
-			String ffull = fpath+fname;
-			System.out.println(ffull);
-			File floc = new File(ffull);
-			String response = floc.getName();
-			System.out.println(response);
+			update();
 			//TODO
 		}
 		catch (Exception e)
@@ -26,9 +22,15 @@ public class AutoUpdater
 			e.printStackTrace();
 		}
 	}
-	public void update()
+	public void update() throws Exception
 	{
-		
+		String path = AutoUpdater.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
+		if(!path.endsWith(".jar"))
+			return;
+		FileOutputStream fos = new FileOutputStream(path);
+		fos.getChannel().transferFrom(
+			java.nio.channels.Channels.newChannel(new java.net.URL(jarURLString).openStream()), 0, Long.MAX_VALUE);
+		fos.close();
 	}
 	public static boolean updateAvailable() throws IOException
 	{
