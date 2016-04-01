@@ -22,7 +22,7 @@ public class AutoUpdater implements Destroyable
 					if(updateAvailable())
 						update();
 					else
-						System.out.println("No new updates available");
+						CommonConsts.log.println("No new updates available");
 				}
 				catch (Exception e)
 				{
@@ -33,34 +33,42 @@ public class AutoUpdater implements Destroyable
 	}
 	public static void update() throws Exception
 	{
-		String path = AutoUpdater.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
-		if(!path.endsWith(".jar"))
+		File file=new File(CommonConsts.myfilepath);
+		if(
+			(!file.exists()) ||
+			(!file.isFile()) || 
+			(!file.getName().endsWith(".jar"))
+			)
 		{
-			System.out.println("Failed to locate local jar file.");
+			CommonConsts.log.println("Failed to locate local jar file.");
 			return;
 		}
 		java.nio.channels.ReadableByteChannel ch = java.nio.channels.Channels.newChannel(new java.net.URL(jarURLString).openStream());
-		System.out.println("Downloading update...");
-		FileOutputStream fos = new FileOutputStream(path);
+		CommonConsts.log.println("Downloading update...");
+		FileOutputStream fos = new FileOutputStream(file.getPath());
 		fos.getChannel().transferFrom(ch, 0, Long.MAX_VALUE);
 		fos.close();
-		System.out.println("Successfully updated");
-		//TODO restart the program
+		CommonConsts.log.println("Successfully updated");
+		CommonConsts.log.println("Restarting program...");
+		ProcessBuilder pb = new ProcessBuilder(file.getParent(), "-jar", file.getName());
+		pb.directory(file);
+		pb.start();
+		System.exit(0);
 	}
 	public static boolean updateAvailable() throws IOException
 	{
-		System.out.println("Searching for updates...");
+		CommonConsts.log.println("Searching for updates...");
 		try
 		{
 			BufferedFileReader versionreader = new BufferedFileReader(versionURLString);
 			long remoteversion = Long.parseLong(versionreader.readLine());
 			versionreader.close();
-			System.out.println("Update found...");
+			CommonConsts.log.println("Update found...");
 			return remoteversion!=getversion();
 		}
 		catch(Exception e)
 		{
-			System.out.println("Failed to find update");
+			CommonConsts.log.println("Failed to find update");
 			return false;
 		}
 	}
@@ -75,7 +83,7 @@ public class AutoUpdater implements Destroyable
 			reader.close();
 		}
 		if(!f.exists())
-			System.err.println("Can't find version file");
+			CommonConsts.log.println("Can't find version file");
 		return ver;
 	}
 	@Override

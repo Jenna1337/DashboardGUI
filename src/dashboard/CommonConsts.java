@@ -2,28 +2,30 @@ package dashboard;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.io.PrintStream;
 
 public final class CommonConsts
 {
+	//TODO Read some of these in from a config file
 	public static final long
 	/*3600000ms = 1h; 900000ms = 15min*/
-	ZERO = 0,
+	ZERO   = 0,
 	SECOND = 1000,
 	MINUTE = SECOND*60,
-	HOUR = MINUTE*60,
-	DAY = HOUR*24,
-	WEEK = DAY*7,
-	wsyncfailed = CommonConsts.MINUTE*5,
-	wsyncsucceeded=CommonConsts.HOUR/2,
-	tsyncfailed  = CommonConsts.MINUTE*15,
-	tsyncsucceeded=CommonConsts.HOUR,
-	tsynccheck=gcf(tsyncfailed, tsyncsucceeded),
-	tupdateint=SECOND,
-	wupdateint=MINUTE*5,
-	aupdateint=WEEK;
+	HOUR   = MINUTE*60,
+	DAY    = HOUR*24,
+	WEEK   = DAY*7,
+	wsyncfailed    = CommonConsts.MINUTE*5,
+	wsyncsucceeded = CommonConsts.HOUR/2,
+	tsyncfailed    = CommonConsts.MINUTE*15,
+	tsyncsucceeded = CommonConsts.HOUR,
+	tsynccheck = gcf(tsyncfailed, tsyncsucceeded),
+	tupdateint = SECOND,
+	wupdateint = MINUTE*5,
+	aupdateint = WEEK;
 	
 	public static final Font
-	FontClock = Font.decode("Courier New"),
+	FontClock   = Font.decode("Courier New"),
 	FontWeather = Font.decode("Times New Roman");
 	
 	public static final Color
@@ -36,7 +38,11 @@ public final class CommonConsts
 	public static final String
 	timeserver = "time.nist.gov",
 	weatherdir = "ftp://tgftp.nws.noaa.gov/data/observations/metar/decoded/",
-	masterurl = "https://github.com/JonahSloan/DashboardGUI/raw/master/";
+	masterurl  = "https://github.com/JonahSloan/DashboardGUI/raw/master/",
+	myfilepath = getFilePath();
+	
+	public static final PrintStream
+	log = new PrintStream(System.out,true);
 	
 	public static Font biggestFont(final javax.swing.text.JTextComponent c)
 	{
@@ -67,5 +73,18 @@ public final class CommonConsts
 			a = temp;
 		}
 		return a;
+	}
+	private static String getFilePath()
+	{
+		try
+		{
+			return CommonConsts.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
+		}
+		catch (Exception e)
+		{
+			//This should never happen
+			e.printStackTrace();
+			return "Error";
+		}
 	}
 }

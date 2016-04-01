@@ -5,7 +5,7 @@ package dashboard.display;
  * @author jonah.sloan
  * @see java.util.Timer#scheduleAtFixedRate(java.util.TimerTask, long, long)
  */
-public abstract class ScheduledTask implements Runnable, AutoCloseable
+public abstract class ScheduledTask implements Runnable
 {
 	private final java.util.Timer timer = new java.util.Timer(true);
 	private final ScheduledTask task = this;
@@ -30,9 +30,6 @@ public abstract class ScheduledTask implements Runnable, AutoCloseable
 	public void cancel()
 	{
 		timer.cancel();
-	}
-	public void close()
-	{
-		this.cancel();
+		timer.purge();
 	}
 }

@@ -53,6 +53,8 @@ public class Dashboard extends JFrame implements Destroyable, KeyListener
 		this.pack();
 		this.setSize(Toolkit.getDefaultToolkit().getScreenSize());
 		this.setLocation(0, 0);
+		this.addKeyListener(this);
+		this.getContentPane().addKeyListener(this);
 		
 		try
 		{
