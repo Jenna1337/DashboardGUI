@@ -34,7 +34,7 @@ public class PanelWeather extends JPanel implements Destroyable
 	}
 	private void initialize()
 	{
-		wkeep = new WeatherKeeper("KFAR");
+		wkeep = new WeatherKeeper(CommonConsts.wstation);
 		text = new JTextPane();
 		text.setBorder(null);
 		text.setFont(CommonConsts.FontWeather);
@@ -46,7 +46,7 @@ public class PanelWeather extends JPanel implements Destroyable
 				text.setText(wkeep.getTemperture());
 			}
 		};
-		this.setBackground(java.awt.Color.MAGENTA);
+		this.setBackground(CommonConsts.COLORNUL);
 		this.setLayout(new BorderLayout());
 		this.add(text, BorderLayout.CENTER);
 	}

@@ -14,6 +14,7 @@ public class AutoUpdater implements Destroyable
 	private static ScheduledTask updateTimer;
 	public AutoUpdater()
 	{
+		if(CommonConsts.autoupdate)
 		updateTimer=new ScheduledTask(CommonConsts.ZERO, CommonConsts.aupdateint){
 			public void run()
 			{

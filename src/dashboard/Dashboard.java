@@ -1,6 +1,5 @@
 package dashboard;
 
-import java.awt.BorderLayout;
 import java.awt.Cursor;
 import java.awt.Point;
 import java.awt.Toolkit;
@@ -46,15 +45,17 @@ public class Dashboard extends JFrame implements Destroyable, KeyListener
 		this.setCursor(blankCursor);
 		this.getContentPane().setBackground(CommonConsts.COLORbg);
 		
-		this.setLayout(new BorderLayout());
-		this.add(panc=new PanelClock(), BorderLayout.NORTH);
-		this.add(panw=new PanelWeather(), BorderLayout.SOUTH);
+		this.setLayout(CommonConsts.DashboardLayout);
+		this.add(panc=new PanelClock(), CommonConsts.LayoutClock);
+		this.add(panw=new PanelWeather(), CommonConsts.LayoutWeather);
 		
 		this.pack();
 		this.setSize(Toolkit.getDefaultToolkit().getScreenSize());
 		this.setLocation(0, 0);
 		this.addKeyListener(this);
 		this.getContentPane().addKeyListener(this);
+		this.panc.addKeyListener(this);
+		this.panw.addKeyListener(this);
 		
 		try
 		{
@@ -114,7 +115,7 @@ public class Dashboard extends JFrame implements Destroyable, KeyListener
 		super.dispose();
 	}
 	@Override
-	public void keyPressed(KeyEvent e)
+	public void keyPressed(KeyEvent e)//TODO Figure out why KeyListener isn't working
 	{
 		switch(e.getKeyLocation())
 		{

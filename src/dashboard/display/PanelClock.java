@@ -34,7 +34,7 @@ public class PanelClock extends JPanel implements Destroyable
 	}
 	private void initialize()
 	{
-		datetime = new TimeKeeper("h:mm a");
+		datetime = new TimeKeeper(CommonConsts.timeformat);
 		text = new JTextPane();
 		text.setBorder(null);
 		text.setFont(CommonConsts.FontClock);
@@ -46,7 +46,7 @@ public class PanelClock extends JPanel implements Destroyable
 				text.setText(datetime.toString());
 			}
 		};
-		this.setBackground(java.awt.Color.MAGENTA);
+		this.setBackground(CommonConsts.COLORNUL);
 		this.setLayout(new BorderLayout());
 		this.add(text, BorderLayout.CENTER);
 	}

@@ -3,6 +3,7 @@ package dashboard.display;
 import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.Robot;
+import dashboard.CommonConsts;
 
 public class KeepAwake implements Runnable
 {
@@ -16,7 +17,7 @@ public class KeepAwake implements Runnable
 	}
 	public void run()
 	{
-		while(running)
+		while(running && CommonConsts.keepawake)
 		{
 			Point p1 = MouseInfo.getPointerInfo().getLocation();
 			rob.mouseMove(p1.x-1, p1.y-1);
