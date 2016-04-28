@@ -5,9 +5,15 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.LayoutManager2;
 import java.io.PrintStream;
+import bufferedFileIO.BufferedFileReader;
+import bufferedFileIO.BufferedFileWriter;
 
 public final class CommonConsts
 {
+	public  static final String myfilepath = getFilePath();
+	private static final boolean validExec = new java.io.File(myfilepath).isFile();
+	private static final boolean writeconfig = true;//is this really needed?
+	private static final String configfile = "."+getFileName()+".properties";
 	private static java.util.Properties config = getConfigData();
 	
 	public static final long
@@ -25,7 +31,9 @@ public final class CommonConsts
 	tsynccheck = gcf(tsyncfailed, tsyncsucceeded),
 	tupdateint = getProperty("tupdateint", SECOND),
 	wupdateint = getProperty("wupdateint", MINUTE*5),
-	aupdateint = getProperty("aupdateint", WEEK);
+	aupdateint = getProperty("aupdateint", WEEK),
+	benchint   = getProperty("benchint", MINUTE),
+	timeoffset = getProperty("timeoffset", ZERO);
 	
 	public static final Font
 	FontClock   = getProperty("FontClock",   Font.decode("Courier New")),
@@ -50,21 +58,19 @@ public final class CommonConsts
 	weatherdir = getProperty("weatherdir", "ftp://tgftp.nws.noaa.gov/data/observations/metar/decoded/"),
 	wstation   = getProperty("wstation",   "KFAR"),
 	timeformat = getProperty("timeformat", "h:mm a"),
-	masterurl  = "https://github.com/JonahSloan/DashboardGUI/raw/master/",
-	myfilepath = getFilePath(),
-	configfile = ".DashboardGui.properties";//TODO have the "DashboardGui" part be whatever the local file name is
+	masterurl  = "https://github.com/JonahSloan/DashboardGUI/raw/master/";
 	
 	public static final boolean
 	autoupdate = getProperty("autoupdate", true),
 	keepawake  = getProperty("keepawake", true),
-	writeconfig= true;//is this really needed?
+	benchtest  = getProperty("benchtest", false);
 	
 	public static final LayoutManager2
 	DashboardLayout = getProperty("DashboardLayout", new BorderLayout());
 	
 	public static final Object
-	LayoutClock   = getProperty("LayoutClock", new ClassField("java.awt.BorderLayout.NORTH")),
-	LayoutWeather = getProperty("LayoutWeather", new ClassField("java.awt.BorderLayout.SOUTH"));
+	LayoutClock   = getProperty("LayoutClock", new LayoutConstraint("java.awt.BorderLayout.NORTH")).getObject(),
+	LayoutWeather = getProperty("LayoutWeather", new LayoutConstraint("java.awt.BorderLayout.SOUTH")).getObject();
 	
 	public static final PrintStream
 	log = new PrintStream(System.out,true);
@@ -97,7 +103,7 @@ public final class CommonConsts
 		java.util.Properties configs = new java.util.Properties();
 		try
 		{
-			configs.load(new java.io.BufferedReader(new java.io.FileReader(configfile)));
+			configs.load(new BufferedFileReader(configfile));
 			return configs;
 		}
 		catch(java.io.FileNotFoundException fnfe)
@@ -107,26 +113,29 @@ public final class CommonConsts
 			{
 				try
 				{
-					log.print("Failed to locate config file. Creating a new one.");
-					configs.load(new java.io.BufferedReader(new java.io.FileReader(configfile)));
+					System.out.println("Failed to locate config file. Creating a new one.");
+					new java.io.File(configfile).createNewFile();
+					configs.load(new BufferedFileReader(configfile));
 					return configs;
 				}
 				// this shouldn't fail twice
 				catch (Exception e)
 				{
+					System.out.println(e);
 					new Exception(e);
 				}
 			}
 		}
 		catch(Exception e)
 		{
-			log.println("Failed to load configuration file "+configfile+".\n");
+			System.out.println(e);
+			System.out.println("Failed to load configuration file "+configfile+".\n");
 		}
 		return configs;
 	}
 	/**Reads the value of specified property from the config file. <br>
 	 * 
-	 * @param <T> - The type of the Object being returned as specified by {@code def}.
+	 *@param <T> - The type of the Object being returned as specified by {@code def}.
 	 * @param propname - The name of the property to get.
 	 * @param def - The default value.
 	 * @return The value of {@code propname} in the type defined by {@code def},
@@ -144,7 +153,7 @@ public final class CommonConsts
 			{
 				try
 				{
-					java.io.BufferedReader configreader = new java.io.BufferedReader(new java.io.FileReader(configfile));
+					java.io.BufferedReader configreader = new BufferedFileReader(configfile);
 					String next="";
 					while((next=configreader.readLine())!=null)
 						text+=next+System.lineSeparator();
@@ -161,7 +170,7 @@ public final class CommonConsts
 					defname = ((Font)def).getFontName()+"-"+((Font)def).getStyle();
 				if(LayoutManager2.class.isAssignableFrom(def.getClass()))
 					defname = def.getClass().getName();
-				java.io.BufferedWriter configwriter = new java.io.BufferedWriter(new java.io.FileWriter(configfile));
+				java.io.BufferedWriter configwriter = new BufferedFileWriter(configfile);
 				configwriter.write(text+propname+"= "+defname+System.lineSeparator());
 				configwriter.close();
 			}
@@ -178,7 +187,7 @@ public final class CommonConsts
 			 * Font
 			 * Boolean
 			 * Long
-			 * ClassField
+			 * LayoutConstraint
 			 * LayoutManager2
 			 */
 			if(def.getClass().equals(String.class))
@@ -200,17 +209,17 @@ public final class CommonConsts
 				return (T)new Boolean(prop);
 			if(def.getClass().equals(Long.class))
 				return (T)new Long(prop);
-			if(def.getClass().equals(ClassField.class))
+			if(def.getClass().equals(LayoutConstraint.class))
 			{
 				try
 				{
-					return (T)new ClassField(prop).getObject();
+					return (T)new LayoutConstraint(prop);
 				}
 				catch (Exception e)
 				{
 					try
 					{
-						return (T)((ClassField)def).getObject();
+						return (T)((LayoutConstraint)def).getObject();
 					}
 					catch (Exception e1)
 					{
@@ -257,21 +266,49 @@ public final class CommonConsts
 			return "Error";
 		}
 	}
+	/**
+	 * @return The local file name, without the extension
+	 */
+	private static String getFileName()
+	{
+		try
+		{
+			if(CommonConsts.validExec)
+				return new java.io.File(CommonConsts.myfilepath).getName().split("\\.")[0];
+			return "DashboardGui";
+		}
+		catch (Exception e)
+		{
+			//This should never happen
+			e.printStackTrace();
+			System.exit(1);
+			return null;
+		}
+	}
 }
 /**Masking type for layout constraints**/
-class ClassField
+class LayoutConstraint
 {
 	String data;
-	public ClassField(String data)
+	public LayoutConstraint(String data)
 	{
 		this.data=data;
 	}
+	public Object getObject()
+	{
+		try
+		{
+			return Class.forName(data.substring(0, data.lastIndexOf("."))).getField(data.substring(data.lastIndexOf(".")+1)).get(new Object());
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			System.exit(1);
+			return null;
+		}
+	}
 	public String toString()
 	{
-		return data.toString();
-	}
-	public Object getObject() throws IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException, ClassNotFoundException
-	{
-		return Class.forName(data.toString().substring(0, data.toString().lastIndexOf("."))).getField(data.toString().substring(data.toString().lastIndexOf(".")+1)).get(new Object());
+		return data;
 	}
 }

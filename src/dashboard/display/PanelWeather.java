@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import dashboard.CommonConsts;
 import dashboard.display.weather.WeatherKeeper;
+import dashboard.interfaces.Destroyable;
 
 @SuppressWarnings("serial")
 public class PanelWeather extends JPanel implements Destroyable

@@ -1,9 +1,9 @@
 package dashboard.display.weather;
 
 import dashboard.CommonConsts;
-import dashboard.display.Destroyable;
 import dashboard.display.ScheduledTask;
 import dashboard.display.weather.WeatherInfo.WeatherProperty;
+import dashboard.interfaces.Destroyable;
 
 public final class WeatherKeeper implements Destroyable
 {

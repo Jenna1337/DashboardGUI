@@ -10,17 +10,21 @@ public class Main
 		Thread.sleep(10000);
 		dash.destroy();
 		System.gc();
-		/*//*/
+		/**/
 		Thread.sleep(1);
-		benchmark();/**/
+		if(CommonConsts.benchtest)
+			benchmark();
 	}
-	@SuppressWarnings("unused")
 	private static void benchmark() throws Exception
 	{
-		java.io.File f=new java.io.File("src/benchmarktest.txt");
-		if(!f.exists())
+		//TO-DO write the file if it doesn't exist
+		//or just ignore the errors
+		java.io.File f=new java.io.File("benchmarktest.txt");
+		/*if(!f.exists())
+		{
 			System.err.println("Can't find benchmark file");
-		if(f.canWrite())
+		}
+		if(f.canWrite())/**/
 		{
 			@SuppressWarnings("resource")
 			final java.io.BufferedWriter writer=new java.io.BufferedWriter(new java.io.OutputStreamWriter(new java.io.FileOutputStream(f)));
@@ -35,7 +39,7 @@ public class Main
 					}
 				}
 			}));
-			while(Thread.activeCount()>1)
+			while(Thread.activeCount()>1)//This should be the only thread at the end
 			{
 				//System.out.println("Free: "+Runtime.getRuntime().freeMemory());
 				//System.out.println("Total:"+Runtime.getRuntime().totalMemory());
@@ -49,7 +53,7 @@ public class Main
 				{
 					
 				}
-				Thread.sleep(60000);
+				Thread.sleep(CommonConsts.benchint);
 			}
 		}
 	}

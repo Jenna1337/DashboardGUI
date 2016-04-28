@@ -1,4 +1,4 @@
-package dashboard.display;
+package dashboard.interfaces;
 
 public interface Destroyable
 {

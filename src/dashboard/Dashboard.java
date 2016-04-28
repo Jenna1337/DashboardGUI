@@ -7,11 +7,10 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
-import dashboard.display.Destroyable;
 import dashboard.display.KeepAwake;
 import dashboard.display.PanelClock;
 import dashboard.display.PanelWeather;
-import dashboard.updater.AutoUpdater;
+import dashboard.interfaces.Destroyable;
 
 @SuppressWarnings("serial")
 public class Dashboard extends JFrame implements Destroyable, KeyListener
@@ -45,7 +44,7 @@ public class Dashboard extends JFrame implements Destroyable, KeyListener
 		this.setCursor(blankCursor);
 		this.getContentPane().setBackground(CommonConsts.COLORbg);
 		
-		this.setLayout(CommonConsts.DashboardLayout);
+		this.setLayout(CommonConsts.DashboardLayout);//TODO figure out why some layout configurations aren't working
 		this.add(panc=new PanelClock(), CommonConsts.LayoutClock);
 		this.add(panw=new PanelWeather(), CommonConsts.LayoutWeather);
 		

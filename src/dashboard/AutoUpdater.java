@@ -1,11 +1,11 @@
-package dashboard.updater;
+package dashboard;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import dashboard.CommonConsts;
-import dashboard.display.Destroyable;
+import bufferedFileIO.BufferedNetFileReader;
 import dashboard.display.ScheduledTask;
+import dashboard.interfaces.Destroyable;
 
 public class AutoUpdater implements Destroyable
 {
@@ -21,13 +21,17 @@ public class AutoUpdater implements Destroyable
 				try
 				{
 					if(updateAvailable())
+					{
+						CommonConsts.log.println("Update available.");
 						update();
+					}
 					else
 						CommonConsts.log.println("No new updates available");
 				}
 				catch (Exception e)
 				{
-					e.printStackTrace();
+					CommonConsts.log.println("Failed to update successfully. Will try again in "+CommonConsts.aupdateint+" milliseconds.");
+					e.printStackTrace(CommonConsts.log);
 				}
 			}
 		};
@@ -37,11 +41,27 @@ public class AutoUpdater implements Destroyable
 		File file=new File(CommonConsts.myfilepath);
 		if(
 			(!file.exists()) ||
-			(!file.isFile()) || 
-			(!file.getName().endsWith(".jar"))
+			(!file.isFile()) ||
+			file.isDirectory()
 			)
 		{
-			CommonConsts.log.println("Failed to locate local jar file.");
+			CommonConsts.log.println("Failed to locate local executable.");
+			return;
+		}
+		if(!file.canRead())
+		{
+			CommonConsts.log.println("Error: local executable in not readable.");
+			return;
+		}
+		if(!file.canExecute())
+		{
+			CommonConsts.log.println("Error: local executable is not executable.");
+			CommonConsts.log.println("Nice going.");
+			return;
+		}
+		if(!file.canWrite())
+		{
+			CommonConsts.log.println("Error: local executable is not writable");
 			return;
 		}
 		java.nio.channels.ReadableByteChannel ch = java.nio.channels.Channels.newChannel(new java.net.URL(jarURLString).openStream());
@@ -61,10 +81,10 @@ public class AutoUpdater implements Destroyable
 		CommonConsts.log.println("Searching for updates...");
 		try
 		{
-			BufferedFileReader versionreader = new BufferedFileReader(versionURLString);
+			BufferedNetFileReader versionreader = new BufferedNetFileReader(versionURLString);
 			long remoteversion = Long.parseLong(versionreader.readLine());
 			versionreader.close();
-			CommonConsts.log.println("Update found...");
+			CommonConsts.log.println("Remote file found...");
 			return remoteversion!=getversion();
 		}
 		catch(Exception e)
@@ -75,15 +95,16 @@ public class AutoUpdater implements Destroyable
 	}
 	public static long getversion() throws Exception
 	{
-		File f=new File("src/version.txt");
+		String f="src/version.txt";
 		long ver=0;
-		if(f.canRead())
+		if(new File(f).canRead())
 		{
-			java.io.BufferedReader reader=new java.io.BufferedReader(new java.io.InputStreamReader(new java.io.FileInputStream(f)));
+			CommonConsts.log.println("Comparing remote to local version...");
+			java.io.BufferedReader reader=new bufferedFileIO.BufferedFileReader(f);
 			ver=Long.parseLong(reader.readLine());
 			reader.close();
 		}
-		if(!f.exists())
+		if(!new File(f).exists())
 			CommonConsts.log.println("Can't find version file");
 		return ver;
 	}

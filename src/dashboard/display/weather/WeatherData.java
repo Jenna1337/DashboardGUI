@@ -1,9 +1,9 @@
 package dashboard.display.weather;
 
 import java.io.FileNotFoundException;
+import bufferedFileIO.BufferedNetFileReader;
 import dashboard.CommonConsts;
-import dashboard.display.Destroyable;
-import dashboard.updater.BufferedFileReader;
+import dashboard.interfaces.Destroyable;
 
 public class WeatherData implements Destroyable
 {
@@ -52,7 +52,7 @@ public class WeatherData implements Destroyable
 		if(lastsync+CommonConsts.MINUTE*5>System.currentTimeMillis())
 			return data;
 		try {
-			BufferedFileReader in = new BufferedFileReader(CommonConsts.weatherdir + station + ".TXT");
+			BufferedNetFileReader in = new BufferedNetFileReader(CommonConsts.weatherdir + station + ".TXT");
 			lastsync=System.currentTimeMillis();
 			locdata="";
 			String inputLine;

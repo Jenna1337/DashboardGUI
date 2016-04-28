@@ -3,8 +3,8 @@ package dashboard.display.clock;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import dashboard.CommonConsts;
-import dashboard.display.Destroyable;
 import dashboard.display.ScheduledTask;
+import dashboard.interfaces.Destroyable;
 
 /**
  * All instances of this class will contain the same time.
@@ -14,8 +14,8 @@ import dashboard.display.ScheduledTask;
 public final class TimeKeeper implements Destroyable
 {
 	/**
-	 * This is consistant across all 
-	 * auto increments by 1 second per second
+	 * This is consistant across all TimeKeeper objects
+	 * automatically increments by {@link dashboard.CommonConsts#tupdateint tupdateint}
 	 */
 	protected static volatile Date t=new Date(System.currentTimeMillis());
 	private long lastsync=0;
@@ -25,31 +25,6 @@ public final class TimeKeeper implements Destroyable
 	private static ScheduledTask timer2;
 	private static boolean timerset=false;
 	public String strformat;
-	private TimeKeeper()
-	{
-		t=new Date();
-		if(!timerset)
-		{
-			timer=new ScheduledTask(CommonConsts.ZERO, CommonConsts.tsynccheck){
-				public void run(){
-					synctime();
-				}
-			};
-			/*wait for t*/
-			while(t==null);
-			new Thread(
-				new Runnable(){
-					public void run(){
-						timer2=new ScheduledTask(CommonConsts.ZERO, CommonConsts.tupdateint){
-							public void run(){
-								t=new Date(t.getTime()+CommonConsts.tupdateint);
-							}
-						};
-					}
-				}).run();
-			timerset=true;
-		}
-	}
 	/**Constructs a new TimeKeeper object with the specified format
 	 * Formats
 	 * <pre>
@@ -74,17 +49,40 @@ public final class TimeKeeper implements Destroyable
 	 * </pre>
 	 *
 	 * Examples:<br><pre>
-	 * Format String         | Output
-	 * ----------------------+-
-	 * "d/m/y"               | 25/3/16
-	 * "EEEE, MMMMM d, yyyy" | Friday, March 25, 2016
-	 * "h:mm a"              | 3:57 PM
-	 * "h:mm:ss a"           | 3:57:26 PM
+	 * | Format String         | Output                 |
+	 * +-----------------------+------------------------+
+	 * | "d/m/y"               | 25/3/16                |
+	 * | "EEEE, MMMMM d, yyyy" | Friday, March 25, 2016 |
+	 * | "h:mm a"              | 3:57 PM                |
+	 * | "h:mm:ss a"           | 3:57:26 PM             |
 	 * </pre>
 	 */
 	public TimeKeeper(String format)
 	{
-		this();
+		t=new Date();
+		if(!timerset)
+		{
+			timer=new ScheduledTask(CommonConsts.ZERO, CommonConsts.tsynccheck){
+				public void run(){
+					CommonConsts.log.println("Checking the time...");
+					synctime();
+					CommonConsts.log.println("Time check complete.");
+				}
+			};
+			/*wait for t*/
+			while(t==null);
+			new Thread(
+				new Runnable(){
+					public void run(){
+						timer2=new ScheduledTask(CommonConsts.ZERO, CommonConsts.tupdateint){
+							public void run(){
+								t=new Date(t.getTime()+CommonConsts.tupdateint);
+							}
+						};
+					}
+				}).run();
+			timerset=true;
+		}
 		this.strformat=format;
 	}
 	public String toString()
@@ -102,8 +100,8 @@ public final class TimeKeeper implements Destroyable
 			try
 			{
 				long locoffset = System.currentTimeMillis()+(offset = SntpClient.getSystemTimeOffset(CommonConsts.timeserver));
-				t.setTime(locoffset);
-				lastsync=locoffset;
+				t.setTime(locoffset+CommonConsts.timeoffset);
+				lastsync=System.currentTimeMillis();
 				syncsucceeded=true;
 			}
 			catch(Exception e)
