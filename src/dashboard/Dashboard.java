@@ -20,7 +20,7 @@ public class Dashboard extends JFrame implements Destroyable, KeyListener
 	private static final BufferedImage cursorImg = new java.awt.image.BufferedImage(16, 16, java.awt.image.BufferedImage.TYPE_INT_ARGB);
 	// Create a new blank cursor.
 	protected static final Cursor blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(cursorImg, new Point(0, 0), "blank cursor");
-	private static final AutoUpdater autoupdate = new AutoUpdater();
+	private static final AutoUpdater autoupdater = new AutoUpdater();
 	
 	private PanelWeather panw;
 	private PanelClock panc;
@@ -101,7 +101,7 @@ public class Dashboard extends JFrame implements Destroyable, KeyListener
 		this.setVisible(false);
 		panc.destroy();
 		panw.destroy();
-		autoupdate.destroy();
+		autoupdater.destroy();
 		Thread[] threads=new Thread[Thread.activeCount()];
 		while(java.util.Arrays.deepToString(threads).contains("AWT-EventQueue"))
 		{
@@ -116,6 +116,7 @@ public class Dashboard extends JFrame implements Destroyable, KeyListener
 	@Override
 	public void keyPressed(KeyEvent e)//TODO Figure out why KeyListener isn't working
 	{
+		System.out.println(e.getKeyLocation());
 		switch(e.getKeyLocation())
 		{
 			case KeyEvent.ALT_DOWN_MASK & KeyEvent.VK_F4:
@@ -133,14 +134,5 @@ public class Dashboard extends JFrame implements Destroyable, KeyListener
 	@Override
 	public void keyTyped(KeyEvent e)
 	{
-		switch(e.getKeyLocation())
-		{
-			case KeyEvent.ALT_DOWN_MASK & KeyEvent.VK_F4:
-			case KeyEvent.VK_ESCAPE:
-				this.destroy();
-				break;
-			default:
-				break;
-		}
 	}
 }

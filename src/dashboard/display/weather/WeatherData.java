@@ -1,7 +1,7 @@
 package dashboard.display.weather;
 
 import java.io.FileNotFoundException;
-import bufferedFileIO.BufferedNetFileReader;
+import tools.bufferedFileIO.BufferedNetFileReader;
 import dashboard.CommonConsts;
 import dashboard.interfaces.Destroyable;
 

@@ -1,4 +1,4 @@
-package bufferedFileIO;
+package tools.bufferedFileIO;
 
 import java.io.FileNotFoundException;
 

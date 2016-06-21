@@ -3,7 +3,6 @@ package dashboard;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import bufferedFileIO.BufferedNetFileReader;
 import dashboard.display.ScheduledTask;
 import dashboard.interfaces.Destroyable;
 
@@ -69,6 +68,7 @@ public class AutoUpdater implements Destroyable
 		FileOutputStream fos = new FileOutputStream(file.getPath());
 		fos.getChannel().transferFrom(ch, 0, Long.MAX_VALUE);
 		fos.close();
+		ch.close();
 		CommonConsts.log.println("Successfully updated");
 		CommonConsts.log.println("Restarting program...");
 		ProcessBuilder pb = new ProcessBuilder(file.getParent(), "-jar", file.getName());
@@ -81,7 +81,7 @@ public class AutoUpdater implements Destroyable
 		CommonConsts.log.println("Searching for updates...");
 		try
 		{
-			BufferedNetFileReader versionreader = new BufferedNetFileReader(versionURLString);
+			java.io.BufferedReader versionreader = new tools.bufferedFileIO.BufferedNetFileReader(versionURLString);
 			long remoteversion = Long.parseLong(versionreader.readLine());
 			versionreader.close();
 			CommonConsts.log.println("Remote file found...");
@@ -100,7 +100,7 @@ public class AutoUpdater implements Destroyable
 		if(new File(f).canRead())
 		{
 			CommonConsts.log.println("Comparing remote to local version...");
-			java.io.BufferedReader reader=new bufferedFileIO.BufferedFileReader(f);
+			java.io.BufferedReader reader=new tools.bufferedFileIO.BufferedFileReader(f);
 			ver=Long.parseLong(reader.readLine());
 			reader.close();
 		}

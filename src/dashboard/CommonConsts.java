@@ -5,8 +5,10 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.LayoutManager2;
 import java.io.PrintStream;
-import bufferedFileIO.BufferedFileReader;
-import bufferedFileIO.BufferedFileWriter;
+import tools.bufferedFileIO.BufferedFileReader;
+import tools.bufferedFileIO.BufferedFileWriter;
+import tools.colors.ColorParser;
+import tools.colors.NamedColor;
 
 public final class CommonConsts
 {
@@ -41,17 +43,17 @@ public final class CommonConsts
 	
 	public static final Color
 	/**Color of main window**/
-	COLORbg  = getProperty("COLORbg ", Color.BLACK),
+	COLORbg  = getProperty("COLORbg ", NamedColor.getColorForName("BLACK")),
 	/**Color of Clock text**/
-	COLORfgC = getProperty("COLORfgC", Color.LIGHT_GRAY),
+	COLORfgC = getProperty("COLORfgC", NamedColor.getColorForName("LIGHT_GRAY")),
 	/**Color of Clock bg**/
-	COLORbgC = getProperty("COLORbgC", Color.BLACK),
+	COLORbgC = getProperty("COLORbgC", NamedColor.getColorForName("BLACK")),
 	/**Color of Weather text**/
-	COLORfgW = getProperty("COLORfgW", Color.LIGHT_GRAY),
+	COLORfgW = getProperty("COLORfgW", NamedColor.getColorForName("LIGHT_GRAY")),
 	/**Color of Weather bg  **/
-	COLORbgW = getProperty("COLORbgW", Color.BLACK),
+	COLORbgW = getProperty("COLORbgW", NamedColor.getColorForName("BLACK")),
 	/**Color of hidden areas**/
-	COLORNUL = Color.MAGENTA;
+	COLORNUL = java.awt.Color.MAGENTA;
 	
 	public static final String
 	timeserver = getProperty("timeserver", "time.nist.gov"),
@@ -164,8 +166,8 @@ public final class CommonConsts
 					//ignore
 				}
 				String defname=def.toString();
-				if(def.getClass().equals(Color.class))
-					defname = ""+((Color)def).getRGB();
+				if(def.getClass().equals(NamedColor.class))
+					defname = ""+((NamedColor)def).getRGB();
 				if(def.getClass().equals(Font.class))
 					defname = ((Font)def).getFontName()+"-"+((Font)def).getStyle();
 				if(LayoutManager2.class.isAssignableFrom(def.getClass()))
@@ -192,17 +194,8 @@ public final class CommonConsts
 			 */
 			if(def.getClass().equals(String.class))
 				return (T)prop;
-			if(def.getClass().equals(Color.class))
-			{
-				try
-				{
-					return (T)Color.decode(prop);
-				}
-				catch(NumberFormatException nfe)
-				{
-					return (T)Color.getColor(prop, ((Color)def).getRGB());
-				}
-			}
+			if(def.getClass().equals(NamedColor.class))
+				return (T)ColorParser.parse(prop);
 			if(def.getClass().equals(Font.class))
 				return (T)Font.getFont(prop, (Font)def);
 			if(def.getClass().equals(Boolean.class))
