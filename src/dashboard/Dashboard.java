@@ -49,6 +49,7 @@ public class Dashboard extends JFrame implements Destroyable, KeyListener
 		this.add(panw=new PanelWeather(), CommonConsts.LayoutWeather);
 		
 		this.pack();
+		this.setFocusable(true);
 		this.setSize(Toolkit.getDefaultToolkit().getScreenSize());
 		this.setLocation(0, 0);
 		this.addKeyListener(this);
@@ -114,10 +115,9 @@ public class Dashboard extends JFrame implements Destroyable, KeyListener
 		super.dispose();
 	}
 	@Override
-	public void keyPressed(KeyEvent e)//TODO Figure out why KeyListener isn't working
+	public void keyPressed(KeyEvent e)
 	{
-		System.out.println(e.getKeyLocation());
-		switch(e.getKeyLocation())
+		switch(e.getKeyCode())
 		{
 			case KeyEvent.ALT_DOWN_MASK & KeyEvent.VK_F4:
 			case KeyEvent.VK_ESCAPE:

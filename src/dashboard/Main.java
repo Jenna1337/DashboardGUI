@@ -6,6 +6,7 @@ import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Comparator;
 import tools.colors.NamedColor;
+import tools.colors.NamedColorConstants;
 
 public class Main
 {
@@ -13,6 +14,7 @@ public class Main
 	{
 		/*updateNamedColorConstants();
 		System.exit(0);/**/
+		//printcolorenum();System.exit(0);
 		Dashboard dash = new Dashboard();
 		dash.setVisible(true);
 		/*
@@ -30,19 +32,33 @@ public class Main
 	{
 		System.out.print("enum Colors{\n\t");
 		ArrayList<NamedColor> arr = new java.util.ArrayList<NamedColor>();
-		for(java.lang.reflect.Field f : NamedColor.class.getDeclaredFields())
+		for(java.lang.reflect.Field f : NamedColorConstants.class.getDeclaredFields())
 		{
 			if(NamedColor.class.equals(f.getType()))
 			{
 				try{
+					if(((NamedColor)f.get(null)).getName().matches("[A-Z_]+"))
 					arr.add(new NamedColor(f.getName(), (NamedColor)f.get(null)));
 				}catch(Exception e){}
 			}
 		}
+		final String fstr = "\t/*%2$s*/ /**A color with an ARGB value of %3$s" + 
+				"<div style=\"border:1px solid black;width:40px;height:20px;background-color:%1$s;float:right;margin: 0 10px 0 0\">"+
+				"</div><br/><br/>*/%2$s(%3$s),%n";
 		for(NamedColor c:arr)
-			System.out.print(c.getName()+"(NamedColor."+c.getName()+"), ");
-		System.out.println("NULL(null);");
-		System.out.println("\tNamedColor clr;\n\tColors(NamedColor c)\n\t{\n\t\tclr=c;\n\t}");
+		{
+			String name=c.getName();
+			String val ="0x"+Integer.toUnsignedString(NamedColor.getARGB(c), 16);
+			String wval =val.replaceFirst("0xff", "#");
+			if(name.equalsIgnoreCase("transparent"))
+			{
+				val =val.replaceFirst("0xff", "0x00");
+				wval = "rgba(0,0,0,0.0)";
+			}
+			System.out.printf(fstr, wval, name, val);
+		}
+		System.out.println(";");
+		System.out.println("Color clr;\n\tColors(int c)\n\t{\n\t\tclr=new Color(c, true);\n\t}");
 		System.out.println("} //enum Colors");
 	}
 	@SuppressWarnings("unused")
