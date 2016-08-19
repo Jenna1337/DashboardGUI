@@ -15,23 +15,20 @@ public class NamedColor extends Color
 	 */
 	private static ArrayList<NamedColor> getColors()
 	{
-		Field[] fields = NamedColorConstants.class.getDeclaredFields();
+		Field[] fields = ColorInts.class.getDeclaredFields(); //TODO
 		ArrayList<NamedColor> arr = new java.util.ArrayList<NamedColor>();
 		for(Field f : fields)
 		{
-			if(NamedColor.class.equals(f.getType()))
-			{
-				try{
-					arr.add(new NamedColor(f.getName(), (NamedColor)f.get(null)));
-				}catch(Exception e){}
-			}
+			try{
+				arr.add(new NamedColor(f.getName(), (int)f.get(null)));
+			}catch(Exception e){}
 		}
 		return arr;
 	}
 	private final String name;
-	public NamedColor(String name, Color color)
+	public NamedColor(String name, int rgbacolor)
 	{
-		super(getARGB(color), true);
+		super(rgbacolor, true);
 		this.name=name;
 	}
 	public int getARGB()
@@ -42,16 +39,6 @@ public class NamedColor extends Color
 	public static int getARGB(java.awt.Color c)
 	{
 		return (c.getAlpha()<<24) | (c.getRed()<<16) | (c.getGreen()<<8) | (c.getBlue()<<0); 
-	}
-	@Deprecated
-	public static int getARGB(javafx.scene.paint.Color c)
-	{
-		return getARGB(new Color((float)c.getRed(), (float)c.getGreen(), (float)c.getBlue(), (float)c.getOpacity())); 
-	}
-	@Deprecated
-	public static int getARGB(com.sun.prism.paint.Color c)
-	{
-		return getARGB(new Color((float)c.getRed(), (float)c.getGreen(), (float)c.getBlue(), (float)c.getAlpha())); 
 	}
 	@SuppressWarnings("unused")
 	private static Color blend(Color... colorlist)
@@ -96,7 +83,10 @@ public class NamedColor extends Color
 	@Override
 	public String toString()
 	{
-		return getClass().getName()+"[name=\""+getName()+"\",a="+getAlpha()+",r="+getRed()+",g="+getGreen()+",b="+getBlue()+"]";
+		String argb=""+Integer.toUnsignedString(this.getARGB(), 16);
+		while(argb.length()<8)
+			argb="0"+argb;
+		return getClass().getName()+"[name=\""+getName()+"\", argb=0x"+argb+"]";
 	}
 	private static final Comparator<NamedColor> sortnameup = new Comparator<NamedColor>()
 		{

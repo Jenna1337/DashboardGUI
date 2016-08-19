@@ -153,5 +153,4 @@ public class ColorInts
 	public static final int WhiteSmoke = 0xFFF5F5F5;
 	public static final int Yellow = 0xFFFFFF00;
 	public static final int YellowGreen = 0xFF9ACD32;
-
 }
