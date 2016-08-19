@@ -3,6 +3,8 @@ package tools.colors;
 import java.awt.Color;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 @SuppressWarnings("serial")
 public class NamedColor extends Color
@@ -32,13 +34,24 @@ public class NamedColor extends Color
 		super(getARGB(color), true);
 		this.name=name;
 	}
+	public int getARGB()
+	{
+		return getARGB(this);
+		//return (getAlpha()<<24) | (getRed()<<16) | (getGreen()<<8) | (getBlue()<<0); 
+	}
 	public static int getARGB(java.awt.Color c)
 	{
 		return (c.getAlpha()<<24) | (c.getRed()<<16) | (c.getGreen()<<8) | (c.getBlue()<<0); 
 	}
+	@Deprecated
 	public static int getARGB(javafx.scene.paint.Color c)
 	{
 		return getARGB(new Color((float)c.getRed(), (float)c.getGreen(), (float)c.getBlue(), (float)c.getOpacity())); 
+	}
+	@Deprecated
+	public static int getARGB(com.sun.prism.paint.Color c)
+	{
+		return getARGB(new Color((float)c.getRed(), (float)c.getGreen(), (float)c.getBlue(), (float)c.getAlpha())); 
 	}
 	@SuppressWarnings("unused")
 	private static Color blend(Color... colorlist)
@@ -84,5 +97,31 @@ public class NamedColor extends Color
 	public String toString()
 	{
 		return getClass().getName()+"[name=\""+getName()+"\",a="+getAlpha()+",r="+getRed()+",g="+getGreen()+",b="+getBlue()+"]";
+	}
+	private static final Comparator<NamedColor> sortnameup = new Comparator<NamedColor>()
+		{
+			public int compare(NamedColor o1, NamedColor o2)
+			{
+				int c1=o1.getName().compareToIgnoreCase(o2.getName());
+				return c1!=0?c1:((Integer)o1.getRGB()).compareTo(o2.getRGB());
+			}
+		},
+		sortnamedown = new Comparator<NamedColor>()
+		{
+			public int compare(NamedColor o1, NamedColor o2)
+			{
+				int c1=o1.getName().compareToIgnoreCase(o2.getName());
+				return -(c1!=0?c1:((Integer)o1.getRGB()).compareTo(o2.getRGB()));
+			}
+		};
+	public static <T extends List<NamedColor>> T sortByNameAcending(T lst)
+	{
+		lst.sort(sortnameup);
+		return lst;
+	}
+	public static <T extends List<NamedColor>> T sortByNameDecending(T lst)
+	{
+		lst.sort(sortnamedown);
+		return lst;
 	}
 }
