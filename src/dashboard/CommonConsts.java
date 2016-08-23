@@ -5,9 +5,12 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.LayoutManager2;
 import java.io.PrintStream;
+import java.util.ArrayList;
+
 import tools.bufferedFileIO.BufferedFileReader;
 import tools.bufferedFileIO.BufferedFileWriter;
 import tools.colors.NamedColor;
+import tools.colors.ScheduledColorChange;
 
 public final class CommonConsts
 {
@@ -76,7 +79,7 @@ public final class CommonConsts
 	public static final PrintStream
 	log = new PrintStream(System.out,true);
 	
-	
+	public static final java.util.ArrayList<ScheduledColorChange> colorschedule = new ArrayList<ScheduledColorChange>();
 	
 	public static Font biggestFont(final javax.swing.text.JTextComponent c)
 	{
@@ -123,7 +126,7 @@ public final class CommonConsts
 				catch (Exception e)
 				{
 					System.out.println(e);
-					new Exception(e);
+					throw new Error(e);
 				}
 			}
 		}

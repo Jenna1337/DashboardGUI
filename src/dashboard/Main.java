@@ -2,9 +2,10 @@ package dashboard;
 
 public class Main
 {
+	public static final Dashboard dash = new Dashboard();
+
 	public static void main(String[] args) throws Exception
 	{
-		Dashboard dash = new Dashboard();
 		dash.setVisible(true);
 		/*
 		Thread.sleep(10000);
