@@ -1,18 +1,9 @@
 package dashboard;
 
-import java.util.ArrayList;
-import tools.colors.ColorInts;
-import tools.colors.NamedColor;
-
 public class Main
 {
 	public static void main(String[] args) throws Exception
 	{
-		for(java.lang.reflect.Field f : ColorInts.class.getDeclaredFields())
-			System.out.println(new NamedColor(f.getName(), (int)f.get(null)));
-		
-		System.exit(0);/**/
-		
 		Dashboard dash = new Dashboard();
 		dash.setVisible(true);
 		/*

@@ -7,7 +7,6 @@ import java.awt.LayoutManager2;
 import java.io.PrintStream;
 import tools.bufferedFileIO.BufferedFileReader;
 import tools.bufferedFileIO.BufferedFileWriter;
-import tools.colors.ColorParser;
 import tools.colors.NamedColor;
 
 public final class CommonConsts
@@ -43,15 +42,15 @@ public final class CommonConsts
 	
 	public static final Color
 	/**Color of main window**/
-	COLORbg  = getProperty("COLORbg ", NamedColor.getColorForName("BLACK")),
+	COLORbg  = getProperty("COLORbg ", NamedColor.getColorForName("Black")),
 	/**Color of Clock text**/
-	COLORfgC = getProperty("COLORfgC", NamedColor.getColorForName("LIGHT_GRAY")),
+	COLORfgC = getProperty("COLORfgC", NamedColor.getColorForName("LightGray")),
 	/**Color of Clock bg**/
-	COLORbgC = getProperty("COLORbgC", NamedColor.getColorForName("BLACK")),
+	COLORbgC = getProperty("COLORbgC", NamedColor.getColorForName("Black")),
 	/**Color of Weather text**/
-	COLORfgW = getProperty("COLORfgW", NamedColor.getColorForName("LIGHT_GRAY")),
+	COLORfgW = getProperty("COLORfgW", NamedColor.getColorForName("LightGrey")),
 	/**Color of Weather bg  **/
-	COLORbgW = getProperty("COLORbgW", NamedColor.getColorForName("BLACK")),
+	COLORbgW = getProperty("COLORbgW", NamedColor.getColorForName("Black")),
 	/**Color of hidden areas**/
 	COLORNUL = java.awt.Color.MAGENTA;
 	
@@ -147,6 +146,8 @@ public final class CommonConsts
 	@SuppressWarnings("unchecked")/**Casts are checked**/
 	static <T> T getProperty(String propname, T def)
 	{
+		if(def==null)
+			throw new NullPointerException("Unable to determine the type of variable \""+propname+"\"");
 		String prop = config.getProperty(propname);
 		if(flag_NoConfigFile && writeconfig)
 		{
@@ -195,7 +196,7 @@ public final class CommonConsts
 			if(def.getClass().equals(String.class))
 				return (T)prop;
 			if(def.getClass().equals(NamedColor.class))
-				return (T)ColorParser.parse(prop);
+				return (T)NamedColor.parse(prop);
 			if(def.getClass().equals(Font.class))
 				return (T)Font.getFont(prop, (Font)def);
 			if(def.getClass().equals(Boolean.class))

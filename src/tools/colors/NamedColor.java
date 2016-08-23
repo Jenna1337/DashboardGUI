@@ -69,7 +69,7 @@ public class NamedColor extends Color
 					value|=((((sum1>>=16)&0xFFFF)/(size))&0xFF)<<16;}catch(ArithmeticException ae){}
 				return new Color(value|=alpha<<24, true);
 	}
-	public static Color getColorForName(String name)
+	public static NamedColor getColorForName(String name)
 	{
 		for(NamedColor color : colors)
 			if(color.name.equalsIgnoreCase(name))
@@ -113,5 +113,22 @@ public class NamedColor extends Color
 	{
 		lst.sort(sortnamedown);
 		return lst;
+	}
+	public static NamedColor parse(String text)
+	{
+		
+		NamedColor nc = NamedColor.getColorForName(text);
+		if(nc!=null)
+			return nc;
+		try
+		{
+			//Note: Integer.decode(String) throws an error if the String represents a negative integer.
+			//For example, Integer.decode("0xFFFFFFFF") will throw an error.
+			return new NamedColor("Custom", Long.decode(text).intValue());
+		}
+		catch(NumberFormatException nfe)
+		{
+			throw new IllegalArgumentException("\""+text+"\" is not a valid color.");
+		}
 	}
 }
