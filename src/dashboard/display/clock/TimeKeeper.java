@@ -17,7 +17,7 @@ public final class TimeKeeper implements Destroyable
 	 * This is consistant across all TimeKeeper objects
 	 * automatically increments by {@link dashboard.CommonConsts#tupdateint tupdateint}
 	 */
-	protected static volatile Date t=new Date(System.currentTimeMillis());
+	protected static volatile long t=0;
 	private long lastsync=0;
 	private long offset=0;
 	private static boolean syncsucceeded=false;
@@ -59,7 +59,8 @@ public final class TimeKeeper implements Destroyable
 	 */
 	public TimeKeeper(String format)
 	{
-		t=new Date();
+		this.strformat=format;
+		//t=new Date();
 		if(!timerset)
 		{
 			timer=new ScheduledTask(CommonConsts.ZERO, CommonConsts.tsynccheck){
@@ -70,24 +71,18 @@ public final class TimeKeeper implements Destroyable
 				}
 			};
 			/*wait for t*/
-			while(t==null);
-			new Thread(
-				new Runnable(){
-					public void run(){
-						timer2=new ScheduledTask(CommonConsts.ZERO, CommonConsts.tupdateint){
-							public void run(){
-								t=new Date(t.getTime()+CommonConsts.tupdateint);
-							}
-						};
-					}
-				}).run();
+			while(t<System.currentTimeMillis());
+			timer2=new ScheduledTask(CommonConsts.ZERO, CommonConsts.tupdateint){
+				public void run(){
+					t=t+CommonConsts.tupdateint;
+				}
+			};
 			timerset=true;
 		}
-		this.strformat=format;
 	}
 	public String toString()
 	{
-		return new SimpleDateFormat(strformat).format(t);
+		return new SimpleDateFormat(strformat).format(new Date(t));
 	}
 	/**<b>Don't ask the server too often</b>
 	 **/
@@ -100,7 +95,7 @@ public final class TimeKeeper implements Destroyable
 			try
 			{
 				long locoffset = System.currentTimeMillis()+(offset = SntpClient.getSystemTimeOffset(CommonConsts.timeserver));
-				t.setTime(locoffset+CommonConsts.timeoffset);
+				t=locoffset+CommonConsts.timeoffset;
 				lastsync=System.currentTimeMillis();
 				syncsucceeded=true;
 			}
@@ -115,5 +110,11 @@ public final class TimeKeeper implements Destroyable
 	{
 		timer.cancel();
 		timer2.cancel();
+	}
+	public static long getTime()
+	{
+		if(!timerset)
+			new TimeKeeper(null);
+		return t;
 	}
 }//TimeKeeper

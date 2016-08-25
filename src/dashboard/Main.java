@@ -2,10 +2,11 @@ package dashboard;
 
 public class Main
 {
-	public static final Dashboard dash = new Dashboard();
+	public static Dashboard dash;
 
 	public static void main(String[] args) throws Exception
 	{
+		dash = new Dashboard();
 		dash.setVisible(true);
 		/*
 		Thread.sleep(10000);
@@ -52,7 +53,7 @@ public class Main
 				}
 				catch(java.io.IOException ioe)
 				{
-					
+
 				}
 				Thread.sleep(CommonConsts.benchint);
 			}

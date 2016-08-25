@@ -1,30 +1,49 @@
 package tools.colors;
 
-import dashboard.Dashboard;
+import java.awt.Color;
+
+import dashboard.CommonConsts;
 import dashboard.Main;
 import dashboard.display.ScheduledTask;
 
 public class ScheduledColorChange extends ScheduledTask
 {
-	private static final java.util.Timer timer = new java.util.Timer(true);
-	private final ScheduledTask task = this;
 	private final Color c;
 	
-	public ScheduledColorChange() {
-		long firstTime, long period;
-		timer.scheduleAtFixedRate(new java.util.TimerTask(){
-			public void run()
-			{
-				task.run();
-			}
-		}, firstTime, period);
-		// TODO Auto-generated constructor stub
+	public ScheduledColorChange(String text)
+	{
+		this(getColor(text), getChangeTime(text), getRecurrance(text));
+	}
+	public ScheduledColorChange(Color color, long attime) 
+	{
+		this(color, attime, CommonConsts.DAY);
+	}
+	public ScheduledColorChange(Color color, long attime, long recurrance) 
+	{
+		super(getInitDelay(attime), recurrance);
+		c=color;
+		//TODO
 	}
 
 	@Override
 	public void run() {
 		Main.dash.panw.setBackground(c);
+	}
+	private static long getInitDelay(long attime)
+	{
+		// TODO
+		return 0;
+	}
+	private static long getRecurrance(String text) {
 		// TODO Auto-generated method stub
-		
+		return 0;
+	}
+	private static long getChangeTime(String text) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	private static Color getColor(String text) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

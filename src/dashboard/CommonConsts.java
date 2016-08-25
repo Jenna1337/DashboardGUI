@@ -79,6 +79,7 @@ public final class CommonConsts
 	public static final PrintStream
 	log = new PrintStream(System.out,true);
 	
+	//TODO add stuff to add to colorschedule
 	public static final java.util.ArrayList<ScheduledColorChange> colorschedule = new ArrayList<ScheduledColorChange>();
 	
 	public static Font biggestFont(final javax.swing.text.JTextComponent c)
@@ -173,7 +174,10 @@ public final class CommonConsts
 				if(def.getClass().equals(NamedColor.class))
 					defname = ""+((NamedColor)def).getRGB();
 				if(def.getClass().equals(Font.class))
+				{
+					//TODO ((Font)def).getStyle()  should be one of "PLAIN", "BOLD", "BOLDITALIC", or "ITALIC"
 					defname = ((Font)def).getFontName()+"-"+((Font)def).getStyle();
+				}
 				if(LayoutManager2.class.isAssignableFrom(def.getClass()))
 					defname = def.getClass().getName();
 				java.io.BufferedWriter configwriter = new BufferedFileWriter(configfile);
