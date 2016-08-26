@@ -59,6 +59,7 @@ public final class CommonConsts
 	
 	public static final String
 	timeserver = getProperty("timeserver", "time.nist.gov"),
+	//TODO work change towards using the smaller files: "ftp://tgftp.nws.noaa.gov/data/observations/metar/stations/"
 	weatherdir = getProperty("weatherdir", "ftp://tgftp.nws.noaa.gov/data/observations/metar/decoded/"),
 	wstation   = getProperty("wstation",   "KFAR"),
 	timeformat = getProperty("timeformat", "h:mm a"),
