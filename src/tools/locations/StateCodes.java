@@ -4,8 +4,6 @@ public enum StateCodes
 {
 	ak("Alaska"),
 	al("Alabama"),
-	am("Bouys"),
-	an("Bouys"),
 	ar("Arkansas"),
 	az("Arizona"),
 	ca("California"),
@@ -15,7 +13,6 @@ public enum StateCodes
 	de("Delaware"),
 	fl("Florida"),
 	ga("Georgia"),
-	gm("Bouys"),
 	gu("Guam"),
 	hi("Hawaii"),
 	ia("Iowa"),
