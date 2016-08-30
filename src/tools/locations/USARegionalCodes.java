@@ -1,6 +1,6 @@
 package tools.locations;
 
-public enum StateCodes
+public enum USARegionalCodes
 {
 	ak("Alaska"),
 	al("Alabama"),
@@ -60,7 +60,7 @@ public enum StateCodes
 	wy("Wyoming"),
 	;
 	private final String name;
-	private StateCodes(String name) {
+	private USARegionalCodes(String name) {
 		this.name=name;
 	}
 	public String getName() {

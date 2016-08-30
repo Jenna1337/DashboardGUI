@@ -4,9 +4,11 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.LayoutManager2;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
-
+import java.util.Properties;
 import tools.bufferedFileIO.BufferedFileReader;
 import tools.bufferedFileIO.BufferedFileWriter;
 import tools.colors.NamedColor;
@@ -18,7 +20,9 @@ public final class CommonConsts
 	private static final boolean validExec = new java.io.File(myfilepath).isFile();
 	private static final boolean writeconfig = true;//is this really needed?
 	private static final String configfile = "."+getFileName()+".properties";
-	private static java.util.Properties config = getConfigData();
+	private static final Properties config = getConfigData();
+	
+	public static final Properties locale = getLocale(getProperty("lang", "en").toLowerCase());
 	
 	public static final long
 	/*3600000ms = 1h; 900000ms = 15min*/
@@ -80,7 +84,7 @@ public final class CommonConsts
 	public static final PrintStream
 	log = new PrintStream(System.out,true);
 	
-	//TODO add stuff to add to colorschedule
+	//TODO add stuff to add to colorschedule variable
 	public static final java.util.ArrayList<ScheduledColorChange> colorschedule = new ArrayList<ScheduledColorChange>();
 	
 	public static Font biggestFont(final javax.swing.text.JTextComponent c)
@@ -104,9 +108,9 @@ public final class CommonConsts
 		return new Font(labelFont.getName(), labelFont.getStyle(), fontSizeToUse);
 	}
 	private static boolean flag_NoConfigFile = false;
-	private static java.util.Properties getConfigData()
+	private static Properties getConfigData()
 	{
-		java.util.Properties configs = new java.util.Properties();
+		Properties configs = new Properties();
 		try
 		{
 			configs.load(new BufferedFileReader(configfile));
@@ -138,6 +142,30 @@ public final class CommonConsts
 			System.out.println("Failed to load configuration file "+configfile+".\n");
 		}
 		return configs;
+	}
+	private static Properties getLocale(String lang)
+	{
+		Properties loc=new Properties();
+		try
+		{
+			loc.load(new BufferedFileReader(configfile));
+		}
+		catch(FileNotFoundException e)
+		{
+			throw new InternalError("Failed to locate locale file for language \""+lang+"\"", e);
+		}
+		catch(IOException e)
+		{
+			try
+			{
+				loc.load(new BufferedFileReader(configfile));
+			}
+			catch(IOException e1)
+			{
+				throw new InternalError(e1);
+			}
+		}
+		return loc;
 	}
 	/**Reads the value of specified property from the config file. <br>
 	 * 
