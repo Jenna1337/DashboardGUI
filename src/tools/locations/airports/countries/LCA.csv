@@ -1,0 +1,3 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"TLPL","Hewanorra Intl","Vieuxfort","St Lucia","LCA",13.733333333333333,-60.95472222222222,"{""type"":""Point"",""coordinates"":[-60.95472222222222,13.733333333333333]}"
+"TLPC","George F. Charles","Castries","St Lucia","LCA",14.020000000000001,-60.99305555555556,"{""type"":""Point"",""coordinates"":[-60.99305555555556,14.020000000000001]}"

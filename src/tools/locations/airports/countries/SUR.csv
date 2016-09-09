@@ -1,0 +1,7 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"SMSI","Sipaliwini","Sipaliwini","Suriname","SUR",2.033333333333333,-56.133183333333335,"{""type"":""Point"",""coordinates"":[-56.133183333333335,2.033333333333333]}"
+"SMZO","Zorg En Hoop","Paramaribo","Suriname","SUR",5.811111111111111,-55.19361111111111,"{""type"":""Point"",""coordinates"":[-55.19361111111111,5.811111111111111]}"
+"SMTB","Rudy Kappel","Tafelberg","Suriname","SUR",3.783333333333333,-56.15,"{""type"":""Point"",""coordinates"":[-56.15,3.783333333333333]}"
+"SMJP","J.A. Pengel Intl","Zandery","Suriname","SUR",5.451388888888889,-55.200833333333335,"{""type"":""Point"",""coordinates"":[-55.200833333333335,5.451388888888889]}"
+"SMPA","Vincent Faiks","Paloemeu","Suriname","SUR",3.35,-55.45,"{""type"":""Point"",""coordinates"":[-55.45,3.35]}"
+"SMCI","Coeroenie","Coeroenie","Suriname","SUR",3.3666666666666667,-57.333333333333336,"{""type"":""Point"",""coordinates"":[-57.333333333333336,3.3666666666666667]}"

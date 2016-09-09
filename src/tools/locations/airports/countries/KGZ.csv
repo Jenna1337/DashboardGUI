@@ -1,0 +1,5 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"UCFP","Karakol","Karakol","Kyrgyzstan","KGZ",42.50833333333333,78.40777777777778,"{""type"":""Point"",""coordinates"":[78.40777777777778,42.50833333333333]}"
+"UCFO","Osh","Osh","Kyrgyzstan","KGZ",40.60899722222222,72.79321388888889,"{""type"":""Point"",""coordinates"":[72.79321388888889,40.60899722222222]}"
+"UCFM","Manas","Bishkek","Kyrgyzstan","KGZ",43.06127222222222,74.47750833333333,"{""type"":""Point"",""coordinates"":[74.47750833333333,43.06127222222222]}"
+"UCFL","Issyk-Kul","Issyk-Kul","Kyrgyzstan","KGZ",42.58571388888889,76.70181111111111,"{""type"":""Point"",""coordinates"":[76.70181111111111,42.58571388888889]}"

@@ -1,0 +1,7 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"HRYR","Kigali Intl","Kigali","Rwanda","RWA",-1.9684472222222222,30.13838611111111,"{""type"":""Point"",""coordinates"":[30.13838611111111,-1.9684472222222222]}"
+"HRYN","Nemba","Nemba","Rwanda","RWA",-2.3333333333333335,30.2,"{""type"":""Point"",""coordinates"":[30.2,-2.3333333333333335]}"
+"HRYI","Butare","Butare","Rwanda","RWA",-2.6,29.733333333333334,"{""type"":""Point"",""coordinates"":[29.733333333333334,-2.6]}"
+"HRZA","Kamembe","Kamembe","Rwanda","RWA",-2.459313888888889,28.908430555555555,"{""type"":""Point"",""coordinates"":[28.908430555555555,-2.459313888888889]}"
+"HRYU","Ruhengeri","Ruhengeri","Rwanda","RWA",-1.5,29.633333333333333,"{""type"":""Point"",""coordinates"":[29.633333333333333,-1.5]}"
+"HRYG","Gisenyi","Gisenyi","Rwanda","RWA",-1.6766666666666665,29.259166666666665,"{""type"":""Point"",""coordinates"":[29.259166666666665,-1.6766666666666665]}"

@@ -1,0 +1,6 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"DFOD","Dedougou","Dedougou","Burkina Faso","BFA",12.466666666666667,-3.4833333333333334,"{""type"":""Point"",""coordinates"":[-3.4833333333333334,12.466666666666667]}"
+"DFOB","Banfora","Banfora","Burkina Faso","BFA",10.683333333333334,-4.716666666666667,"{""type"":""Point"",""coordinates"":[-4.716666666666667,10.683333333333334]}"
+"DFFD","Ouagadougou","Ouagadougou","Burkina Faso","BFA",12.353666666666665,-1.512,"{""type"":""Point"",""coordinates"":[-1.512,12.353666666666665]}"
+"DFOO","Bobo-Dioulasso","Bobo-Dioulasso","Burkina Faso","BFA",11.167416666666666,-4.321055555555556,"{""type"":""Point"",""coordinates"":[-4.321055555555556,11.167416666666666]}"
+"DFEF","Fada N'Gourma","Fada N'Gourma","Burkina Faso","BFA",12.042763888888889,0.36602777777777773,"{""type"":""Point"",""coordinates"":[0.36602777777777773,12.042763888888889]}"

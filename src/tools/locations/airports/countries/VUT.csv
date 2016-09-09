@@ -1,0 +1,5 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"NVVW","White Grass","Tanna","Vanuatu","VUT",-19.455,169.22333333333333,"{""type"":""Point"",""coordinates"":[169.22333333333333,-19.455]}"
+"NVVV","Port Vila","Port Vila","Vanuatu","VUT",-17.699325,168.31979444444445,"{""type"":""Point"",""coordinates"":[168.31979444444445,-17.699325]}"
+"NVSS","Santo/Pekoa","Santo","Vanuatu","VUT",-15.505766666666666,167.22135833333334,"{""type"":""Point"",""coordinates"":[167.22135833333334,-15.505766666666666]}"
+"NVSE","Sangafa","Emae","Vanuatu","VUT",-17.093333333333334,168.33333333333334,"{""type"":""Point"",""coordinates"":[168.33333333333334,-17.093333333333334]}"

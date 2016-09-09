@@ -1,0 +1,7 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"HUSO","Soroti","Soroti","Uganda","UGA",1.7223111111111111,33.61868333333334,"{""type"":""Point"",""coordinates"":[33.61868333333334,1.7223111111111111]}"
+"HUKS","Kasese","Kasese","Uganda","UGA",0.18829166666666666,30.101591666666668,"{""type"":""Point"",""coordinates"":[30.101591666666668,0.18829166666666666]}"
+"HUMO","Moroto","Moroto","Uganda","UGA",2.5166666666666666,34.583333333333336,"{""type"":""Point"",""coordinates"":[34.583333333333336,2.5166666666666666]}"
+"HUKO","Kotido","Kotido","Uganda","UGA",2.9533333333333336,34.12222222222222,"{""type"":""Point"",""coordinates"":[34.12222222222222,2.9533333333333336]}"
+"HUKK","Kakira","Kakira","Uganda","UGA",0.5,33.28,"{""type"":""Point"",""coordinates"":[33.28,0.5]}"
+"HUEN","Entebbe Intl","Entebbe","Uganda","UGA",0.040813888888888886,32.44054166666666,"{""type"":""Point"",""coordinates"":[32.44054166666666,0.040813888888888886]}"

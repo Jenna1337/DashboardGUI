@@ -1,0 +1,5 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"FMCV","Ouani","Anjouan","Comoros","COM",-12.130833333333333,44.42972222222222,"{""type"":""Point"",""coordinates"":[44.42972222222222,-12.130833333333333]}"
+"FMCN","Iconi","Moroni","Comoros","COM",-11.708258333333333,43.24526111111111,"{""type"":""Point"",""coordinates"":[43.24526111111111,-11.708258333333333]}"
+"FMCI","Moheli","Moheli","Comoros","COM",-12.295119444444444,43.76185,"{""type"":""Point"",""coordinates"":[43.76185,-12.295119444444444]}"
+"FMCH","Prince Said Ibrahim","Moroni","Comoros","COM",-11.536519444444444,43.271325,"{""type"":""Point"",""coordinates"":[43.271325,-11.536519444444444]}"

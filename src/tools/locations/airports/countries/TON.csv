@@ -1,0 +1,7 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"NFTV","Vava'u","Nelafu","Tonga","TON",-18.585580555555556,-173.96804444444444,"{""type"":""Point"",""coordinates"":[-173.96804444444444,-18.585580555555556]}"
+"NFTP","Niuatoputapu","Niuatoputapu","Tonga","TON",-15.977416666666667,-173.79156944444443,"{""type"":""Point"",""coordinates"":[-173.79156944444443,-15.977416666666667]}"
+"NFTO","Niuafo'ou","Niuafo'ou","Tonga","TON",-15.571777777777777,-175.62944444444446,"{""type"":""Point"",""coordinates"":[-175.62944444444446,-15.571777777777777]}"
+"NFTL","Ha'Apai-Lifuka","Ha'Apai-Lifuka Island","Tonga","TON",-19.777055555555556,-174.3403888888889,"{""type"":""Point"",""coordinates"":[-174.3403888888889,-19.777055555555556]}"
+"NFTF","Fua'Amotu Intl","Nuku'Alofa","Tonga","TON",-21.24105,-175.13963055555556,"{""type"":""Point"",""coordinates"":[-175.13963055555556,-21.24105]}"
+"NFTE","Eua","Eua","Tonga","TON",-21.377744444444446,-174.95736666666664,"{""type"":""Point"",""coordinates"":[-174.95736666666664,-21.377744444444446]}"

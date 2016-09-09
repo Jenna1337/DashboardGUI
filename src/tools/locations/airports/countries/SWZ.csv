@@ -1,0 +1,8 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"FDTM","Tambankulu","Tambankulu","Swaziland","SWZ",-26.1,31.916666666666668,"{""type"":""Point"",""coordinates"":[31.916666666666668,-26.1]}"
+"FDSM","Simunye","Simunye","Swaziland","SWZ",-26.2,31.933333333333334,"{""type"":""Point"",""coordinates"":[31.933333333333334,-26.2]}"
+"FDNH","Nhlangano","Nhlangano","Swaziland","SWZ",-27.116666666666667,31.216666666666665,"{""type"":""Point"",""coordinates"":[31.216666666666665,-27.116666666666667]}"
+"FDNG","Ngonini","Piggs Peak","Swaziland","SWZ",-25.766666666666666,31.366666666666667,"{""type"":""Point"",""coordinates"":[31.366666666666667,-25.766666666666666]}"
+"FDSK","Sikhuphe Intl","Sikhuphe","Swaziland","SWZ",-26.358658333333334,31.71713611111111,"{""type"":""Point"",""coordinates"":[31.71713611111111,-26.358658333333334]}"
+"FDMS","Matsapha Intl","Manzini","Swaziland","SWZ",-26.529999999999998,31.308333333333334,"{""type"":""Point"",""coordinates"":[31.308333333333334,-26.529999999999998]}"
+"FDBS","Sugar Estate","Big Bend","Swaziland","SWZ",-26.8,31.9,"{""type"":""Point"",""coordinates"":[31.9,-26.8]}"

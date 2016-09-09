@@ -1,0 +1,6 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"PKWA","Bucholz AAF","Kwajalein Atoll","Marshall Is","MHL",8.720122222222223,167.73166111111112,"{""type"":""Point"",""coordinates"":[167.73166111111112,8.720122222222223]}"
+"PKRO","Dyess AAF","Roi-Namur","Marshall Is","MHL",9.396891666666667,167.47088055555557,"{""type"":""Point"",""coordinates"":[167.47088055555557,9.396891666666667]}"
+"PKMA","Enewetak Aux AF","Enewetak Atoll","Marshall Is","MHL",11.34,162.32833333333332,"{""type"":""Point"",""coordinates"":[162.32833333333332,11.34]}"
+"PKMJ","Marshall Is Intl","Majuro Atoll","Marshall Is","MHL",7.064972222222222,171.27203055555557,"{""type"":""Point"",""coordinates"":[171.27203055555557,7.064972222222222]}"
+"N55","Jaluit","Jabor Jaluit Atoll","Marshall Is","MHL",5.906666666666667,169.64166666666665,"{""type"":""Point"",""coordinates"":[169.64166666666665,5.906666666666667]}"

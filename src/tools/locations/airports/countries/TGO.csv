@@ -1,0 +1,3 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"DXXX","Gnassingbe Eyadema","Lome","Togo","TGO",6.1658333333333335,1.2541666666666667,"{""type"":""Point"",""coordinates"":[1.2541666666666667,6.1658333333333335]}"
+"DXNG","Niamtougou Intl","Niamtougou","Togo","TGO",9.777500000000002,1.0955555555555554,"{""type"":""Point"",""coordinates"":[1.0955555555555554,9.777500000000002]}"
