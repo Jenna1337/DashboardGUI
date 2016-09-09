@@ -1,4 +1,4 @@
-## Note the entries preceded with a '!' are not loading
+## Note the entries preceded with a '!' are empty
 
 !	MCO("Monaco"),
 !	SMR("San Marino"),
