@@ -1,0 +1,3 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"MZBZ","Philip S W Goldson Intl","Belize City","Belize","BLZ",17.539166666666667,-88.30833333333334,"{""type"":""Point"",""coordinates"":[-88.30833333333334,17.539166666666667]}"
+"MZ10","Ambergris Caye","San Pedro, Belize","Belize","BLZ",17.914166666666667,-87.971,"{""type"":""Point"",""coordinates"":[-87.971,17.914166666666667]}"
