@@ -1,0 +1,6 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"MTPX","Port De Paix","Port De Paix","Haiti","HTI",19.933333333333334,-72.85,"{""type"":""Point"",""coordinates"":[-72.85,19.933333333333334]}"
+"MTPP","Toussaint Louverture Intl","Port-Au-Prince","Haiti","HTI",18.58,-72.2925,"{""type"":""Point"",""coordinates"":[-72.2925,18.58]}"
+"MTJE","Jeremie","Jeremie","Haiti","HTI",18.666666666666668,-74.16666666666667,"{""type"":""Point"",""coordinates"":[-74.16666666666667,18.666666666666668]}"
+"MTJA","Jacmel","Jacmel","Haiti","HTI",18.240000000000002,-72.52388888888889,"{""type"":""Point"",""coordinates"":[-72.52388888888889,18.240000000000002]}"
+"MTCH","Cap Haitien Intl","Cap Haitien","Haiti","HTI",19.732777777777777,-72.19472222222223,"{""type"":""Point"",""coordinates"":[-72.19472222222223,19.732777777777777]}"

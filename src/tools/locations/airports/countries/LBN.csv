@@ -1,0 +1,4 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"OLRA","Rayak AB","Rayak","Lebanon","LBN",33.88231666666667,35.98303333333334,"{""type"":""Point"",""coordinates"":[35.98303333333334,33.88231666666667]}"
+"OLKA","Rene Mouawad AB","Kleyate","Lebanon","LBN",34.58565,36.003033333333335,"{""type"":""Point"",""coordinates"":[36.003033333333335,34.58565]}"
+"OLBA","Rafic Hariri Intl","Beirut","Lebanon","LBN",33.819050000000004,35.490027777777776,"{""type"":""Point"",""coordinates"":[35.490027777777776,33.819050000000004]}"

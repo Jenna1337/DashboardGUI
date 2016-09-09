@@ -1,0 +1,4 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"OBKH","Sakhir AB","Bahrain","Bahrain","BHR",26.034722222222225,50.52444444444444,"{""type"":""Point"",""coordinates"":[50.52444444444444,26.034722222222225]}"
+"OBBS","Isa AB","Bahrain","Bahrain","BHR",25.91836388888889,50.5906,"{""type"":""Point"",""coordinates"":[50.5906,25.91836388888889]}"
+"OBBI","Bahrain Intl","Bahrain","Bahrain","BHR",26.270833333333332,50.63361111111111,"{""type"":""Point"",""coordinates"":[50.63361111111111,26.270833333333332]}"

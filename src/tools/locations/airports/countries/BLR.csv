@@ -1,0 +1,7 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"UMMS","Minsk-2","Minsk","Belarus","BLR",53.8825,28.030833333333334,"{""type"":""Point"",""coordinates"":[28.030833333333334,53.8825]}"
+"UMOO","Mahiliou","Mahiliou","Belarus","BLR",53.95527777777778,30.094166666666666,"{""type"":""Point"",""coordinates"":[30.094166666666666,53.95527777777778]}"
+"UMMG","Hrodna","Hrodna","Belarus","BLR",53.60194444444445,24.05388888888889,"{""type"":""Point"",""coordinates"":[24.05388888888889,53.60194444444445]}"
+"UMGG","Homiel","Homiel","Belarus","BLR",52.526944444444446,31.016666666666666,"{""type"":""Point"",""coordinates"":[31.016666666666666,52.526944444444446]}"
+"UMII","Viciebsk","Viciebsk","Belarus","BLR",55.12638888888889,30.349722222222223,"{""type"":""Point"",""coordinates"":[30.349722222222223,55.12638888888889]}"
+"UMBB","Brest","Brest","Belarus","BLR",52.108333333333334,23.89638888888889,"{""type"":""Point"",""coordinates"":[23.89638888888889,52.108333333333334]}"

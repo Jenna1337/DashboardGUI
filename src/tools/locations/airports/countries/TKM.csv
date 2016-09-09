@@ -1,0 +1,6 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"UTAV","Turkmenabat","Turkmenabat","Turkmenistan","TKM",39.083333333333336,63.61333333333334,"{""type"":""Point"",""coordinates"":[63.61333333333334,39.083333333333336]}"
+"UTAM","Mary","Mary","Turkmenistan","TKM",37.62166666666667,61.89666666666667,"{""type"":""Point"",""coordinates"":[61.89666666666667,37.62166666666667]}"
+"UTAK","Turkmenbashi","Turkmenbashi","Turkmenistan","TKM",40.06333333333333,53.007222222222225,"{""type"":""Point"",""coordinates"":[53.007222222222225,40.06333333333333]}"
+"UTAT","Dashoguz","Dashoguz","Turkmenistan","TKM",41.76166666666666,59.84166666666667,"{""type"":""Point"",""coordinates"":[59.84166666666667,41.76166666666666]}"
+"UTAA","Ashgabat","Ashgabat","Turkmenistan","TKM",37.99166666666667,58.36194444444445,"{""type"":""Point"",""coordinates"":[58.36194444444445,37.99166666666667]}"

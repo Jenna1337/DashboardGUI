@@ -1,0 +1,4 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"UDYZ","Zvartnots","Yerevan","Armenia","ARM",40.14722222222222,44.395833333333336,"{""type"":""Point"",""coordinates"":[44.395833333333336,40.14722222222222]}"
+"UDYE","Erebuni","Yerevan","Armenia","ARM",40.121991666666666,44.465091666666666,"{""type"":""Point"",""coordinates"":[44.465091666666666,40.121991666666666]}"
+"UDSG","Shirak","Gyumri","Armenia","ARM",40.750475,43.859325,"{""type"":""Point"",""coordinates"":[43.859325,40.750475]}"

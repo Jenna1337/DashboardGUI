@@ -1,0 +1,7 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"OSPR","Palmyra","Palmyra","Syria","SYR",34.55,38.3,"{""type"":""Point"",""coordinates"":[38.3,34.55]}"
+"OSLK","Bassel Al-Assad Intl","Latakia","Syria","SYR",35.40990277777777,35.94783611111111,"{""type"":""Point"",""coordinates"":[35.94783611111111,35.40990277777777]}"
+"OSKL","Kamishly","Kamishly","Syria","SYR",37.03060555555555,41.205200000000005,"{""type"":""Point"",""coordinates"":[41.205200000000005,37.03060555555555]}"
+"OSDZ","Deir Zzor","Deir Zzor","Syria","SYR",35.28548055555555,40.17607777777778,"{""type"":""Point"",""coordinates"":[40.17607777777778,35.28548055555555]}"
+"OSDI","Damascus Intl","Damascus","Syria","SYR",33.41083333333333,36.513333333333335,"{""type"":""Point"",""coordinates"":[36.513333333333335,33.41083333333333]}"
+"OSAP","Aleppo Intl","Aleppo","Syria","SYR",36.18048333333333,37.226755555555556,"{""type"":""Point"",""coordinates"":[37.226755555555556,36.18048333333333]}"

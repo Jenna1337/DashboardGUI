@@ -1,0 +1,4 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"OJAQ","King Hussein Intl","Aqaba","Jordan","JOR",29.611616666666666,35.01806388888889,"{""type"":""Point"",""coordinates"":[35.01806388888889,29.611616666666666]}"
+"OJAM","Marka Intl","Amman","Jordan","JOR",31.972702777777776,35.991569444444444,"{""type"":""Point"",""coordinates"":[35.991569444444444,31.972702777777776]}"
+"OJAI","Queen Alia Intl","Amman","Jordan","JOR",31.722555555555555,35.99321388888889,"{""type"":""Point"",""coordinates"":[35.99321388888889,31.722555555555555]}"

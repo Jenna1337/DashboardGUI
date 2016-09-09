@@ -1,0 +1,8 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"MGSJ","San Jose","Puerto San Jose","Guatemala","GTM",13.936111111111112,-90.83583333333333,"{""type"":""Point"",""coordinates"":[-90.83583333333333,13.936111111111112]}"
+"MGRT","Retalhuleu","Retalhuleu","Guatemala","GTM",14.518333333333334,-91.69666666666667,"{""type"":""Point"",""coordinates"":[-91.69666666666667,14.518333333333334]}"
+"MGPP","Poptun","Poptun","Guatemala","GTM",16.32472222222222,-89.42694444444444,"{""type"":""Point"",""coordinates"":[-89.42694444444444,16.32472222222222]}"
+"MGMM","Mundo Maya Intl","Flores","Guatemala","GTM",16.913888888888888,-89.86638888888888,"{""type"":""Point"",""coordinates"":[-89.86638888888888,16.913888888888888]}"
+"MGPB","Puerto Barrios","Puerto Barrios","Guatemala","GTM",15.748333333333333,-88.585,"{""type"":""Point"",""coordinates"":[-88.585,15.748333333333333]}"
+"MGGT","La Aurora Intl","Guatemala City","Guatemala","GTM",14.583333333333334,-90.5275,"{""type"":""Point"",""coordinates"":[-90.5275,14.583333333333334]}"
+"MGCB","Coban","Coban","Guatemala","GTM",15.468833333333334,-90.40666666666667,"{""type"":""Point"",""coordinates"":[-90.40666666666667,15.468833333333334]}"

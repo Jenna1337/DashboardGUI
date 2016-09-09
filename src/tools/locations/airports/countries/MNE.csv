@@ -1,0 +1,3 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"LYTV","Tivat","Tivat","Montenegro","MNE",42.40466388888889,18.723286111111108,"{""type"":""Point"",""coordinates"":[18.723286111111108,42.40466388888889]}"
+"LYPG","Podgorica","Podgorica","Montenegro","MNE",42.35939444444445,19.25187777777778,"{""type"":""Point"",""coordinates"":[19.25187777777778,42.35939444444445]}"

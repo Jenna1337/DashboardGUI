@@ -1,0 +1,3 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"TAPH","Codrington","Barbuda","Antigua","ATG",17.608333333333334,-61.843333333333334,"{""type"":""Point"",""coordinates"":[-61.843333333333334,17.608333333333334]}"
+"TAPA","V C Bird Intl","St Johns","Antigua","ATG",17.136666666666667,-61.79277777777778,"{""type"":""Point"",""coordinates"":[-61.79277777777778,17.136666666666667]}"

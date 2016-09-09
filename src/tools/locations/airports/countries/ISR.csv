@@ -1,0 +1,6 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"LLSD","Sde Dov","Tel Aviv","Israel","ISR",32.11416666666667,34.78194444444444,"{""type"":""Point"",""coordinates"":[34.78194444444444,32.11416666666667]}"
+"LLOV","Ovda","Ovda","Israel","ISR",29.935,34.94083333333333,"{""type"":""Point"",""coordinates"":[34.94083333333333,29.935]}"
+"LLHA","Haifa","Haifa","Israel","ISR",32.80833333333333,35.04277777777778,"{""type"":""Point"",""coordinates"":[35.04277777777778,32.80833333333333]}"
+"LLET","Eilat","Eilat","Israel","ISR",29.558333333333334,34.95888888888889,"{""type"":""Point"",""coordinates"":[34.95888888888889,29.558333333333334]}"
+"LLBG","Ben Gurion","Tel Aviv","Israel","ISR",32.00944444444445,34.885555555555555,"{""type"":""Point"",""coordinates"":[34.885555555555555,32.00944444444445]}"

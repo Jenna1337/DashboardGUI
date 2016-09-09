@@ -1,0 +1,8 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"DGSN","Sunyani","Sunyani","Ghana","GHA",7.361863888888888,-2.3287194444444443,"{""type"":""Point"",""coordinates"":[-2.3287194444444443,7.361863888888888]}"
+"DGSI","Kumasi","Kumasi","Ghana","GHA",6.714583333333334,-1.5908305555555557,"{""type"":""Point"",""coordinates"":[-1.5908305555555557,6.714583333333334]}"
+"DGTK","Takoradi","Takoradi","Ghana","GHA",4.89598611111111,-1.7747083333333333,"{""type"":""Point"",""coordinates"":[-1.7747083333333333,4.89598611111111]}"
+"DGLW","Wa","Wa","Ghana","GHA",10.05388888888889,-2.4747222222222223,"{""type"":""Point"",""coordinates"":[-2.4747222222222223,10.05388888888889]}"
+"DGLN","Navrongo","Navrongo","Ghana","GHA",10.943055555555556,-1.087222222222222,"{""type"":""Point"",""coordinates"":[-1.087222222222222,10.943055555555556]}"
+"DGLE","Tamale","Tamale","Ghana","GHA",9.557266666666667,-0.8631722222222222,"{""type"":""Point"",""coordinates"":[-0.8631722222222222,9.557266666666667]}"
+"DGAA","Kotoka Intl","Accra","Ghana","GHA",5.604413888888889,-0.16754444444444444,"{""type"":""Point"",""coordinates"":[-0.16754444444444444,5.604413888888889]}"

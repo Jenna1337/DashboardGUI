@@ -1,0 +1,4 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"OKDI","Camp Udairi","Udairi","Kuwait","KWT",29.697622222222222,47.43598055555555,"{""type"":""Point"",""coordinates"":[47.43598055555555,29.697622222222222]}"
+"OKBK","Kuwait Intl","Kuwait","Kuwait","KWT",29.226766666666666,47.97995277777778,"{""type"":""Point"",""coordinates"":[47.97995277777778,29.226766666666666]}"
+"OKAS","Ali Al Salem AB","Ali Al Salem","Kuwait","KWT",29.346741666666667,47.52075,"{""type"":""Point"",""coordinates"":[47.52075,29.346741666666667]}"

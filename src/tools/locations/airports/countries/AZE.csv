@@ -1,0 +1,7 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"UBBY","Zagatala","Zagatala","Azerbaijan","AZE",41.56222222222222,46.66722222222222,"{""type"":""Point"",""coordinates"":[46.66722222222222,41.56222222222222]}"
+"UBBN","Nakhchivan","Nakhchivan","Azerbaijan","AZE",39.18873333333333,45.457280555555556,"{""type"":""Point"",""coordinates"":[45.457280555555556,39.18873333333333]}"
+"UBBL","Lenkoran","Lenkoran","Azerbaijan","AZE",38.75861111111111,48.80638888888888,"{""type"":""Point"",""coordinates"":[48.80638888888888,38.75861111111111]}"
+"UBBQ","Gabala","Gabala","Azerbaijan","AZE",40.80888888888889,47.72527777777778,"{""type"":""Point"",""coordinates"":[47.72527777777778,40.80888888888889]}"
+"UBBG","Ganja","Ganja","Azerbaijan","AZE",40.73888888888889,46.32,"{""type"":""Point"",""coordinates"":[46.32,40.73888888888889]}"
+"UBBB","Heydar Aliyev Intl","Baku","Azerbaijan","AZE",40.469722222222224,50.05138888888889,"{""type"":""Point"",""coordinates"":[50.05138888888889,40.469722222222224]}"
