@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import dashboard.CommonConsts;
 import dashboard.Main;
 import dashboard.display.ScheduledTask;
@@ -27,8 +26,6 @@ public class ScheduledColorChange extends ScheduledTask
 		c=color;
 		//TODO
 	}
-
-	@Override
 	public void run() {
 		Main.dash.panw.setBackground(c);
 	}

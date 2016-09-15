@@ -1,11 +1,9 @@
 package dashboard;
 
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
 import tools.bufferedFileIO.BufferedFileReader;
 import tools.bufferedFileIO.BufferedFileWriter;
-import tools.decoders.Base256;
+import tools.data.AirportData;
+import tools.data.WhereAmI;
 import tools.locations.CountryCodes;
 
 public class Main
@@ -14,7 +12,7 @@ public class Main
 	
 	public static void main(String[] args) throws Exception
 	{
-		mergeairportdata();
+		System.out.println(AirportData.getClosestAirport(WhereAmI.getLocalCoords()));
 		System.exit(0);
 		
 		dash = new Dashboard();
@@ -28,15 +26,16 @@ public class Main
 		if(CommonConsts.benchtest)
 			benchmark();
 	}
+	@SuppressWarnings("unused")
 	private static void mergeairportdata() throws Exception
 	{
-		BufferedFileWriter fwr = new BufferedFileWriter("src/tools/locations/airports/all.csv");
+		BufferedFileWriter fwr = new BufferedFileWriter("src/tools/locations/airports/all.tsv");
 		boolean frs = true;
 		int i=1,l=CountryCodes.values().length;
 		for(CountryCodes cco : CountryCodes.values())
 		{
 			System.out.println(i+++"/"+l);
-			BufferedFileReader fre = new BufferedFileReader("src/tools/locations/airports/countries/"+cco.name()+".tsv");
+			BufferedFileReader fre = new BufferedFileReader("src/tools/locations/airports/countries/"+cco.name()+".csv");
 			String fln = fre.readLine();
 			if(frs)
 			{

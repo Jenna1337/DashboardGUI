@@ -13,6 +13,10 @@ import tools.bufferedFileIO.BufferedFileReader;
 import tools.bufferedFileIO.BufferedFileWriter;
 import tools.colors.NamedColor;
 import tools.colors.ScheduledColorChange;
+import tools.data.AirportData;
+import tools.data.AirportInfo;
+import tools.data.WhereAmI;
+import tools.locations.Coords;
 
 public final class CommonConsts
 {
@@ -68,6 +72,9 @@ public final class CommonConsts
 	wstation   = getProperty("wstation",   "KFAR"),
 	timeformat = getProperty("timeformat", "h:mm a"),
 	masterurl  = "https://github.com/JonahSloan/DashboardGUI/raw/master/";
+	
+	public static final AirportInfo
+	localAirport  = AirportData.getClosestAirport(WhereAmI.getLocalCoords());//TODO implement this constant
 	
 	public static final boolean
 	autoupdate = getProperty("autoupdate", true),
