@@ -1,5 +1,0 @@
-## Note the entries preceded with a '!' are empty
-
-!	MCO("Monaco"),
-!	SMR("San Marino"),
-!	SRB("Serbia"),
