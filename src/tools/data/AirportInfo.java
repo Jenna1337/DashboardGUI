@@ -5,8 +5,25 @@ import tools.locations.CountryCodes;
 
 public final class AirportInfo
 {
-	private final String airportCode, airportName, cityName;
+	/**
+	 * The ICAO Identifier code.
+	 */
+	private final String airportCode;
+	/**
+	 * The name of the airport.
+	 */
+	private final String airportName;
+	/**
+	 * The name of the city the airport is located in.
+	 */
+	private final String cityName;
+	/**
+	 * The 3 letter ISO country code. 
+	 */
 	private final CountryCodes countryCode;
+	/**
+	 * The geographic coordinates of the weather station. 
+	 */
 	private final Coords coords;
 	private final String[] args;
 	public AirportInfo(String[] aa)
@@ -16,7 +33,7 @@ public final class AirportInfo
 		airportName = aa[1];
 		cityName    = aa[2];
 		countryCode = CountryCodes.valueOf(aa[4]);
-		coords      = new Coords(aa[5]+","+aa[6]);
+		coords      = new Coords(aa[5], aa[6]);
 		args=aa;
 	}
 	@Override
