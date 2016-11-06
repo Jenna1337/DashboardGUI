@@ -16,7 +16,6 @@ import tools.colors.ScheduledColorChange;
 import tools.data.AirportData;
 import tools.data.AirportInfo;
 import tools.data.WhereAmI;
-import tools.locations.Coords;
 
 public final class CommonConsts
 {

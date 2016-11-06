@@ -1,55 +1,88 @@
 package tools.data;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import tools.bufferedFileIO.BufferedFileReader;
 import tools.locations.Coords;
 
 public class AirportData
 {
-	private static final AirportInfoSet thedata = new AirportInfoSet();
-	@SuppressWarnings("unused")
-	private static final AirportData THIS = new AirportData();
+	private static final List<String> airportnames = getAirportNames();
+	private static final AirportInfoSet thedata = getTheData();
+	
 	private AirportData()
 	{
+	}
+	private static AirportInfoSet getTheData()
+	{
+		AirportInfoSet thedata = new AirportInfoSet();
 		try
 		{
-			BufferedFileReader reader = new BufferedFileReader("src/tools/locations/airports/all.tsv");
-			String line=reader.readLine();
-			while((line=reader.readLine())!=null)
+			BufferedFileReader reader = new BufferedFileReader(
+					"src/tools/locations/airports/all.tsv");
+			String line = reader.readLine();
+			while((line = reader.readLine()) != null)
 			{
 				thedata.add(line.split("\t"));
 			}
 			reader.close();
 		}
-		catch(IOException ioe)
+		catch(IOException e)
 		{
-			ioe.printStackTrace();
+			throw new InternalError(e);
+		}
+		return thedata;
+	}
+	private static List<String> getAirportNames()
+	{
+		try
+		{
+			ArrayList<String> names = new ArrayList<String>(10000);
+			BufferedFileReader reader = new BufferedFileReader(
+					"src/tools/locations/stations/StationNames.txt");
+			String buffer;
+			while((buffer = reader.readLine()) != null)
+				names.add(buffer);
+			reader.close();
+			names.trimToSize();
+			return names;
+		}
+		catch(Exception e)
+		{
+			throw new InternalError(e);
 		}
 	}
 	public static AirportInfo getClosestAirport(Coords nearHere)
 	{
-		if(nearHere==null)
+		if(nearHere == null)
 			return null;
 		AirportInfo min = null;
-		double smallest=Double.POSITIVE_INFINITY;
-		AirportInfo[] airports = thedata.toArray(new AirportInfo[thedata.size()]);
-		for(int i=0; i<airports.length; ++i)
+		double smallest = Double.POSITIVE_INFINITY;
+		AirportInfo[] airports = thedata
+				.toArray(new AirportInfo[thedata.size()]);
+		for(int i = 0; i < airports.length; ++i)
 		{
 			AirportInfo airport = airports[i];
 			int comparevalue = nearHere.compareTo(airport.getCoords());
-			if(comparevalue<smallest /*&& 
-					new File(CommonConsts.weatherdir+airport.getAirportCode()).exists()*/)
+			if(comparevalue < smallest
+					&& airportnames.contains(airport.getAirportCode()))
 			{
-				min=airport;
-				smallest=comparevalue;
+				min = airport;
+				smallest = comparevalue;
 			}
 		}
-		System.out.println(smallest);
 		return min;
 	}
+	private static final AirportInfo closestairport = getClosestAirport(WhereAmI.getLocalCoords());
+	public static AirportInfo getLocalAirport()
+	{
+		return closestairport;
+	}
 }
+
 class AirportInfoSet extends HashSet<tools.data.AirportInfo>
 {
 	public void add(String[] aa)
@@ -68,7 +101,7 @@ class AirportInfoSet extends HashSet<tools.data.AirportInfo>
 			if(key.equals(tval))
 				return val;
 			else
-				for(int i=0;i<tval.length;++i)
+				for(int i = 0; i < tval.length; ++i)
 					if(tval[i].equals(key))
 						return val;
 		}

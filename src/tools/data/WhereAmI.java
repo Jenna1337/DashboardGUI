@@ -18,7 +18,7 @@ public class WhereAmI
 			String findurl = "http://platform.bing.com/geo/REST/v1/Imagery/Map/Road/";
 			int indx = html.indexOf(findurl)+findurl.length();
 			String cds = html.substring(indx, html.indexOf("/", indx));
-			System.out.println(cds);
+			//System.out.println(cds);
 			return new Coords(cds);
 		}
 		catch(IOException e)

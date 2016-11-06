@@ -1,9 +1,9 @@
 package dashboard;
 
+import dashboard.display.weather.WeatherData;
 import tools.bufferedFileIO.BufferedFileReader;
 import tools.bufferedFileIO.BufferedFileWriter;
 import tools.data.AirportData;
-import tools.data.WhereAmI;
 import tools.locations.CountryCodes;
 
 public class Main
@@ -12,7 +12,7 @@ public class Main
 	
 	public static void main(String[] args) throws Exception
 	{
-		System.out.println(AirportData.getClosestAirport(WhereAmI.getLocalCoords()));
+		System.out.println(new WeatherData(AirportData.getLocalAirport().getAirportCode()));
 		System.exit(0);
 		
 		dash = new Dashboard();
