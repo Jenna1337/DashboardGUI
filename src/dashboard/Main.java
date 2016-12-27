@@ -1,14 +1,13 @@
 package dashboard;
 
-import java.util.ArrayList;
-import tools.colors.ColorInts;
 import tools.colors.NamedColor;
+import tools.colors.NamedColorConstants;
 
 public class Main
 {
 	public static void main(String[] args) throws Exception
 	{
-		for(java.lang.reflect.Field f : ColorInts.class.getDeclaredFields())
+		for(java.lang.reflect.Field f : NamedColorConstants.class.getDeclaredFields())
 			System.out.println(new NamedColor(f.getName(), (int)f.get(null)));
 		
 		System.exit(0);/**/

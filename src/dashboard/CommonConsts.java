@@ -5,8 +5,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.LayoutManager2;
 import java.io.PrintStream;
-import tools.bufferedFileIO.BufferedFileReader;
-import tools.bufferedFileIO.BufferedFileWriter;
+import io.BufferedFileReader;
+import io.BufferedFileWriter;
 import tools.colors.ColorParser;
 import tools.colors.NamedColor;
 
@@ -43,15 +43,15 @@ public final class CommonConsts
 	
 	public static final Color
 	/**Color of main window**/
-	COLORbg  = getProperty("COLORbg ", NamedColor.getColorForName("BLACK")),
+	COLORbg  = getProperty("COLORbg ", NamedColor.getColorForName("Black")),
 	/**Color of Clock text**/
-	COLORfgC = getProperty("COLORfgC", NamedColor.getColorForName("LIGHT_GRAY")),
+	COLORfgC = getProperty("COLORfgC", NamedColor.getColorForName("LightGray")),
 	/**Color of Clock bg**/
-	COLORbgC = getProperty("COLORbgC", NamedColor.getColorForName("BLACK")),
+	COLORbgC = getProperty("COLORbgC", NamedColor.getColorForName("Black")),
 	/**Color of Weather text**/
-	COLORfgW = getProperty("COLORfgW", NamedColor.getColorForName("LIGHT_GRAY")),
+	COLORfgW = getProperty("COLORfgW", NamedColor.getColorForName("LightGrey")),
 	/**Color of Weather bg  **/
-	COLORbgW = getProperty("COLORbgW", NamedColor.getColorForName("BLACK")),
+	COLORbgW = getProperty("COLORbgW", NamedColor.getColorForName("Black")),
 	/**Color of hidden areas**/
 	COLORNUL = java.awt.Color.MAGENTA;
 	
