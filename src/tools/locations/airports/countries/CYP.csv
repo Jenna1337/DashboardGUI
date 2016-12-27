@@ -1,0 +1,4 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"LCRA","Akrotiri","Akrotiri","Cyprus","CYP",34.59037222222222,32.98778055555556,"{""type"":""Point"",""coordinates"":[32.98778055555556,34.59037222222222]}"
+"LCPH","Pafos Intl","Pafos","Cyprus","CYP",34.718333333333334,32.485,"{""type"":""Point"",""coordinates"":[32.485,34.718333333333334]}"
+"LCLK","Larnaca Intl","Larnaca","Cyprus","CYP",34.87888888888889,33.63027777777778,"{""type"":""Point"",""coordinates"":[33.63027777777778,34.87888888888889]}"

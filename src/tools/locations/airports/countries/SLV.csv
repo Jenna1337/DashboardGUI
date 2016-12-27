@@ -1,0 +1,5 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"MSSS","Ilopango Intl","San Salvador","El Salvador","SLV",13.691666666666666,-89.12555555555555,"{""type"":""Point"",""coordinates"":[-89.12555555555555,13.691666666666666]}"
+"MSPP","El Papalon","El Papalon","El Salvador","SLV",13.446111111111112,-88.12916666666666,"{""type"":""Point"",""coordinates"":[-88.12916666666666,13.446111111111112]}"
+"MSLP","El Salvador Intl, Oscar Arnulfo Romero y Galdamez","San Salvador","El Salvador","SLV",13.440936111111112,-89.05575,"{""type"":""Point"",""coordinates"":[-89.05575,13.440936111111112]}"
+"MSCR","La Carrera","La Carrera","El Salvador","SLV",13.328702777777778,-88.52091666666666,"{""type"":""Point"",""coordinates"":[-88.52091666666666,13.328702777777778]}"

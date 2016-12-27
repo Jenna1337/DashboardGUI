@@ -1,0 +1,6 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"WSSS","Changi","Singapore","Singapore","SGP",1.3592111111111111,103.98932500000001,"{""type"":""Point"",""coordinates"":[103.98932500000001,1.3592111111111111]}"
+"WSAT","Tengah","Singapore","Singapore","SGP",1.3876111111111111,103.70827777777778,"{""type"":""Point"",""coordinates"":[103.70827777777778,1.3876111111111111]}"
+"WSSL","Seletar","Singapore","Singapore","SGP",1.4169555555555555,103.86764444444444,"{""type"":""Point"",""coordinates"":[103.86764444444444,1.4169555555555555]}"
+"WSAP","Paya Lebar","Singapore","Singapore","SGP",1.3557222222222223,103.90277777777779,"{""type"":""Point"",""coordinates"":[103.90277777777779,1.3557222222222223]}"
+"WSAG","Sembawang","Singapore","Singapore","SGP",1.4266666666666667,103.81611111111111,"{""type"":""Point"",""coordinates"":[103.81611111111111,1.4266666666666667]}"

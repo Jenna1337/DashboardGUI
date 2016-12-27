@@ -1,0 +1,8 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"MKNG","Negril","Negril","Jamaica","JAM",18.341944444444444,-78.33388888888888,"{""type"":""Point"",""coordinates"":[-78.33388888888888,18.341944444444444]}"
+"MKKJ","Ken Jones","Port Antonio, Jamaica","Jamaica","JAM",18.198888888888888,-76.535,"{""type"":""Point"",""coordinates"":[-76.535,18.198888888888888]}"
+"MKJS","Sangster Intl","Montego Bay","Jamaica","JAM",18.503611111111113,-77.91333333333334,"{""type"":""Point"",""coordinates"":[-77.91333333333334,18.503611111111113]}"
+"MKJP","Norman Manley Intl","Kingston","Jamaica","JAM",17.935555555555556,-76.7875,"{""type"":""Point"",""coordinates"":[-76.7875,17.935555555555556]}"
+"MKBS","Ian Fleming Intl","Ocho Rios","Jamaica","JAM",18.404166666666665,-76.96916666666667,"{""type"":""Point"",""coordinates"":[-76.96916666666667,18.404166666666665]}"
+"MKTP","Tinson Pen","Kingston","Jamaica","JAM",17.988611111111112,-76.82388888888889,"{""type"":""Point"",""coordinates"":[-76.82388888888889,17.988611111111112]}"
+1121,"Boscobel","Ocho Rios","Jamaica","JAM",18.400555555555552,-76.97027777777778,"{""type"":""Point"",""coordinates"":[-76.97027777777778,18.400555555555552]}"

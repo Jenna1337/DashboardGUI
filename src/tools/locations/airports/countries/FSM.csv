@@ -1,0 +1,8 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"TT02","Ulithi","Ulithi I","Micronesia","FSM",10.016666666666667,139.8,"{""type"":""Point"",""coordinates"":[139.8,10.016666666666667]}"
+"PTYA","Yap Intl","Yap I","Micronesia","FSM",9.498911111111111,138.08248333333333,"{""type"":""Point"",""coordinates"":[138.08248333333333,9.498911111111111]}"
+"PTSA","Kosrae","Kosrae","Micronesia","FSM",5.356972222222222,162.9583888888889,"{""type"":""Point"",""coordinates"":[162.9583888888889,5.356972222222222]}"
+"PTPN","Pohnpei Intl","Pohnpei I","Micronesia","FSM",6.985083333333334,158.20980555555553,"{""type"":""Point"",""coordinates"":[158.20980555555553,6.985083333333334]}"
+"PTKK","Chuuk Intl","Weno I","Micronesia","FSM",7.461888888888889,151.84301666666667,"{""type"":""Point"",""coordinates"":[151.84301666666667,7.461888888888889]}"
+"C23","Peleliu","Babelthuap I","Micronesia","FSM",7,134.23333333333332,"{""type"":""Point"",""coordinates"":[134.23333333333332,7]}"
+"ANG","Angaur Airstrip","Angaur I","Micronesia","FSM",6.9,134.15,"{""type"":""Point"",""coordinates"":[134.15,6.9]}"

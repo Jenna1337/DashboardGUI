@@ -31,7 +31,7 @@ cycle: 3
 		data = data.replace("Sky conditions", "Sky\\ conditions");
 		data = data.replace("Dew Point", "Dew\\ Point");
 		data = data.replace("Relative Humidity", "Humidity");
-		data = data.replace("Pressure (altimeter)", "Air pressure");
+		data = data.replace("Pressure (altimeter)", "Air\\ pressure");
 		data = "Station\\ Name:"+wdata.toString().substring(0, lnbr)+data;
 		try
 		{
@@ -45,32 +45,23 @@ cycle: 3
 	}
 	public String getProperty(WeatherProperty p)
 	{
-		return super.getProperty(p.toString());
-	}
-	public String getProperty(String str)
-	{
-		return this.getProperty(WeatherProperty.valueOf(str));
+		return  this.getProperty(p);
 	}
 	enum WeatherProperty
 	{
-		Station_Name("Station Name"),
-		Timestamp("Timestamp"),
-		Wind("Wind"),
-		Visibility("Visibility"),
-		Sky_conditions("Sky conditions"),
-		Temperature("Temperature"),
-		Windchill("Windchill"),
-		Dew_Point("Dew Point"),
-		Humidity("Humidity"),
-		Air_pressure("Air pressure");
-		private final String str;
-		WeatherProperty(String s)
-		{
-			this.str = s;
-		}
+		Station_Name,
+		Timestamp,
+		Wind,
+		Visibility,
+		Sky_conditions,
+		Temperature,
+		Windchill,
+		Dew_Point,
+		Humidity,
+		Air_pressure;
 		public String toString()
 		{
-			return str;
+			return super.toString().replaceAll("_", " ");
 		}
 	}
 }

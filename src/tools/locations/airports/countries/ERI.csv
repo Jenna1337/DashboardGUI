@@ -1,0 +1,4 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"HHSB","Assab Intl","Assab","Eritrea","ERI",13.066666666666666,42.63333333333333,"{""type"":""Point"",""coordinates"":[42.63333333333333,13.066666666666666]}"
+"HHMS","Massawa Intl","Massawa","Eritrea","ERI",15.669988888888888,39.37010277777778,"{""type"":""Point"",""coordinates"":[39.37010277777778,15.669988888888888]}"
+"HHAS","Asmara Intl","Asmara","Eritrea","ERI",15.284166666666666,38.90083333333333,"{""type"":""Point"",""coordinates"":[38.90083333333333,15.284166666666666]}"

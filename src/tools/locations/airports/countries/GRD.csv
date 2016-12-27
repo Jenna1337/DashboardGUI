@@ -1,0 +1,3 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"TGPZ","Lauriston","Carriacou Is","Grenada","GRD",12.476944444444445,-61.47222222222222,"{""type"":""Point"",""coordinates"":[-61.47222222222222,12.476944444444445]}"
+"TGPY","Maurice Bishop Intl","St Georges","Grenada","GRD",12.004247222222222,-61.78619166666667,"{""type"":""Point"",""coordinates"":[-61.78619166666667,12.004247222222222]}"

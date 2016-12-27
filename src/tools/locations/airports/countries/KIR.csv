@@ -1,0 +1,6 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"PLPA","Palmyra","Palmyra Is","Kiribati","KIR",5.883333333333333,-162.06666666666666,"{""type"":""Point"",""coordinates"":[-162.06666666666666,5.883333333333333]}"
+"PLCH","Cassidy Intl","Christmas I","Kiribati","KIR",1.9862111111111111,-157.34964166666668,"{""type"":""Point"",""coordinates"":[-157.34964166666668,1.9862111111111111]}"
+"PCIS","Canton Afld","Canton I","Kiribati","KIR",-2.77,-171.7133333333333,"{""type"":""Point"",""coordinates"":[-171.7133333333333,-2.77]}"
+"NGTU","Butaritari","Butaritari","Kiribati","KIR",3.0833333333333335,172.81666666666666,"{""type"":""Point"",""coordinates"":[172.81666666666666,3.0833333333333335]}"
+"NGTA","Bonriki Intl","Tarawa I","Kiribati","KIR",1.3811583333333333,173.14628055555553,"{""type"":""Point"",""coordinates"":[173.14628055555553,1.3811583333333333]}"

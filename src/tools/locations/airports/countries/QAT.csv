@@ -1,0 +1,5 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"OTHH","Hamad Intl","Doha","Qatar","QAT",25.27456388888889,51.60837777777778,"{""type"":""Point"",""coordinates"":[51.60837777777778,25.27456388888889]}"
+"OTBK","Al Khor","Al Khor","Qatar","QAT",25.629475,51.506544444444444,"{""type"":""Point"",""coordinates"":[51.506544444444444,25.629475]}"
+"OTBH","Al Udeid AB","Al-Udeid","Qatar","QAT",25.11731388888889,51.314988888888884,"{""type"":""Point"",""coordinates"":[51.314988888888884,25.11731388888889]}"
+"OTBD","Doha Intl","Doha","Qatar","QAT",25.261058333333335,51.56509444444444,"{""type"":""Point"",""coordinates"":[51.56509444444444,25.261058333333335]}"

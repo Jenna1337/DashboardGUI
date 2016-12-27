@@ -1,0 +1,5 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"LUKK","Chisinau Intl","Chisinau","Moldova","MDA",46.927794444444444,28.93092777777778,"{""type"":""Point"",""coordinates"":[28.93092777777778,46.927794444444444]}"
+"LUCH","Cahul Intl","Cahul","Moldova","MDA",45.84378055555556,28.263658333333332,"{""type"":""Point"",""coordinates"":[28.263658333333332,45.84378055555556]}"
+"LUBM","Marculesti Intl","Marculesti","Moldova","MDA",47.86261944444445,28.212866666666667,"{""type"":""Point"",""coordinates"":[28.212866666666667,47.86261944444445]}"
+"LUBL","Balti Intl","Balti","Moldova","MDA",47.83846666666667,27.780705555555553,"{""type"":""Point"",""coordinates"":[27.780705555555553,47.83846666666667]}"

@@ -1,0 +1,8 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"ORSU","Sulaymaniyah Intl","Sulaymaniyah","Iraq","IRQ",35.56055555555555,45.31444444444444,"{""type"":""Point"",""coordinates"":[45.31444444444444,35.56055555555555]}"
+"ORNI","Al-Ashraf Intl","Al Najaf","Iraq","IRQ",31.989722222222223,44.40416666666667,"{""type"":""Point"",""coordinates"":[44.40416666666667,31.989722222222223]}"
+"ORMM","Basrah Intl","Basrah","Iraq","IRQ",30.549069444444445,47.66214166666666,"{""type"":""Point"",""coordinates"":[47.66214166666666,30.549069444444445]}"
+"ORKK","Kirkuk","Kirkuk","Iraq","IRQ",35.46944444444445,44.348888888888894,"{""type"":""Point"",""coordinates"":[44.348888888888894,35.46944444444445]}"
+"ORER","Erbil Intl","Erbil","Iraq","IRQ",36.238055555555555,43.946666666666665,"{""type"":""Point"",""coordinates"":[43.946666666666665,36.238055555555555]}"
+"ORBM","Mosul Intl","Mosul","Iraq","IRQ",36.30576111111111,43.147397222222224,"{""type"":""Point"",""coordinates"":[43.147397222222224,36.30576111111111]}"
+"ORBI","Baghdad Intl","Baghdad","Iraq","IRQ",33.26253888888889,44.23457777777778,"{""type"":""Point"",""coordinates"":[44.23457777777778,33.26253888888889]}"

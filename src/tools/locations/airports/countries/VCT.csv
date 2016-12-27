@@ -1,0 +1,6 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"TVSV","E T Joshua","Kingstown","St Vincent","VCT",13.144444444444444,-61.21083333333333,"{""type"":""Point"",""coordinates"":[-61.21083333333333,13.144444444444444]}"
+"TVSU","Union I. Intl","Union I.","St Vincent","VCT",12.598611111111111,-61.414722222222224,"{""type"":""Point"",""coordinates"":[-61.414722222222224,12.598611111111111]}"
+"TVSM","Mustique Is","Mustique","St Vincent","VCT",12.887727777777778,-61.18004166666667,"{""type"":""Point"",""coordinates"":[-61.18004166666667,12.887727777777778]}"
+"TVSC","Canouan","Canouan","St Vincent","VCT",12.70079722222222,-61.34506666666667,"{""type"":""Point"",""coordinates"":[-61.34506666666667,12.70079722222222]}"
+"TVSB","J.F. Mitchell","Bequia","St Vincent","VCT",12.986944444444443,-61.26444444444444,"{""type"":""Point"",""coordinates"":[-61.26444444444444,12.986944444444443]}"

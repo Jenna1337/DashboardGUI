@@ -1,0 +1,4 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"UGTB","Tbilisi","Tbilisi","Georgia","GEO",41.669155555555555,44.95479166666667,"{""type"":""Point"",""coordinates"":[44.95479166666667,41.669155555555555]}"
+"UGSB","Batumi","Batumi","Georgia","GEO",41.61017777777778,41.59943888888889,"{""type"":""Point"",""coordinates"":[41.59943888888889,41.61017777777778]}"
+"UGKO","Kopitnari","Kutaisi","Georgia","GEO",42.176825,42.48271388888889,"{""type"":""Point"",""coordinates"":[42.48271388888889,42.176825]}"

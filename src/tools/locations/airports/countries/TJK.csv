@@ -1,0 +1,5 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"UTDT","Qurgonteppa","Qurgonteppa","Tajikistan","TJK",37.86666666666667,68.865,"{""type"":""Point"",""coordinates"":[68.865,37.86666666666667]}"
+"UTDL","Khujand","Khujand","Tajikistan","TJK",40.215,69.69666666666667,"{""type"":""Point"",""coordinates"":[69.69666666666667,40.215]}"
+"UTDK","Kulob","Kulob","Tajikistan","TJK",37.98833333333334,69.80666666666666,"{""type"":""Point"",""coordinates"":[69.80666666666666,37.98833333333334]}"
+"UTDD","Dushanbe","Dushanbe","Tajikistan","TJK",38.54333333333333,68.825,"{""type"":""Point"",""coordinates"":[68.825,38.54333333333333]}"

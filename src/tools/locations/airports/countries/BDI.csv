@@ -1,0 +1,4 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"HBBO","Kirundo","Kirundo","Burundi","BDI",-2.5444444444444443,30.094166666666666,"{""type"":""Point"",""coordinates"":[30.094166666666666,-2.5444444444444443]}"
+"HBBE","Gitega","Gitega","Burundi","BDI",-3.4333333333333336,29.916666666666668,"{""type"":""Point"",""coordinates"":[29.916666666666668,-3.4333333333333336]}"
+"HBBA","Bujumbura Intl","Bujumbura","Burundi","BDI",-3.3077527777777775,29.315963888888888,"{""type"":""Point"",""coordinates"":[29.315963888888888,-3.3077527777777775]}"

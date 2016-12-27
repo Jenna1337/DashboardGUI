@@ -6,11 +6,14 @@ import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
+import java.util.function.Consumer;
+
 import javax.swing.JFrame;
 import dashboard.display.KeepAwake;
 import dashboard.display.PanelClock;
 import dashboard.display.PanelWeather;
 import dashboard.interfaces.Destroyable;
+import tools.colors.ScheduledColorChange;
 
 @SuppressWarnings("serial")
 public class Dashboard extends JFrame implements Destroyable, KeyListener
@@ -21,11 +24,11 @@ public class Dashboard extends JFrame implements Destroyable, KeyListener
 	// Create a new blank cursor.
 	protected static final Cursor blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(cursorImg, new Point(0, 0), "blank cursor");
 	private static final AutoUpdater autoupdater = new AutoUpdater();
-	
-	private PanelWeather panw;
+
+	public PanelWeather panw;
 	private PanelClock panc;
-	
-	
+
+
 	public Dashboard()
 	{
 		super();
@@ -40,14 +43,14 @@ public class Dashboard extends JFrame implements Destroyable, KeyListener
 	{
 		this.setUndecorated(true);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		
+
 		this.setCursor(blankCursor);
 		this.getContentPane().setBackground(CommonConsts.COLORbg);
-		
+
 		this.setLayout(CommonConsts.DashboardLayout);//TODO figure out why some layout configurations aren't working
 		this.add(panc=new PanelClock(), CommonConsts.LayoutClock);
 		this.add(panw=new PanelWeather(), CommonConsts.LayoutWeather);
-		
+
 		this.pack();
 		this.setFocusable(true);
 		this.setSize(Toolkit.getDefaultToolkit().getScreenSize());
@@ -56,7 +59,7 @@ public class Dashboard extends JFrame implements Destroyable, KeyListener
 		this.getContentPane().addKeyListener(this);
 		this.panc.addKeyListener(this);
 		this.panw.addKeyListener(this);
-		
+
 		try
 		{
 			ka=new KeepAwake();
@@ -103,6 +106,14 @@ public class Dashboard extends JFrame implements Destroyable, KeyListener
 		panc.destroy();
 		panw.destroy();
 		autoupdater.destroy();
+		CommonConsts.colorschedule.forEach(new Consumer<ScheduledColorChange>()
+		{
+			@Override
+			public void accept(ScheduledColorChange t) {
+				t.cancel();
+				CommonConsts.colorschedule.remove(t);
+			}
+		});
 		Thread[] threads=new Thread[Thread.activeCount()];
 		while(java.util.Arrays.deepToString(threads).contains("AWT-EventQueue"))
 		{
@@ -119,12 +130,12 @@ public class Dashboard extends JFrame implements Destroyable, KeyListener
 	{
 		switch(e.getKeyCode())
 		{
-			case KeyEvent.ALT_DOWN_MASK & KeyEvent.VK_F4:
-			case KeyEvent.VK_ESCAPE:
-				this.destroy();
-				break;
-			default:
-				break;
+		case KeyEvent.ALT_DOWN_MASK & KeyEvent.VK_F4:
+		case KeyEvent.VK_ESCAPE:
+			this.destroy();
+			break;
+		default:
+			break;
 		}
 	}
 	@Override

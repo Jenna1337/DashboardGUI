@@ -1,0 +1,3 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"NSFI","Fagali","Fagali","W Samoa","WSM",-13.833333333333334,-171.73333333333332,"{""type"":""Point"",""coordinates"":[-171.73333333333332,-13.833333333333334]}"
+"NSFA","Faleolo Intl","Apia","W Samoa","WSM",-13.829666666666666,-171.99716666666666,"{""type"":""Point"",""coordinates"":[-171.99716666666666,-13.829666666666666]}"

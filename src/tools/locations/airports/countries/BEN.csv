@@ -1,0 +1,3 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"DBBP","Parakou","Parakou","Benin","BEN",9.357138888888889,2.6092500000000003,"{""type"":""Point"",""coordinates"":[2.6092500000000003,9.357138888888889]}"
+"DBBB","Cadjehoun Intl","Cotonou","Benin","BEN",6.356380555555555,2.38335,"{""type"":""Point"",""coordinates"":[2.38335,6.356380555555555]}"

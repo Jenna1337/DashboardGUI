@@ -1,0 +1,3 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"FPST","Sao Tome Intl","Sao Tome","Sao Tome & Principe","STP",0.37777777777777777,6.713055555555556,"{""type"":""Point"",""coordinates"":[6.713055555555556,0.37777777777777777]}"
+"FPPR","Principe","Principe","Sao Tome & Principe","STP",1.6629666666666665,7.411672222222222,"{""type"":""Point"",""coordinates"":[7.411672222222222,1.6629666666666665]}"

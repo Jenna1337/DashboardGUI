@@ -1,0 +1,4 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"FGSL","Malabo","Malabo","Eq Guinea","GNQ",3.7552777777777777,8.70861111111111,"{""type"":""Point"",""coordinates"":[8.70861111111111,3.7552777777777777]}"
+"FGMY","Mongomeyen","Mongomeyen","Eq Guinea","GNQ",1.678575,11.02478888888889,"{""type"":""Point"",""coordinates"":[11.02478888888889,1.678575]}"
+"FGBT","Bata","Bata","Eq Guinea","GNQ",1.9022055555555555,9.802811111111112,"{""type"":""Point"",""coordinates"":[9.802811111111112,1.9022055555555555]}"

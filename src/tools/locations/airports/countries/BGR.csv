@@ -1,0 +1,7 @@
+"airportCode","airportName","cityName","countryName","countryCode","latitude","longitude","geometry"
+"LBSF","Sofia","Sofia","Bulgaria","BGR",42.69499999999999,23.40833333333333,"{""type"":""Point"",""coordinates"":[23.40833333333333,42.69499999999999]}"
+"LBPR","Primorsko","Primorsko","Bulgaria","BGR",42.25972222222222,27.703611111111112,"{""type"":""Point"",""coordinates"":[27.703611111111112,42.25972222222222]}"
+"LBPD","Plovdiv","Plovdiv","Bulgaria","BGR",42.06777777777778,24.850833333333334,"{""type"":""Point"",""coordinates"":[24.850833333333334,42.06777777777778]}"
+"LBWN","Varna","Varna","Bulgaria","BGR",43.231944444444444,27.825277777777778,"{""type"":""Point"",""coordinates"":[27.825277777777778,43.231944444444444]}"
+"LBGO","Gorna Oryahovitsa","Gorna Oryahovitsa","Bulgaria","BGR",43.151666666666664,25.711944444444445,"{""type"":""Point"",""coordinates"":[25.711944444444445,43.151666666666664]}"
+"LBBG","Burgas","Burgas","Bulgaria","BGR",42.57027777777778,27.51527777777778,"{""type"":""Point"",""coordinates"":[27.51527777777778,42.57027777777778]}"
