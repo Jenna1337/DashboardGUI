@@ -12,13 +12,15 @@ public class AirportData
 {
 	private static final List<String> airportnames = getAirportNames();
 	private static final AirportInfoSet thedata = getTheData();
+	private static final AirportInfo[] airports = thedata
+			.toArray(new AirportInfo[thedata.size()]);
 	
 	private AirportData()
 	{
 	}
 	private static AirportInfoSet getTheData()
 	{
-		AirportInfoSet thedata = new AirportInfoSet();
+		AirportInfoSet infodata = new AirportInfoSet();
 		try
 		{
 			BufferedFileReader reader = new BufferedFileReader(
@@ -26,7 +28,7 @@ public class AirportData
 			String line = reader.readLine();
 			while((line = reader.readLine()) != null)
 			{
-				thedata.add(line.split("\t"));
+				infodata.add(line.split("\t"));
 			}
 			reader.close();
 		}
@@ -34,7 +36,7 @@ public class AirportData
 		{
 			throw new InternalError(e);
 		}
-		return thedata;
+		return infodata;
 	}
 	private static List<String> getAirportNames()
 	{
@@ -61,11 +63,8 @@ public class AirportData
 			return null;
 		AirportInfo min = null;
 		double smallest = Double.POSITIVE_INFINITY;
-		AirportInfo[] airports = thedata
-				.toArray(new AirportInfo[thedata.size()]);
-		for(int i = 0; i < airports.length; ++i)
+		for(AirportInfo airport : airports)
 		{
-			AirportInfo airport = airports[i];
 			int comparevalue = nearHere.compareTo(airport.getCoords());
 			if(comparevalue < smallest
 					&& airportnames.contains(airport.getAirportCode()))
@@ -100,10 +99,9 @@ class AirportInfoSet extends HashSet<tools.data.AirportInfo>
 			String[] tval = val.getArgs();
 			if(key.equals(tval))
 				return val;
-			else
-				for(int i = 0; i < tval.length; ++i)
-					if(tval[i].equals(key))
-						return val;
+			for(int i = 0; i < tval.length; ++i)
+				if(tval[i].equals(key))
+					return val;
 		}
 		return null;
 	}

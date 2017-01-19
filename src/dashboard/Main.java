@@ -1,9 +1,13 @@
 package dashboard;
 
+import java.lang.reflect.Field;
+import java.util.List;
 import dashboard.display.weather.WeatherData;
 import tools.bufferedFileIO.BufferedFileReader;
 import tools.bufferedFileIO.BufferedFileWriter;
 import tools.data.AirportData;
+import tools.data.AirportInfo;
+import tools.locations.Coords;
 import tools.locations.CountryCodes;
 
 public class Main
@@ -12,6 +16,9 @@ public class Main
 	
 	public static void main(String[] args) throws Exception
 	{
+		generatecoorddatabase();
+		System.exit(0);
+		
 		System.out.println(new WeatherData(AirportData.getLocalAirport().getAirportCode()));
 		System.exit(0);
 		
@@ -25,6 +32,29 @@ public class Main
 		Thread.sleep(1);
 		if(CommonConsts.benchtest)
 			benchmark();
+	}
+	private static void generatecoorddatabase() throws Exception
+	{
+		BufferedFileWriter fwr = new BufferedFileWriter("src/tools/locations/airports/all_coords.csv");
+		Field f_airportnames = AirportData.class.getDeclaredField("airportnames");
+		Field f_airports = AirportData.class.getDeclaredField("airports");
+		f_airportnames.setAccessible(true);
+		f_airports.setAccessible(true);
+		
+		@SuppressWarnings("unchecked")
+		List<String> airportnames = (List<String>) f_airportnames.get(null);
+		AirportInfo[] airports = (AirportInfo[]) f_airports.get(null);
+		
+		System.out.println("Working...");
+		for(AirportInfo airport : airports){
+			if(airportnames.contains(airport.getAirportCode())){
+				Coords geo = airport.getCoords();
+				fwr.write(airport.getAirportCode() + "," + geo.getLatitude() +
+						"," + geo.getLongitude() + ",\n");
+			}
+		}
+		System.out.println("Done");
+		fwr.close();
 	}
 	@SuppressWarnings("unused")
 	private static void mergeairportdata() throws Exception
