@@ -81,7 +81,7 @@ public class AutoUpdater implements Destroyable
 		CommonConsts.log.println("Searching for updates...");
 		try
 		{
-			java.io.BufferedReader versionreader = new tools.bufferedFileIO.BufferedNetFileReader(versionURLString);
+			java.io.BufferedReader versionreader = new io.BufferedNetFileReader(versionURLString);
 			long remoteversion = Long.parseLong(versionreader.readLine());
 			versionreader.close();
 			CommonConsts.log.println("Remote file found...");
@@ -100,7 +100,7 @@ public class AutoUpdater implements Destroyable
 		if(new File(f).canRead())
 		{
 			CommonConsts.log.println("Comparing remote to local version...");
-			java.io.BufferedReader reader=new tools.bufferedFileIO.BufferedFileReader(f);
+			java.io.BufferedReader reader=new io.BufferedFileReader(f);
 			ver=Long.parseLong(reader.readLine());
 			reader.close();
 		}

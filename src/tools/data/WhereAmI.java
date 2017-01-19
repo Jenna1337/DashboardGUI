@@ -1,7 +1,7 @@
 package tools.data;
 
 import java.io.IOException;
-import tools.bufferedFileIO.BufferedNetFileReader;
+import io.BufferedNetFileReader;
 import tools.locations.Coords;
 
 public class WhereAmI
