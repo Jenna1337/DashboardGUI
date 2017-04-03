@@ -4,9 +4,15 @@ package tools.locations;
  * This file contains UNICODE CHARACTERS
  * The text in this file may appear strange.
  */
-//TODO Add more languages
+/**
+ * An enum of the different locales supported.
+ * @author jonah.sloan
+ * @author jenna3715
+ *
+ */
 public enum LangCodes
 {
+	//TODO Add more languages to locale
 	//aa("Afaraf");//Afar
 	//ab("аҧсуа бызшәа", "аҧсшәа");//Abkhaz
 	//ae("avesta");//Avestan

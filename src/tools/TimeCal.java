@@ -1,4 +1,4 @@
-package dashboard.display.clock;
+package tools;
 
 import java.util.Calendar;
 

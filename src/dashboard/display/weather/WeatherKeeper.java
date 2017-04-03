@@ -5,6 +5,12 @@ import dashboard.display.ScheduledTask;
 import dashboard.display.weather.WeatherInfo.WeatherProperty;
 import dashboard.interfaces.Destroyable;
 
+/**
+ * Keeps track of the current weather.
+ * @author jonah.sloan
+ * @author jenna3715
+ *
+ */
 public final class WeatherKeeper implements Destroyable
 {
 	private WeatherData weather;

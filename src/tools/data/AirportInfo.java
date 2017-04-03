@@ -3,6 +3,12 @@ package tools.data;
 import tools.locations.Coords;
 import tools.locations.CountryCodes;
 
+/**
+ * 
+ * @author jonah.sloan
+ * @author jenna3715
+ *
+ */
 public final class AirportInfo
 {
 	/**

@@ -1,27 +1,28 @@
 package dashboard.display;
 
+import java.util.Timer;
+
 /**
- * 
+ * All instances of this class will have the same {@link Timer}.
  * @author jonah.sloan
+ * @author jenna3715
  * @see java.util.Timer#scheduleAtFixedRate(java.util.TimerTask, long, long)
  */
 public abstract class ScheduledTask implements Runnable
 {
-	private final java.util.Timer timer = new java.util.Timer(true);
-	private final ScheduledTask task = this;
+	private static volatile Timer timer = new Timer(true);
 	public ScheduledTask(long firstTime, long period)
 	{
 		timer.scheduleAtFixedRate(new java.util.TimerTask(){
 			public void run()
 			{
-				task.run();
+				ScheduledTask.this.run();
 			}
 		}, firstTime, period);
 	}
 	/**
 	 * The action to be performed by this timer task.
 	 * @see java.util.TimerTask#run()
-	 * @see java.lang.Thread#run()
 	 */
 	public abstract void run();
 	/**
@@ -30,6 +31,5 @@ public abstract class ScheduledTask implements Runnable
 	public void cancel()
 	{
 		timer.cancel();
-		timer.purge();
 	}
 }

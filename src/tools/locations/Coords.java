@@ -1,5 +1,11 @@
 package tools.locations;
 
+/**
+ * A geological coordinate.
+ * @author jonah.sloan
+ * @author jenna3715
+ *
+ */
 public class Coords implements Comparable<Coords>
 {
 	private double lat, lon;

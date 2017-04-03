@@ -2,6 +2,12 @@ package dashboard.display.weather;
 
 import java.io.IOException;
 
+/**
+ * Parses the data from a {@link WeatherInfo} object and stores it.
+ * @author jonah.sloan
+ * @author jenna3715
+ *
+ */
 @SuppressWarnings("serial")
 public final class WeatherInfo extends java.util.Properties
 {
@@ -45,7 +51,7 @@ cycle: 3
 	}
 	public String getProperty(WeatherProperty p)
 	{
-		return  this.getProperty(p);
+		return  super.getProperty(p.toString());
 	}
 	enum WeatherProperty
 	{

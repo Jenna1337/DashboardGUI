@@ -15,6 +15,12 @@ import dashboard.display.PanelWeather;
 import dashboard.interfaces.Destroyable;
 import tools.colors.ScheduledColorChange;
 
+/**
+ * 
+ * @author jonah.sloan
+ * @author jenna3715
+ *
+ */
 @SuppressWarnings("serial")
 public class Dashboard extends JFrame implements Destroyable, KeyListener
 {

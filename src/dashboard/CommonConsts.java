@@ -11,12 +11,19 @@ import io.BufferedFileReader;
 import io.BufferedFileWriter;
 import java.util.ArrayList;
 import java.util.Properties;
-import tools.colors.NamedColor;
+import javax.swing.text.JTextComponent;
+import utils.colors.NamedColor;
 import tools.colors.ScheduledColorChange;
 import tools.data.AirportData;
 import tools.data.AirportInfo;
 import tools.data.WhereAmI;
 
+/**
+ * 
+ * @author jonah.sloan
+ * @author jenna3715
+ *
+ */
 public final class CommonConsts
 {
 	public  static final String myfilepath = getFilePath();
@@ -27,72 +34,99 @@ public final class CommonConsts
 	
 	public static final Properties locale = getLocale(getProperty("lang", "en").toLowerCase());
 	
-	public static final long
 	/*3600000ms = 1h; 900000ms = 15min*/
-	ZERO   = 0,
-	SECOND = 1000,
-	MINUTE = SECOND*60,
-	HOUR   = MINUTE*60,
-	DAY    = HOUR*24,
-	WEEK   = DAY*7,
-	wsyncfailed    = getProperty("wsyncfailed",    CommonConsts.MINUTE*5),
-	wsyncsucceeded = getProperty("wsyncsucceeded", CommonConsts.HOUR/2),
-	tsyncfailed    = getProperty("tsyncfailed",    CommonConsts.MINUTE*15),
-	tsyncsucceeded = getProperty("tsyncsucceeded", CommonConsts.HOUR),
-	tsynccheck = gcf(tsyncfailed, tsyncsucceeded),
-	tupdateint = getProperty("tupdateint", SECOND),
-	wupdateint = getProperty("wupdateint", MINUTE*5),
-	aupdateint = getProperty("aupdateint", WEEK),
-	benchint   = getProperty("benchint", MINUTE),
-	timeoffset = getProperty("timeoffset", ZERO);
+	/**Zero.*/
+	public static final long ZERO   = 0;
+	/**Milliseconds in a second.*/
+	public static final long SECOND = 1000;
+	/**Milliseconds in a minute.*/
+	public static final long MINUTE = SECOND*60;
+	/**Milliseconds in a hour.*/
+	public static final long HOUR   = MINUTE*60;
+	/**Milliseconds in a day.*/
+	public static final long DAY    = HOUR*24;
+	/**Milliseconds in a week.*/
+	public static final long WEEK   = DAY*7;
+	/**Time to wait (in milliseconds) after a failure to get the weather data before retrying.*/
+	public static final long wsyncfailed    = getProperty("wsyncfailed",    CommonConsts.MINUTE*5);
+	/**Time to wait (in milliseconds) after succeeding to get the weather data before repeating.*/
+	public static final long wsyncsucceeded = getProperty("wsyncsucceeded", CommonConsts.HOUR/2);
+	/**Time to wait (in milliseconds) after a failure to get the server time before retrying.*/
+	public static final long tsyncfailed    = getProperty("tsyncfailed",    CommonConsts.MINUTE*15);
+	/**Time to wait (in milliseconds) after succeeding to get the server time before repeating.*/
+	public static final long tsyncsucceeded = getProperty("tsyncsucceeded", CommonConsts.HOUR);
+	/**Time (in milliseconds) between each attempted time synchronization.*/
+	public static final long tsynccheck = gcf(tsyncfailed, tsyncsucceeded);
+	/**How often (in milliseconds) the clock display is updated.*/
+	public static final long tupdateint = getProperty("tupdateint", SECOND);
+	/**How often (in milliseconds) the weather display is updated.*/
+	public static final long wupdateint = getProperty("wupdateint", MINUTE*5);
+	/**How often (in milliseconds) to check for software updates.*/
+	public static final long aupdateint = getProperty("aupdateint", WEEK);
+	/**How often (in milliseconds) to record data during a benchmark test.*/
+	public static final long benchint   = getProperty("benchint", MINUTE);
+	/**The time offset (in milliseconds) for the clock display.*/
+	public static final long timeoffset = getProperty("timeoffset", ZERO);
 	
 	public static final Font
 	FontClock   = getProperty("FontClock",   Font.decode("Courier New")),
 	FontWeather = getProperty("FontWeather", Font.decode("Times New Roman"));
 	
-	public static final Color
-	/**Color of main window**/
-	COLORbg  = getProperty("COLORbg ", NamedColor.getColorForName("Black")),
+	/**Color of main window background**/
+	public static final Color COLORbg  = getProperty("COLORbg ", NamedColor.getColorForName("Black"));
 	/**Color of Clock text**/
-	COLORfgC = getProperty("COLORfgC", NamedColor.getColorForName("LightGray")),
-	/**Color of Clock bg**/
-	COLORbgC = getProperty("COLORbgC", NamedColor.getColorForName("Black")),
+	public static final Color COLORfgC = getProperty("COLORfgC", NamedColor.getColorForName("LightGray"));
+	/**Color of Clock background**/
+	public static final Color COLORbgC = getProperty("COLORbgC", NamedColor.getColorForName("Black"));
 	/**Color of Weather text**/
-	COLORfgW = getProperty("COLORfgW", NamedColor.getColorForName("LightGrey")),
-	/**Color of Weather bg  **/
-	COLORbgW = getProperty("COLORbgW", NamedColor.getColorForName("Black")),
+	public static final Color COLORfgW = getProperty("COLORfgW", NamedColor.getColorForName("LightGrey"));
+	/**Color of Weather background  **/
+	public static final Color COLORbgW = getProperty("COLORbgW", NamedColor.getColorForName("Black"));
 	/**Color of hidden areas**/
-	COLORNUL = java.awt.Color.MAGENTA;
+	public static final Color COLORNUL = java.awt.Color.MAGENTA;
 	
-	public static final String
-	timeserver = getProperty("timeserver", "time.nist.gov"),
-	//TODO work change towards using the smaller files: "ftp://tgftp.nws.noaa.gov/data/observations/metar/stations/"
-	weatherdir = getProperty("weatherdir", "ftp://tgftp.nws.noaa.gov/data/observations/metar/decoded/"),
-	wstation   = getProperty("wstation",   "KFAR"),
-	timeformat = getProperty("timeformat", "h:mm a"),
-	masterurl  = "https://github.com/JonahSloan/DashboardGUI/raw/master/";
+	/**The NTP server to get the time from.*/
+	public static final String timeserver = getProperty("timeserver", "time.nist.gov");
+	//TODO work change towards using the smaller raw METAR files: "ftp://tgftp.nws.noaa.gov/data/observations/metar/stations/"
+	/**The weather server to get the weather file from.*/
+	public static final String weatherdir = getProperty("weatherdir", "http://sloan4.com/database/weather.php?decoded=true&station=");
+	/**The weather station.*/
+	public static final String wstation   = getProperty("wstation",   "KFAR");
+	/**The format for displaying the time.*/
+	public static final String timeformat = getProperty("timeformat", "h:mm a");
+	/**The URL to check for updates.*/
+	public static final String masterurl  = "https://github.com/Jenna3715/DashboardGUI/raw/master/";
 	
+	/**The airport approximately closest to the IP address of the executing computer.*/
 	public static final AirportInfo
 	localAirport  = AirportData.getClosestAirport(WhereAmI.getLocalCoords());//TODO implement this constant
 	
-	public static final boolean
-	autoupdate = getProperty("autoupdate", true),
-	keepawake  = getProperty("keepawake", true),
-	benchtest  = getProperty("benchtest", false);
+	/**Whether to automatically update the software.*/
+	public static final boolean autoupdate = getProperty("autoupdate", true);
+	/**Whether to keep the computer awake.*/
+	public static final boolean keepawake  = getProperty("keepawake", true);
+	/**Whether to log benchmark test data.*/
+	public static final boolean benchtest  = getProperty("benchtest", false);
 	
-	public static final LayoutManager2
-	DashboardLayout = getProperty("DashboardLayout", new BorderLayout());
+	/**The layout manager to use for the main dashboard.*/
+	public static final LayoutManager2 DashboardLayout = getProperty("DashboardLayout", new BorderLayout());
 	
-	public static final Object
-	LayoutClock   = getProperty("LayoutClock", new LayoutConstraint("java.awt.BorderLayout.NORTH")).getObject(),
-	LayoutWeather = getProperty("LayoutWeather", new LayoutConstraint("java.awt.BorderLayout.SOUTH")).getObject();
+	/**The layout constraint to use for the clock panel.*/
+	public static final Object LayoutClock   = getProperty("LayoutClock", new LayoutConstraint("java.awt.BorderLayout.NORTH")).getObject();
+	/**The layout constraint to use for the weather panel.*/
+	public static final Object LayoutWeather = getProperty("LayoutWeather", new LayoutConstraint("java.awt.BorderLayout.SOUTH")).getObject();
 	
-	public static final PrintStream
-	log = new PrintStream(System.out,true);
+	/**The {@link PrintStream} to which debug data is logged.*/
+	public static final PrintStream log = new PrintStream(System.out,true);
 	
 	//TODO add stuff to add to colorschedule variable
 	public static final java.util.ArrayList<ScheduledColorChange> colorschedule = new ArrayList<ScheduledColorChange>();
 	
+	/**
+	 * Gets the biggest font that will fit in the text component.
+	 * @param c the {@link JTextComponent} for which to get the biggest font.
+	 * @return The biggest {@link Font} for JTextComponent c
+	 */
 	public static Font biggestFont(final javax.swing.text.JTextComponent c)
 	{
 		Font labelFont = c.getFont();
@@ -113,13 +147,20 @@ public final class CommonConsts
 		// Set the label's font size to the newly determined size.
 		return new Font(labelFont.getName(), labelFont.getStyle(), fontSizeToUse);
 	}
+	/**Whether there is a configuration file.*/
 	private static boolean flag_NoConfigFile = false;
+	/**
+	 * Retrieves the configuration data from the config file.
+	 * @return The configuration properties loaded from the config file.
+	 */
 	private static Properties getConfigData()
 	{
 		Properties configs = new Properties();
 		try
 		{
-			configs.load(new BufferedFileReader(configfile));
+			BufferedFileReader reader = new BufferedFileReader(configfile);
+			configs.load(reader);
+			reader.close();
 			return configs;
 		}
 		catch(java.io.FileNotFoundException fnfe)
@@ -131,7 +172,9 @@ public final class CommonConsts
 				{
 					System.out.println("Failed to locate config file. Creating a new one.");
 					new java.io.File(configfile).createNewFile();
-					configs.load(new BufferedFileReader(configfile));
+					BufferedFileReader reader = new BufferedFileReader(configfile);
+					configs.load(reader);
+					reader.close();
 					return configs;
 				}
 				// this shouldn't fail twice
@@ -149,12 +192,19 @@ public final class CommonConsts
 		}
 		return configs;
 	}
+	/**
+	 * Loads the specified locale file.
+	 * @param lang the name of the desired locale.
+	 * @return The properties for the requested locale.
+	 */
 	private static Properties getLocale(String lang)
 	{
 		Properties loc=new Properties();
 		try
 		{
-			loc.load(new BufferedFileReader(configfile));
+			BufferedFileReader reader = new BufferedFileReader(configfile);
+			loc.load(reader);
+			reader.close();
 		}
 		catch(FileNotFoundException e)
 		{
@@ -164,7 +214,9 @@ public final class CommonConsts
 		{
 			try
 			{
-				loc.load(new BufferedFileReader(configfile));
+				BufferedFileReader reader = new BufferedFileReader(configfile);
+				loc.load(reader);
+				reader.close();
 			}
 			catch(IOException e1)
 			{
@@ -276,9 +328,14 @@ public final class CommonConsts
 			}
 			return def;
 		}
-		else
-			return def;
+		return def;
 	}
+	/**
+	 * Greatest common factor
+	 * @param a //TODO figure out how to explain these variables 
+	 * @param b 
+	 * @return The greatest common factor of {@code a} and {@code b}.
+	 */
 	private static long gcf(long a, long b)
 	{
 		while (b > 0)
@@ -289,6 +346,10 @@ public final class CommonConsts
 		}
 		return a;
 	}
+	/**
+	 * Gets the location of the executing jar file.
+	 * @return the path to the executing jar file.
+	 */
 	private static String getFilePath()
 	{
 		try

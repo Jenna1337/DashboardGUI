@@ -5,6 +5,12 @@ import java.awt.Point;
 import java.awt.Robot;
 import dashboard.CommonConsts;
 
+/**
+ * Keeps the computer from going to sleep by moving the mouse.
+ * @author jonah.sloan
+ * @author jenna3715
+ *
+ */
 public class KeepAwake implements Runnable
 {
 	private final Robot rob;
@@ -15,6 +21,9 @@ public class KeepAwake implements Runnable
 		rob = new Robot();
 		t.setDaemon(true);
 	}
+	/**
+	 * Moves the mouse in a tiny 1px by 1px square
+	 */
 	public void run()
 	{
 		while(running && CommonConsts.keepawake)

@@ -8,6 +8,12 @@ import java.util.List;
 import io.BufferedFileReader;
 import tools.locations.Coords;
 
+/**
+ * 
+ * @author jonah.sloan
+ * @author jenna3715
+ *
+ */
 public class AirportData
 {
 	private static final List<String> airportnames = getAirportNames();

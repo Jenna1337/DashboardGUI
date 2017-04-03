@@ -5,6 +5,12 @@ import io.BufferedNetFileReader;
 import dashboard.CommonConsts;
 import dashboard.interfaces.Destroyable;
 
+/**
+ * Retrieves weather data from the Internet and stores it for usage elsewhere.
+ * @author jonah.sloan
+ * @author jenna3715
+ *
+ */
 public class WeatherData implements Destroyable
 {
 	volatile String data="";

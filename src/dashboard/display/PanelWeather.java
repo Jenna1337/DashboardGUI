@@ -8,6 +8,12 @@ import dashboard.CommonConsts;
 import dashboard.display.weather.WeatherKeeper;
 import dashboard.interfaces.Destroyable;
 
+/**
+ * A JPanel that displays the weather.
+ * @author jonah.sloan
+ * @author jenna3715
+ *
+ */
 @SuppressWarnings("serial")
 public class PanelWeather extends JPanel implements Destroyable
 {

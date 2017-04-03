@@ -1,5 +1,12 @@
 package tools.locations;
 
+/**
+ * An enum containing the states and territorial
+ *  regions of the United States of America
+ * @author jonah.sloan
+ * @author jenna3715
+ *
+ */
 public enum USARegionalCodes
 {
 	ak("Alaska"),

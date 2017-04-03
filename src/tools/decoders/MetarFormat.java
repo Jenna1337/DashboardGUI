@@ -1,7 +1,14 @@
 package tools.decoders;
 
+/**
+ * A class for METAR data.
+ * @author jonah.sloan
+ * @author jenna3715
+ *
+ */
 public abstract class MetarFormat
 {
+	//TODO code this
 /**<pre>
 CODE FORM:
                                                                

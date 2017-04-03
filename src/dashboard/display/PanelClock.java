@@ -8,6 +8,12 @@ import dashboard.CommonConsts;
 import dashboard.display.clock.TimeKeeper;
 import dashboard.interfaces.Destroyable;
 
+/**
+ * A JPanel that displays the time.
+ * @author jonah.sloan
+ * @author jenna3715
+ *
+ */
 @SuppressWarnings("serial")
 public class PanelClock extends JPanel implements Destroyable
 {

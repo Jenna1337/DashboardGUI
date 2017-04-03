@@ -7,8 +7,10 @@ import dashboard.display.ScheduledTask;
 import dashboard.interfaces.Destroyable;
 
 /**
+ * Keeps track of the current time.
  * All instances of this class will contain the same time.
  * @author jonah.sloan
+ * @author jenna3715
  *
  */
 public final class TimeKeeper implements Destroyable
@@ -70,8 +72,6 @@ public final class TimeKeeper implements Destroyable
 					CommonConsts.log.println("Time check complete.");
 				}
 			};
-			/*wait for t*/
-			while(t<System.currentTimeMillis());
 			timer2=new ScheduledTask(CommonConsts.ZERO, CommonConsts.tupdateint){
 				public void run(){
 					t=t+CommonConsts.tupdateint;
@@ -111,10 +111,14 @@ public final class TimeKeeper implements Destroyable
 		timer.cancel();
 		timer2.cancel();
 	}
+	private long getTimeRaw()
+	{
+		return t;
+	}
 	public static long getTime()
 	{
 		if(!timerset)
-			new TimeKeeper(null);
+			new TimeKeeper(null).getTimeRaw();
 		return t;
 	}
 }//TimeKeeper

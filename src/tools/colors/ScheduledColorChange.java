@@ -8,6 +8,12 @@ import dashboard.CommonConsts;
 import dashboard.Main;
 import dashboard.display.ScheduledTask;
 
+/**
+ * 
+ * @author jonah.sloan
+ * @author jenna3715
+ *
+ */
 public class ScheduledColorChange extends ScheduledTask
 {
 	private final Color c;

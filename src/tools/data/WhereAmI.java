@@ -4,11 +4,21 @@ import java.io.IOException;
 import io.BufferedNetFileReader;
 import tools.locations.Coords;
 
+/**
+ * Figures out approximately where the user is in the world.
+ * @author jonah.sloan
+ * @author jenna3715
+ *
+ */
 public class WhereAmI
 {
 	private WhereAmI(){}
 	private static Coords mycoords = getLocalCoords1();
-	private static Coords getLocalCoords1()//get the coords from Bing.com and store them in memory
+	/**
+	 * Get the coords from the Internet and store them in memory.
+	 * @return The approximate location of the computer.
+	 */
+	private static Coords getLocalCoords1()
 	{
 		try
 		{
@@ -26,6 +36,9 @@ public class WhereAmI
 			return null;
 		}
 	}
+	/**
+	 * @return The approximate location of the computer.
+	 */
 	public static Coords getLocalCoords()
 	{
 		return mycoords;

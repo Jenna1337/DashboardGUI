@@ -6,6 +6,12 @@ import java.io.IOException;
 import dashboard.display.ScheduledTask;
 import dashboard.interfaces.Destroyable;
 
+/**
+ * 
+ * @author jonah.sloan
+ * @author jenna3715
+ *
+ */
 public class AutoUpdater implements Destroyable
 {
 	static final String versionURLString = CommonConsts.masterurl+"src/version.txt";

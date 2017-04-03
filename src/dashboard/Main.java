@@ -2,7 +2,6 @@ package dashboard;
 
 import java.lang.reflect.Field;
 import java.util.List;
-import dashboard.display.weather.WeatherData;
 import io.BufferedFileReader;
 import io.BufferedFileWriter;
 import tools.data.AirportData;
@@ -16,23 +15,13 @@ public class Main
 	
 	public static void main(String[] args) throws Exception
 	{
-		generatecoorddatabase();
-		System.exit(0);
-		
-		System.out.println(new WeatherData(AirportData.getLocalAirport().getAirportCode()));
-		System.exit(0);
-		
 		dash = new Dashboard();
 		dash.setVisible(true);
-		/*
-		Thread.sleep(10000);
-		dash.destroy();
-		System.gc();
-		/**/
 		Thread.sleep(1);
 		if(CommonConsts.benchtest)
 			benchmark();
 	}
+	@SuppressWarnings("unused")
 	private static void generatecoorddatabase() throws Exception
 	{
 		BufferedFileWriter fwr = new BufferedFileWriter("src/tools/locations/airports/all_coords.csv");
@@ -143,5 +132,6 @@ public class Main
 			catch(java.io.IOException ioe){}
 			Thread.sleep(CommonConsts.benchint);
 		}
+		writer.close();
 	}
 }
